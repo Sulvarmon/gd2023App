@@ -1,0 +1,72 @@
+.logo {
+    position: relative;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    background-image: url('../../Images/logo.png');
+    background-size: 100% 100%;
+}
+
+.navigation {
+    @media(min-width: 1024px) {
+        display: block;
+    }
+}
+
+.active {
+    color: var(--menuColor);
+}
+
+.company,.sectors {
+    &:hover {
+        color: var(--menuColor);
+    }
+}
+
+.menuDropdown {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 200px;
+    background-color: var(--headerBg);
+    transition: all .3s;
+    .item {
+        &:hover {
+            color: #fff;
+            background-color: var(--menuColor);
+        }
+    }
+    .lang{
+        &:hover{
+            color: var(--menuColor);
+        }
+    }
+    img{
+        width: 21px;
+        height: 15px;
+    }
+}
+
+
+.dropDownShowMenu{
+    right: 0;
+    opacity: 1;
+    top: 57px;
+}
+
+.dropDownHideMenu{
+    opacity: 0;
+    right: 0;
+    top: 15px;
+    z-index: -10;
+}
+
+.tr0{
+    transform: rotate(0);
+    transition: all .1s;
+}
+
+.tr90{
+    transform: rotate(-90deg);
+    transition: all .1s;
+}

@@ -1,0 +1,96 @@
+.carousel {
+    height: 500px;
+    overflow-x: hidden;
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        width: var(--width768);
+    }
+}
+
+.rightArrow {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    top: 0;
+    color: #fff;
+    text-shadow: 0px 0px 10px #000;
+    margin: auto;
+    font-size: 50px;
+    z-index: 10;
+    transition: transform .3s;
+}
+
+.leftArrow {
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    top: 0;
+    color: #fff;
+    text-shadow: 0px 0px 10px #000;
+    margin: auto;
+    font-size: 50px;
+    z-index: 10;
+    transition: transform .3s;
+}
+
+.button {
+    z-index: 10;
+}
+
+.title,
+.text {
+    text-shadow: 0 0 10px #fff;
+    z-index: 10;
+    color: #fff;
+    user-select: none;
+}
+
+.hiddenRightArrow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    z-index: 5;
+    background-color: transparent;
+}
+
+.hiddenLeftArrow{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    z-index: 5;
+    background-color: transparent;
+}
+
+.addTransition{
+    transition: all .3s;
+}
+
+
+.thumbnails{
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 20;
+}
+
+.thumbnail{
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.thumbnailYey{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000;
+}

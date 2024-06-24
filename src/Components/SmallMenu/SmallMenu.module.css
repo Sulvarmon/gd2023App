@@ -1,0 +1,52 @@
+.logo {
+    position: relative;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    background-image: url('../../Images/logo.png');
+    background-size: 100% 100%;
+}
+
+.navigation {
+    @media(min-width: 1024px) {
+        display: none;
+    }
+}
+.menu {
+    position: absolute;
+    width: 50%;
+    overflow-x: auto;
+    top: 95px;   
+    background-color: var(--headerBg);
+    transition: all .3s;
+}
+
+.menuShow{
+    opacity: 1;
+    right: 0px;
+}
+
+.menuHide{
+    opacity: 0;
+    right: -500px;
+    z-index: -10;
+}
+
+.menuIcon{
+    font-size: 25px;
+}
+
+.flagImg{
+    width: 21px;
+    height: 15px;
+}
+
+.tr0{
+    transform: rotate(0);
+    transition: all .1s;
+}
+
+.tr90{
+    transform: rotate(-90deg);
+    transition: all .1s;
+}

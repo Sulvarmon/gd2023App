@@ -1,0 +1,10 @@
+.header {
+    background-color: var(--headerBg);
+    box-shadow: 0px 0px 10px 5px var(--blue);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 50;
+}
+

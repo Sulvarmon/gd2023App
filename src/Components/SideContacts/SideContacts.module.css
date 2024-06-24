@@ -1,0 +1,29 @@
+.sideContacts{
+    position: fixed;
+    top: 600px;
+    left: -200px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--blue);
+    z-index: 100;
+    box-shadow: 1px 0px 10px 1px var(--red);
+    color: #fff;
+    animation: sideContacts 3s forwards;
+}
+
+@media(min-width: 1024px) {
+
+    .sideContacts {
+        display: flex;
+    }
+}
+
+@keyframes sideContacts {
+    from {
+        left: -200px;
+    }
+
+    to {
+        left: 0px;
+    }
+}

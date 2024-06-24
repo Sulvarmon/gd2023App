@@ -1,0 +1,24 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+
+.img{
+    height: 300px;
+}
+
+.item{
+    box-shadow: 1px 1px 5px var(--blue)
+}
+
+.gridButton{
+  margin: 0 auto;
+}

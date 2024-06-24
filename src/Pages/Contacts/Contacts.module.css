@@ -1,0 +1,21 @@
+.iconHover {
+    background-color: var(--blue);
+    text-shadow: 0px 0px 2px #fff;
+    box-shadow: 0px 0px 2px 2px #fff;
+    border: 1px solid transparent;
+}
+
+textarea {
+    width: 250px;
+    padding-bottom: 20%;
+}
+
+.balckBackground{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}

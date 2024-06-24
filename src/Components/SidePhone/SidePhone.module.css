@@ -1,0 +1,29 @@
+.sidePhone {
+    position: fixed;
+    top: 600px;
+    right: -200px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--red);
+    box-shadow: -1px 0px 10px 1px var(--blue);
+    z-index: 100;
+    color: #fff;
+    animation: sidePhone 3s forwards;
+}
+
+@keyframes sidePhone {
+    from {
+        right: -200px;
+    }
+
+    to {
+        right: 0px;
+    }
+}
+
+@media(min-width: 1024px) {
+
+    .sidePhone {
+        display: flex;
+    }
+}

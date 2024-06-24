@@ -1,13 +1,794 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'text-capitalize';
+  src: url('text-capitalize.ttf') format('truetype');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'text-normal';
+  src: url('text-normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'english-russian';
+  src: url('english-russian.ttf') format('truetype');
+}
+
+:root {
+  /* რესპონსივი */
+  --width400: 388px;
+  --width500: 485px;
+  --width768: 760px;
+  --width1024: 1000px;
+  --width1250: 1200px;
+  /* ფერები */
+  --bgColor: #DCDCDC;
+  --bg1: #E5E4E2;
+  --headerBg: #D3D3D3;
+  --blue: #1E90FF;
+  --red: #DC143C;
+  --menuColor: #B69B41;
+  /* ფონტის ზომა */
+  --titleOfSectionsFontSize: 25px;
+  --titleOfSubSectionsFontSize: 20px;
+  --fontSize1: 12px;
+  --fontSize2: 14px;
+  --fontSize3: 16px;
+  --fontSize4: 18px;
+  --fontSize5: 20px;
+  /* ფონტის ოჯახი */
+  --textCapitalize: 'text-capitalize';
+  --textNormal: 'text-normal';
+  --englishRussian: 'english-russian';
+  /* პიქსელები */
+  --px5: 5px;
+  --px10: 10px;
+  --px15: 15px;
+  --px30: 30px;
+  --px50: 50px;
+  /* პროცენტები */
+  --prc25: 25%;
+  --prc50: 50%;
+  --prc75: 75%;
+  --prc90: 90%;
+  --prc100: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  word-spacing: 5px;
+}
+
+body *:focus {
+  outline: none !important;
+}
+
+body{
+  overflow-x: hidden;
+  padding-top: 95px;
+  background-color: var(--bgColor);
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+}
+
+p {
+  text-indent: 20px;
+}
+
+
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* predefined classes */
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+      width: var(--width768);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+      width: var(--width1024);
+  }
+}
+
+@media (min-width: 1250px) {
+  .container {
+      width: var(--width1250);
+  }
+}
+
+.db {
+  display: block;
+}
+
+.wfc {
+  width: fit-content;
+}
+
+.hfc {
+  height: fit-content;
+}
+
+.pa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.o0 {
+  opacity: 0;
+}
+
+.o05 {
+  opacity: 0.5;
+}
+
+.o1 {
+  opacity: 1;
+}
+
+.to1 {
+  transition: opacity 1s;
+}
+
+.ofcnt {
+  object-fit: contain;
+}
+
+.ofcvr {
+  object-fit: cover;
+}
+
+.pr {
+  position: relative;
+}
+
+.oh {
+  overflow: hidden;
+}
+
+.dn {
+  display: none;
+}
+
+.di {
+  display: inline;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.fww {
+  flex-wrap: wrap;
+}
+
+.dfjcac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dfjbac {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dfjbas{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.dfjaac {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.dfjlac {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.dfcjcac {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dfcjcas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.dfcjlas {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
+}
+
+.dfcjbas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.dfcjbac {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dfcjlastretch {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: stretch;
+}
+
+.dfcjlac {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.dfcjcae {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+.fs1 {
+  font-size: var(--fontSize1) !important;
+}
+
+.fs2 {
+  font-size: var(--fontSize2);
+}
+
+.fs3 {
+  font-size: var(--fontSize3);
+}
+
+.fs4 {
+  font-size: var(--fontSize4);
+}
+
+.fs5 {
+  font-size: var(--fontSize5);
+}
+
+
+.w1 {
+  width: var(--prc25);
+}
+
+.w2 {
+  width: var(--prc50);
+}
+
+.w3 {
+  width: var(--prc75);
+}
+
+.w4 {
+  width: var(--prc90);
+}
+
+.w5 {
+  width: var(--prc100);
+}
+
+.h1 {
+  height: var(--prc25);
+}
+
+.h2 {
+  height: var(--prc50);
+}
+
+.h3 {
+  height: var(--prc75);
+}
+
+.h4 {
+  height: var(--prc90);
+}
+
+.h5 {
+  height: var(--prc100);
+}
+
+.gap1 {
+  gap: var(--px5);
+}
+
+.gap2 {
+  gap: var(--px10);
+}
+
+
+.gap3 {
+  gap: var(--px15);
+}
+
+
+.gap4 {
+  gap: var(--px30);
+}
+
+
+.gap5 {
+  gap: var(--px50);
+}
+
+
+.pt1 {
+  padding-top: var(--px5);
+}
+
+.pt2 {
+  padding-top: var(--px10);
+}
+
+.pt3 {
+  padding-top: var(--px15);
+}
+
+.pt4 {
+  padding-top: var(--px30);
+}
+
+.pt5 {
+  padding-top: var(--px50);
+}
+
+.pr1 {
+  padding-right: var(--px5);
+}
+
+.pr2 {
+  padding-right: var(--px10);
+}
+
+.pr3 {
+  padding-right: var(--px15);
+}
+
+.pr4 {
+  padding-right: var(--px30);
+}
+
+.pr5 {
+  padding-right: var(--px50);
+}
+
+.pb1 {
+  padding-bottom: var(--px5);
+}
+
+.pb2 {
+  padding-bottom: var(--px10);
+}
+
+.pb3 {
+  padding-bottom: var(--px15);
+}
+
+.pb4 {
+  padding-bottom: var(--px30);
+}
+
+.pb5 {
+  padding-bottom: var(--px50);
+}
+
+.pb50{
+  padding-bottom: 50%;
+}
+
+.pl1 {
+  padding-left: var(--px5);
+}
+
+.pl2 {
+  padding-left: var(--px10);
+}
+
+.pl3 {
+  padding-left: var(--px15);
+}
+
+.pl4 {
+  padding-left: var(--px30);
+}
+
+.pl5 {
+  padding-left: var(--px50);
+}
+
+.p1 {
+  padding: var(--px5);
+}
+
+.p2 {
+  padding: var(--px10);
+}
+
+.p3 {
+  padding: var(--px15);
+}
+
+.p4 {
+  padding: var(--px30);
+}
+
+.p5 {
+  padding: var(--px50);
+}
+
+.ma {
+  margin: 0 auto;
+}
+
+.mr1 {
+  margin-right: var(--px5);
+}
+
+.mr2 {
+  margin-right: var(--px10);
+}
+
+.mr3 {
+  margin-right: var(--px15);
+}
+
+.mr4 {
+  margin-right: var(--px30);
+}
+
+.mr5 {
+  margin-right: var(--px50);
+}
+
+.mt1 {
+  margin-top: var(--px5);
+}
+
+.mt2 {
+  margin-top: var(--px10);
+}
+
+.mt3 {
+  margin-top: var(--px15);
+}
+
+.mt4 {
+  margin-top: var(--px30);
+}
+
+.mt5 {
+  margin-top: var(--px50);
+}
+
+.ml1 {
+  margin-left: var(--px5);
+}
+
+.ml2 {
+  margin-left: var(--px10);
+}
+
+.ml3 {
+  margin-left: var(--px15);
+}
+
+.ml4 {
+  margin-left: var(--px30);
+}
+
+.ml5 {
+  margin-left: var(--px50);
+}
+
+.mb1 {
+  margin-bottom: var(--px5);
+}
+
+.mb2 {
+  margin-bottom: var(--px10);
+}
+
+.mb3 {
+  margin-bottom: var(--px15);
+}
+
+.mb4 {
+  margin-bottom: var(--px30);
+}
+
+.mb5 {
+  margin-bottom: var(--px50);
+}
+
+.m1 {
+  margin: var(--px5);
+}
+
+.m2 {
+  margin: var(--px10);
+}
+
+.m3 {
+  margin: var(--px15);
+}
+
+.m4 {
+  margin: var(--px30);
+}
+
+.m5 {
+  margin: var(--px50);
+}
+
+.cw {
+  color: #fff !important;
+}
+
+.cb {
+  color: #000;
+}
+
+.wwn {
+  white-space: nowrap;
+}
+
+.wwnr {
+  white-space: normal;
+}
+
+.tdu {
+  text-decoration: underline;
+}
+
+.usn {
+  user-select: none;
+}
+
+.pen {
+  pointer-events: none;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.ca{
+  cursor: auto;
+}
+
+.cd {
+  cursor: default;
+}
+
+.czi{
+  cursor: zoom-in;
+}
+
+.czo{
+  cursor: zoom-out;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.wbba{
+  word-break: break-all;
+}
+
+.br1 {
+  border-radius: var(--px5);
+}
+
+.br2 {
+  border-radius: var(--px10);
+}
+
+.br3 {
+  border-radius: var(--px15);
+}
+
+.br4 {
+  border-radius: var(--px30);
+}
+
+.br5 {
+  border-radius: var(--px50);
+}
+
+.brr {
+  border-radius: 50%;
+}
+
+.ls1 {
+  letter-spacing: 2px;
+}
+
+.ls2 {
+  letter-spacing: 4px;
+}
+
+.ls3 {
+  letter-spacing: 6px;
+}
+
+.ls4 {
+  letter-spacing: 8px;
+}
+
+.ls5 {
+  letter-spacing: 10px;
+}
+
+/* წინაწარ განსაზღვრული კლასები ამ პროექტისთვის */
+
+.border {
+  border: 1px solid var(--blue);
+}
+
+.borderWhite {
+  border: 1px solid #fff;
+}
+
+.background1 {
+  background-color: var(--bg1);
+}
+
+.backgroundMain {
+  background-color: var(--bgColor);
+}
+
+.capitalizeText {
+  font-family: var(--textCapitalize);  
+}
+
+.normalText {
+  font-family: var(--textNormal);
+}
+
+.englishRussianCapitalized {
+  font-family: var(--englishRussian);
+  text-transform: uppercase;
+}
+
+.englishRussianNormal {
+  font-family: var(--englishRussian);
+}
+
+.menuHover {
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.menuHover:hover {
+  color: var(--menuColor) !important;
+}
+
+.iconHover:hover {
+  background-color: var(--blue);
+  text-shadow: 0px 0px 2px #fff;
+  box-shadow: 0px 0px 2px 2px #fff;
+  border: 1px solid transparent;
+}
+
+.mainBtn {
+  border-radius: 15px;
+  background-color: var(--blue);
+  color: #fff;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  user-select: none;
+}
+
+.mainBtn:hover {
+  background-color: var(--red);
+  box-shadow: 0px 0px 3px 3px var(--blue);
+}
+
+.iconView {
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media(min-width: 1024px) {
+  .icon-view {
+      width: 40px;
+      height: 40px;
+  }
+}
+
+.colorBlue{
+  color: var(--blue);
+}
+
+.colorRed{
+  color: var(--red);
+}
+
+.fontSizeIcon{
+  font-size: 30px;
+}
+
+.active {
+  color: var(--menuColor);
 }
