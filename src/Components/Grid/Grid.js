@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './Grid.module.css'
 import GridItem from './GridItem'
 
-export default function Grid({ fontC, fontN, images, title, date, text, btnText,link }) {
-    
+export default function Grid({ fontC, fontN, images, title, date, text, btnText, link }) {
+
     return (
         <div className={`${styles.grid}`}>
             {images.map((element, index) => (

@@ -26,8 +26,9 @@ export default function News({ languageData, changeLanguage }) {
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['news']} />
                 {images.map((element, index) => (
-                    <div onClick={a=>setImageIndex(index)} key={index}>
+                    <div key={index}>
                         <OneProject
+                            index={index}
                             font0={languageData['font-family'][0]}
                             font1={languageData['font-family'][1]}
                             img={element}
@@ -35,6 +36,7 @@ export default function News({ languageData, changeLanguage }) {
                             dottexts={languageData['news page']['dot texts']}
                             underDottexts={languageData['news page']['under dot texts'][index]}
                             maintext={languageData['news page']['main texts'][index]}
+                            setImageIndex={setImageIndex}
                         />
                         {index !== images.length - 1 && <hr className='mt5 mb5' />}
                     </div>

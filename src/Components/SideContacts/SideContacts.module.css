@@ -1,4 +1,5 @@
 .sideContacts{
+    display: none;
     position: fixed;
     top: 600px;
     left: -200px;

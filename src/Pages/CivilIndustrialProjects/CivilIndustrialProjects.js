@@ -21,6 +21,8 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage }
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['civil-industrial-projects']
     }, [languageData])
+
+    
     return (
         <>
             <ExpandMultipleImages images={imagesForExpand} imageIndex={imageIndex} setImageIndex={setImageIndex} />

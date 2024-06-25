@@ -43,6 +43,10 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
 
   useEffect(() => {
     const updateWidth = () => {
+      setTransition(false)
+      setTimeout(() => {
+        setTransition(true);
+      }, 300);
       if (elementRef.current) {
           setWidth(elementRef.current.getBoundingClientRect().width);
       }
@@ -50,10 +54,10 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
 
     updateWidth();
 
+    
     setTimeout(() => {
       setTransition(true);
     }, 300);
-
     
     window.addEventListener('resize', updateWidth);
 

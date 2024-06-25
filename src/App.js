@@ -21,14 +21,11 @@ import PayTerminal from './Pages/Project/PayTerminal/PayTerminal';
 
 function App() {
   const [languageData, setLanguageData] = useState(null);
-
   const getInitialLanguage = () => {
     // Get language from cookie if available, otherwise default to 'geo'
     return Cookies.get('languageReact') || 'geo';
   };
-
   const [language, setLanguage] = useState(getInitialLanguage);
-
   const changeLanguage = (language) => {
     setLanguage(language);
     // Update the cookie when language changes
