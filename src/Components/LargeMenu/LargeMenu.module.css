@@ -41,7 +41,7 @@
             color: var(--menuColor);
         }
     }
-    img{
+    .flagImg{
         width: 21px;
         height: 15px;
     }
@@ -69,4 +69,32 @@
 .tr90{
     transform: rotate(-90deg);
     transition: all .1s;
+}
+
+.ball1{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.ball1Eye{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.ball2{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.ball2Eye{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
 }

@@ -60,7 +60,9 @@ export default function Home({ languageData, changeLanguage, visits }) {
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
-                    <div onClick={() => { setShowDarkbg(!showDarkbg) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={about} alt='' /></div>
+                    <div onClick={() => { setShowDarkbg(!showDarkbg) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}>
+                        <img className='pa ofcvr' src={about} alt='' />                    
+                    </div>
                     <p className={`${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
                     <Link to='/About-Us' className={`mainBtn ${languageData['font-family'][0]}`}>{languageData['fully']}</Link>
                 </div>
