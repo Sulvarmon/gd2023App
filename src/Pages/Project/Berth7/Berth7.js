@@ -7,7 +7,7 @@ import proj from '../../../Images/proj1.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
 
-export default function Berth7({ languageData, changeLanguage }) {   
+export default function Berth7({ languageData, changeLanguage,visits }) {   
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['berth-7'],
@@ -16,7 +16,8 @@ export default function Berth7({ languageData, changeLanguage }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-    }, [languageData])
+        visits('berth-7')
+    }, [languageData,visits])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />
@@ -29,7 +30,7 @@ export default function Berth7({ languageData, changeLanguage }) {
                     font0={languageData['font-family'][0]}
                     font1={languageData['font-family'][1]}
                     img={proj}
-                    title={languageData['project page']['titles'][5]}
+                    title={languageData['project page']['titles'][0]}
                     dottexts={languageData['project page']['dot texts']}
                     underDottexts={languageData['project page']['under dot texts'][5]}
                     maintext={languageData['project page']['main texts'][5]}

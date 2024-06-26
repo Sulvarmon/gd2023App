@@ -10,11 +10,12 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import styles from './Contacts.module.css'
 
 
-export default function Contacts({ languageData, changeLanguage }) {
+export default function Contacts({ languageData, changeLanguage,visits }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['contact'];
-    }, [languageData]);
+        visits('contact')
+    }, [languageData,visits]);
 
     const pages = [languageData['page titles']['home'], languageData['page titles']['contact']]
     const links = ['/', '/Contacts'];

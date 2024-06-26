@@ -18,12 +18,12 @@ import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 
-
-export default function Home({ languageData, changeLanguage }) {
+export default function Home({ languageData, changeLanguage, visits }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['home']
-    }, [languageData]);
+        visits('home');
+    }, [languageData, visits]);
     const images = [grdiImage1, grdiImage2, grdiImage3]
     const projImages = [projImages1, projImages2, projImages3, projImages4, projImages5]
     const [showDarkbg, setShowDarkbg] = useState(false)
@@ -48,7 +48,7 @@ export default function Home({ languageData, changeLanguage }) {
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['important projects']} />
                 <CarouselThumbnail
-                    type = {'with texts'}
+                    type={'with texts'}
                     images={projImages}
                     titles={languageData['carousel']['home page titles']}
                     texts={languageData['carousel']['home page texts']}

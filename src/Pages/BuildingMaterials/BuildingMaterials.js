@@ -6,14 +6,15 @@ import wm0 from '../../Images/wm0.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 
-export default function BuildingMaterials({ languageData, changeLanguage }) {
+export default function BuildingMaterials({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['building-materials']]
     const links = ['/', '/Building-Materials'];
     const [showDarkbg, setShowDarkbg] = useState(false)
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['building-materials']
-    }, [languageData])
+        visits('building-materials')
+    }, [languageData,visits])
     return (
         <>
             <ExpandSingleImage image={wm0} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />

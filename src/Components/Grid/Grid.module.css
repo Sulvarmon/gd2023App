@@ -18,7 +18,15 @@
 }
 
 .item {
-  box-shadow: 1px 1px 5px var(--blue)
+  box-shadow: 1px 1px 5px var(--blue);
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s;
+}
+
+.animate{
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .gridButton {

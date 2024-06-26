@@ -7,7 +7,7 @@ import proj from '../../../Images/proj0.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
 
-export default function Apartment({ languageData, changeLanguage }) {
+export default function Apartment({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['poti-apartment'],
@@ -16,7 +16,8 @@ export default function Apartment({ languageData, changeLanguage }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-    }, [languageData])
+        visits('poti-apartment')
+    }, [languageData,visits])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

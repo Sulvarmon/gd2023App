@@ -7,7 +7,12 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 import { useInView } from 'react-intersection-observer';
 
-export default function AboutUs({ languageData, changeLanguage }) {
+export default function AboutUs({ languageData, changeLanguage, visits }) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        document.title = languageData['page titles']['about']
+        visits('about');
+    }, [languageData, visits]);
     const pages = [languageData['page titles']['home'], languageData['page titles']['about']];
     const links = ['/', '/About-Us'];
     const [showDarkbg, setShowDarkbg] = useState(false);

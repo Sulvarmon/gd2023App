@@ -11,14 +11,15 @@ import Title from '../../Components/Title/Title';
 import Grid from '../../Components/Grid/Grid';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 
-export default function Projects({ languageData, changeLanguage }) {
+export default function Projects({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'],languageData['page titles']['projects']]
     const links = ['/','/Projects'];
     const images = [projImages1, projImages2, projImages3, projImages4, projImages5, projImages6]
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['projects']
-    }, [languageData])
+        visits('projectsPg')
+    }, [languageData,visits])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

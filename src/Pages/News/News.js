@@ -9,7 +9,7 @@ import news2 from '../../Images/news2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
 
-export default function News({ languageData, changeLanguage }) {
+export default function News({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['news']]
     const links = ['/', '/News'];
     const images = [news0, news1, news2]
@@ -17,7 +17,8 @@ export default function News({ languageData, changeLanguage }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['news']
-    }, [languageData])
+        visits('news')
+    }, [languageData,visits])
     return (
         <>
             <ExpandMultipleImages images={images} imageIndex={imageIndex} setImageIndex={setImageIndex} />

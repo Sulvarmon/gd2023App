@@ -9,18 +9,33 @@ import cipXobi1 from '../../Images/cip_xobi1.png'
 import { TfiLocationPin } from "react-icons/tfi";
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
+import { useInView } from 'react-intersection-observer';
 
 
-export default function CivilIndustrialProjects({ languageData, changeLanguage }) {
+export default function CivilIndustrialProjects({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['civil-industrial-projects']]
     const links = ['/', '/Civil-Industrial-Projects']
     const imagesForExpand = [cipXobi2,cipTbilisi0, cipXobi0, cipXobi1]
     const images = [cipTbilisi0, cipXobi0, cipXobi1]
     const [imageIndex, setImageIndex] = useState(-1)
+    const { ref: ref1, inView: inView1 } = useInView({
+        threshold: 0.5,
+    });
+    const [visibleItems1, setVisibleItems1] = useState([]);
+    useEffect(() => {
+        if (inView1) {
+            languageData['sectors']['marine work texts'][1].forEach((_, index) => {
+                setTimeout(() => {
+                    setVisibleItems1((prev) => [...prev, index]);
+                }, index * 400);
+            });
+        }
+    }, [inView1, languageData]);
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['civil-industrial-projects']
-    }, [languageData])
+        visits('civil-industrial-projects')
+    }, [languageData,visits])
 
     
     return (
@@ -38,9 +53,9 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage }
                     </div>
                     <div className='dfcjcas gap2'>
                         <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][2]}</div>
-                        <ul className='pl3 dfcjcas gap1'>
+                        <ul ref={ref1} className='pl3 dfcjcas gap1'>
                             {languageData['sectors']['civil and industrial project texts'][3].map((element, index) => (
-                                <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu`}>{element}</li>
+                                <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu o0 to1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{element}</li>
                             ))}
                         </ul>
                     </div>

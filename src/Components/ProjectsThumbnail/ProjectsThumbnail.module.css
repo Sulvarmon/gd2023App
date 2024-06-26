@@ -1,0 +1,10 @@
+.thumbnail{   
+    background-color: #fff;    
+}
+
+@media(min-width: 1024px){
+    .thumbnail{   
+        width: 100px;
+        height: 100px;    
+    } 
+}

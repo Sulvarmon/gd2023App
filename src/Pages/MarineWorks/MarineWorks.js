@@ -7,16 +7,31 @@ import mr1 from '../../Images/mr1.jpg'
 import mr2 from '../../Images/mr2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
+import { useInView } from 'react-intersection-observer';
 
-export default function MarineWorks({ languageData, changeLanguage }) {
+export default function MarineWorks({ languageData, changeLanguage,visits }) {
     const images = [mr0,mr1,mr2]
     const pages = [languageData['page titles']['home'],languageData['page titles']['marine-works']]
     const links = ['/','/Marine-Works'];
     const [imageIndex, setImageIndex] = useState(-1)
+    const { ref: ref1, inView: inView1 } = useInView({
+        threshold: 0.5,
+    });
+    const [visibleItems1, setVisibleItems1] = useState([]);
+    useEffect(() => {
+        if (inView1) {
+            languageData['sectors']['marine work texts'][1].forEach((_, index) => {
+                setTimeout(() => {
+                    setVisibleItems1((prev) => [...prev, index]);
+                }, index * 400);
+            });
+        }
+    }, [inView1, languageData]);
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['marine-works']
-    }, [languageData])
+        visits('marine-works')
+    }, [languageData,visits])
     return (
         <>
         <ExpandMultipleImages images={images} imageIndex={imageIndex} setImageIndex={setImageIndex} />
@@ -33,9 +48,9 @@ export default function MarineWorks({ languageData, changeLanguage }) {
                 </div>
                 <hr className='mt5 mb5'/>
                 <p className={languageData['font-family'][1]}>{languageData['sectors']['marine work texts'][0]}</p>
-                <ul className='pl3 mt3 mb3'>
+                <ul ref={ref1} className='pl3 mt3 mb3'>
                     {languageData['sectors']['marine work texts'][1].map((element,index)=>(
-                        <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu`}>{element}</li>
+                        <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu o0 to1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{element}</li>
                     ))}                    
                 </ul>
                 <p className={languageData['font-family'][1]}>{languageData['sectors']['marine work texts'][2]}</p>

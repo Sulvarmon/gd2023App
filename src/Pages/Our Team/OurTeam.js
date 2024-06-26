@@ -12,7 +12,7 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation'
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages'
 
 
-export default function OurTeam({ languageData, changeLanguage }) {
+export default function OurTeam({ languageData, changeLanguage,visits }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['team']]
     const links = ['/', '/Our-Team'];
     const images = [deputy, partner, independent]
@@ -23,7 +23,8 @@ export default function OurTeam({ languageData, changeLanguage }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['team']
-    }, [languageData])
+        visits('team')
+    }, [languageData,visits])
     return (
         <>
             <ExpandMultipleImages images={imagesForExpand} imageIndex={imageIndex} setImageIndex={setImageIndex} />

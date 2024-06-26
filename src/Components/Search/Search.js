@@ -9,7 +9,7 @@ export default function Search({ showSearch, setShowSearch, languageData }) {
     const [searchIsEmpty, setSearchIsEmpty] = useState(true)
 
     const handleInputChange = (e) => {
-        const value = e.target.value.toLowerCase().replace(/[-,.!:'"/\d\s]/g, "");
+        const value = e.target.value.toLowerCase().replace(/[-,.!:'"/\s]/g, "");
         const newFoundArr = [];
         const newFoundHrefs = [];
 
@@ -31,17 +31,19 @@ export default function Search({ showSearch, setShowSearch, languageData }) {
         <div>
             <div className={`${!showSearch ? 'dn' : styles.darkBg}`}>
                 <div onClick={() => { setShowSearch(false) }} className={`${styles.close} cw cp iconView iconHover}`}><IoCloseSharp /></div>
-                <div className='container dfcjcac gap5'>
-                    <div className={`dfcjcac gap2 ${styles.search}`}>
-                        <div className={`cw ${languageData['font-family'][0]}`}>{languageData['search']['title']}</div>
+                <div className={`container dfcjcac gap5 ${styles.search}`}>
+                    <b className={`colorBlue ${languageData['font-family'][0]} ${styles.title}`}>{languageData['search']['title']}</b>
+                    <div className={`dfcjcac gap4`}>
+                        <b className={`fs2 colorRed ${languageData['font-family'][1]}`}>{languageData['search']['worning']}</b>
                         <input
                             className={`${languageData['font-family'][0]} p2 border br4`}
                             type="text"
                             name="name"
+                            placeholder={languageData['search']['placeholder']}
                             onChange={handleInputChange}
                         />
                     </div>
-                    
+
                     {foundArr.length > 0 && !searchIsEmpty && (
                         <ul className='pl3 dfcjcas gap2'>
                             {foundArr.map((element, index) => (
