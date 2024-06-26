@@ -5,9 +5,9 @@ import CarouselThumbnail from '../CarouselThumbnail/CarouselThumbnail';
 
 export default function ExpandMultipleImages({ images, imageIndex, setImageIndex }) {
     return (
-        <div className={`${imageIndex === -1 ? styles.hide : styles.darkBg}`}>
+        <div onClick={() => { setImageIndex(-1) }} className={`czo ${imageIndex === -1 ? styles.hide : styles.darkBg}`}>
             <div onClick={() => { setImageIndex(-1) }} className={`${styles.close} cw cp iconView iconHover`}><IoCloseSharp /></div>
-            <div className='h5 container dfjcac'>
+            <div onClick={(e) => { e.stopPropagation() }} className='cd h5 container dfjcac'>
                 <CarouselThumbnail
                     type={'without texts'}
                     images={images}
