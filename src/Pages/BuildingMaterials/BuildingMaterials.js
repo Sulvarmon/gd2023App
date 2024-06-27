@@ -25,7 +25,7 @@ export default function BuildingMaterials({ languageData, changeLanguage,visits 
                 <div className='dfcjcac gap4'>
                     <div onClick={() => { setShowDarkbg(!showDarkbg) }} className='pr w5 pb50 czi'><img className='pa ofcnt' src={wm0} alt='' /></div>
                     {languageData['sectors']['building material texts'].map((element, index) => (
-                        <p key={index} className={languageData['font-family'][1]}>{element}</p>
+                        <p key={index} className={`theme ${languageData['font-family'][1]}`}>{element}</p>
                     ))}
 
                 </div>

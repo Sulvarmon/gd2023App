@@ -33,18 +33,18 @@
   margin: 0 auto;
 }
 
-/* .dark {
+.dark {
   background-color: #000;
   opacity: 0;
   transition: opacity .3s;
   z-index: 1;
-} */
+}
 
 .image {
   transition: transform .3s;
 }
 
-/* @media (min-width: 1024px) {
+@media (min-width: 1024px) {
   .dark {
     opacity: 0.3;
 
@@ -56,4 +56,4 @@
       transform: scale(1.1);
     }
   }
-} */
+}

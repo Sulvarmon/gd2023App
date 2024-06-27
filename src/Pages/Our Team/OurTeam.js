@@ -34,7 +34,7 @@ export default function OurTeam({ languageData, changeLanguage,visits }) {
                 <Title font={languageData['font-family'][0]} text={languageData['our team']} />
                 <div onClick={a=>setImageIndex(0)} className='pr w3 ma czi' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={team} alt='' /></div>
                 {languageData['team texts'].map((element, index) => (
-                    <p key={index} className={`${languageData['font-family'][1]}`}>{languageData['team texts'][index]}</p>
+                    <p key={index} className={`theme ${languageData['font-family'][1]}`}>{languageData['team texts'][index]}</p>
                 ))}
                 <hr className='w5' />
                 <Title font={languageData['font-family'][0]} text={languageData['team titles'][0]} />

@@ -30,11 +30,24 @@ function App() {
     Cookies.set('languageReact', language, { expires: 3650, path: '/' });
   };
 
+  if (sessionStorage.getItem('pageVisits') === null) {
+    sessionStorage.setItem('pageVisits', JSON.stringify([]));
+  }
+
   const visits = async (title) => {
+    let pageVisits = JSON.parse(sessionStorage.getItem('pageVisits'));
+
+    if (pageVisits !== null && pageVisits.includes(title)) {
+      return 0;
+    }
+
+    pageVisits.push(title);
+    sessionStorage.setItem('pageVisits', JSON.stringify(pageVisits));
+
     try {
       await axios({
         method: 'post',
-        url: 'http://localhost/gd2023-react-backend/visits.php',
+        url: 'http://localhost/gd2023-react-backend/pageVisits.php',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -47,6 +60,34 @@ function App() {
       console.log(error.response ? error.response.data : error.message);
     }
   };
+
+
+  if (sessionStorage.getItem('ipVisits') === null) {
+    sessionStorage.setItem('ipVisits', 'true');
+  }
+
+  const ipVisits = async () => {
+    if (sessionStorage.getItem('ipVisits') === 'true') {
+      try {
+        await axios({
+          method: 'post',
+          url: 'http://localhost/gd2023-react-backend/ipVisits.php',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          data: new URLSearchParams({
+            ipVisits: 'ipVisits',
+          }),
+        });
+      } catch (error) {
+        console.error('Error:', error);
+        console.log(error.response ? error.response.data : error.message);
+      }
+      sessionStorage.setItem('ipVisits', 'false');
+    }
+  };
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +116,7 @@ function App() {
       {languageData ? (
         <Router>
           <Routes>
-            <Route exact={true} path="/" element={<Home languageData={languageData} changeLanguage={changeLanguage} visits={visits}  />} />
+            <Route exact={true} path="/" element={<Home languageData={languageData} changeLanguage={changeLanguage} visits={visits} ipVisits={ipVisits}/>} />
             <Route exact={true} path="/Projects" element={<Projects languageData={languageData} changeLanguage={changeLanguage} visits={visits} />} />
             <Route exact={true} path="/News" element={<News languageData={languageData} changeLanguage={changeLanguage} visits={visits} />} />
             <Route exact={true} path="/Contacts" element={<Contacts languageData={languageData} changeLanguage={changeLanguage} visits={visits} />} />

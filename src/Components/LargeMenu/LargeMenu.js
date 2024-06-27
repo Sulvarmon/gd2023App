@@ -27,7 +27,7 @@ export default function LargeMenu({ languageData, changeLanguage, showSearch,set
       <div className={`container dfjbac`}>
         <NavLink to={'/'} className={`usn ${styles.logo}`}></NavLink>
         <div className={`dfjcac gap4`}>
-          <div onClick={(e) => { e.stopPropagation(); setShowCompany(!showCompany) }} className={`usn ${languageData['font-family'][0]} ${styles.company} dfjcac gap1 cp pr`}>{languageData['company']}<SlArrowDown className={`${showCompany? styles.tr0 : styles.tr90}`} />
+          <div onClick={(e) => { e.stopPropagation(); setShowCompany(!showCompany) }} className={`usn theme ${languageData['font-family'][0]} ${styles.company} dfjcac gap1 cp pr`}>{languageData['company']}<SlArrowDown className={`theme ${showCompany? styles.tr0 : styles.tr90}`} />
             <Dropdown
               font={languageData['font-family'][0]}
               props={[
@@ -39,9 +39,9 @@ export default function LargeMenu({ languageData, changeLanguage, showSearch,set
             />
           </div>
 
-          <NavLink to={'/Projects'} className={`usn ${languageData['font-family'][0]}`}>{languageData['projects']}</NavLink>
-          <NavLink to={'/News'} className={`usn ${languageData['font-family'][0]}`}>{languageData['news']}</NavLink>
-          <div onClick={(e) => { e.stopPropagation(); setShowSectors(!showSectors) }} className={`usn ${languageData['font-family'][0]} ${styles.sectors} dfjcac gap1 cp pr`}>{languageData['sectors title']}<SlArrowDown className={`${showSectors? styles.tr0 : styles.tr90}`} />
+          <NavLink to={'/Projects'} className={`usn theme ${languageData['font-family'][0]}`}>{languageData['projects']}</NavLink>
+          <NavLink to={'/News'} className={`usn theme ${languageData['font-family'][0]}`}>{languageData['news']}</NavLink>
+          <div onClick={(e) => { e.stopPropagation(); setShowSectors(!showSectors) }} className={`usn theme ${languageData['font-family'][0]} ${styles.sectors} dfjcac gap1 cp pr`}>{languageData['sectors title']}<SlArrowDown className={`theme ${showSectors? styles.tr0 : styles.tr90}`} />
             <div onClick={(e) => { e.stopPropagation() }} className={`${styles.dropDown} wwn wfc hfc ${showSectors ? styles.dropDownShow : styles.dropDownHide}`}>
               <Dropdown
                 font={languageData['font-family'][0]}
@@ -55,12 +55,12 @@ export default function LargeMenu({ languageData, changeLanguage, showSearch,set
               />
             </div>
           </div>
-          <NavLink to={'/Contacts'} className={`usn ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
+          <NavLink to={'/Contacts'} className={`usn theme ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
         </div>
         <div className={`dfjcac gap4`}>
-          <div onClick={()=>{setShowSearch(!showSearch)}} ><CiSearch className="fontSizeIcon cp" /></div>
-          <div onClick={(e) => { e.stopPropagation(); setShowMenu(!showMenu) }} className={`usn pr`}><GoGear className={`${showMenu? styles.tr0 : styles.tr90} fontSizeIcon cp`} />
-            <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
+          <div onClick={()=>{setShowSearch(!showSearch)}} ><CiSearch className="theme fontSizeIcon cp" /></div>
+          <div onClick={(e) => { e.stopPropagation(); setShowMenu(!showMenu) }} className={`usn pr`}><GoGear className={`theme ${showMenu? styles.tr0 : styles.tr90} fontSizeIcon cp`} />
+            <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
               <Language changeLanguage={changeLanguage} languageData={languageData} />
               <Theme languageData={languageData} />
             </div>

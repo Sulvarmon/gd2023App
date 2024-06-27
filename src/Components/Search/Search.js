@@ -30,7 +30,7 @@ export default function Search({ showSearch, setShowSearch, languageData }) {
     return (
         <div>
             <div className={`${!showSearch ? 'dn' : styles.darkBg}`}>
-                <div onClick={() => { setShowSearch(false) }} className={`${styles.close} cw cp iconView iconHover}`}><IoCloseSharp /></div>
+                <div onClick={() => { setShowSearch(false) }} className={`${styles.close} cw cp iconView iconHover`}><IoCloseSharp /></div>
                 <div className={`container dfcjcac gap5 ${styles.search}`}>
                     <b className={`colorBlue ${languageData['font-family'][0]} ${styles.title}`}>{languageData['search']['title']}</b>
                     <div className={`dfcjcac gap4`}>                        

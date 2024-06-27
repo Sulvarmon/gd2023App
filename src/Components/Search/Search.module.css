@@ -4,7 +4,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 100;
 }
 
@@ -12,8 +14,6 @@
     position: absolute;
     top: 10%;
     right: 5%;
-    width: fit-content;
-    height: fit-content;
 }
 
 .search{

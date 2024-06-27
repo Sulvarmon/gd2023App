@@ -70,13 +70,13 @@ export default function Language({languageData, changeLanguage}) {
         }
       }
     return (
-        <div className={`dfcjcac gap1 w5 `}>
-            <div onClick={() => { setShowLanguage(!showLanguage) }} className={`${styles.lang} usn dfjcac gap1 cp p2`}><span className={`${languageData['font-family'][0]}`}>{languageData['language']}</span><SlArrowDown className={`${showLanguage ? styles.tr0 : styles.tr90}`} /></div>
+        <div className={`dfcjcas gap1 w5 `}>
+            <div onClick={() => { setShowLanguage(!showLanguage) }} className={`${styles.lang} usn dfjcac gap1 cp`}><span className={`theme ${languageData['font-family'][0]}`}>{languageData['language']}</span><SlArrowDown className={`theme ${showLanguage ? styles.tr0 : styles.tr90}`} /></div>
             <div className={`${showLanguage ? '' : 'dn'} w5`}>
                 <hr className='w5' />
-                <div className={`dfjcac gap2 mt2 mb2`}>
-                    <div onClick={changeLanguage1} className={`${styles.item} cp p2 wfc dfjcac gap1`}><span className={`${languageData['font-family'][0]}`}>{languageData['language1']}</span><img className={`${styles.flagImg}`} src={langFlag('language1 flag')} alt='' /></div>
-                    <div onClick={changeLanguage2} className={`${styles.item} cp p2 wfc dfjcac gap1`}><span className={`${languageData['font-family'][0]}`}>{languageData['language2']}</span><img className={`${styles.flagImg}`} src={langFlag('language2 flag')} alt='' /></div>
+                <div className={`dfcjcas gap2 mt2 mb2`}>
+                    <div onClick={changeLanguage1} className={`${styles.item} cp p2 wfc dfjcac gap1`}><span className={`theme ${languageData['font-family'][0]}`}>{languageData['language1']}</span><img width={'21px'} height={'15px'} src={langFlag('language1 flag')} alt='' /></div>
+                    <div onClick={changeLanguage2} className={`${styles.item} cp p2 wfc dfjcac gap1`}><span className={`theme ${languageData['font-family'][0]}`}>{languageData['language2']}</span><img width={'21px'} height={'15px'} src={langFlag('language2 flag')} alt='' /></div>
                 </div>
                 <hr className='w5' />
             </div>

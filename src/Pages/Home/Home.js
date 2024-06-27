@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 
-export default function Home({ languageData, changeLanguage, visits }) {
+export default function Home({ languageData, changeLanguage, visits, ipVisits }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['home']
@@ -31,7 +31,7 @@ export default function Home({ languageData, changeLanguage, visits }) {
     return (
         <>
             <ExpandSingleImage image={about} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header languageData={languageData} changeLanguage={changeLanguage} ipVisits={ipVisits} />
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['news']} />
@@ -61,9 +61,9 @@ export default function Home({ languageData, changeLanguage, visits }) {
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
                     <div onClick={() => { setShowDarkbg(!showDarkbg) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}>
-                        <img className='pa ofcvr' src={about} alt='' />                    
+                        <img className='pa ofcvr' src={about} alt='' />
                     </div>
-                    <p className={`${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
+                    <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
                     <Link to='/About-Us' className={`mainBtn ${languageData['font-family'][0]}`}>{languageData['fully']}</Link>
                 </div>
             </div>

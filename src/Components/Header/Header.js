@@ -1,4 +1,4 @@
-import { React, useState, } from 'react'
+import { React, useState, useEffect } from 'react'
 import styles from './Header.module.css'
 import LargeMenu from '../LargeMenu/LargeMenu';
 import SmallMenu from '../SmallMenu/SmallMenu';
@@ -8,11 +8,16 @@ import SidePhone from '../SidePhone/SidePhone';
 
 
 
-export default function Header({ languageData, changeLanguage }) {
+export default function Header({ languageData, changeLanguage, ipVisits }) {
   const [showSearch, setShowSearch] = useState(false);
+  useEffect(() => {
+    if (typeof ipVisits === 'function') {
+      ipVisits();
+    }
+  }, [ipVisits]);
   return (
     <>
-      
+
       <div className={`${styles.header} p2`}>
         <SideContacts languageData={languageData} />
         <SidePhone font={languageData['font-family'][0]} />

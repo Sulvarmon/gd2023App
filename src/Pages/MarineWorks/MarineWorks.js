@@ -47,13 +47,13 @@ export default function MarineWorks({ languageData, changeLanguage,visits }) {
                     </div>
                 </div>
                 <hr className='mt5 mb5'/>
-                <p className={languageData['font-family'][1]}>{languageData['sectors']['marine work texts'][0]}</p>
+                <p className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['marine work texts'][0]}</p>
                 <ul ref={ref1} className='pl3 mt3 mb3'>
                     {languageData['sectors']['marine work texts'][1].map((element,index)=>(
                         <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu o0 to1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{element}</li>
                     ))}                    
                 </ul>
-                <p className={languageData['font-family'][1]}>{languageData['sectors']['marine work texts'][2]}</p>
+                <p className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['marine work texts'][2]}</p>
             </div>
 
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />

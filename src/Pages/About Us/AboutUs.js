@@ -56,19 +56,19 @@ export default function AboutUs({ languageData, changeLanguage, visits }) {
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['about us']} />
                 <div onClick={() => setShowDarkbg(!showDarkbg)} className='pr czi w3 ma' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={about} alt='' /></div>
-                <p className={`${languageData['font-family'][1]}`}>{languageData['about us texts'][0]}</p>
+                <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][0]}</p>
                 <ul ref={ref1} className='pl3 dfcjcas gap1'>
                     {languageData['about us texts'][1].map((element, index) => (
                         <li key={index} className={`${languageData['font-family'][1]} tdu colorBlue o0 to1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{element}</li>
                     ))}
                 </ul>
-                <p className={`${languageData['font-family'][1]}`}>{languageData['about us texts'][2]}</p>
+                <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][2]}</p>
                 <ul ref={ref2} className='pl3 dfcjcas gap1'>
                     {languageData['about us texts'][3].map((element, index) => (
                         <li key={index} className={`${languageData['font-family'][1]} tdu colorBlue o0 to1 ${visibleItems2.includes(index) ? 'o1' : ''}`}>{element}</li>
                     ))}
                 </ul>
-                <p className={`${languageData['font-family'][1]}`}>{languageData['about us texts'][4]}</p>
+                <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][4]}</p>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
         </>

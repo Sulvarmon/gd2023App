@@ -48,11 +48,11 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage,v
                 <div className='dfcjcac gap5'>
                     <div className='w5'>
                         <div onClick={a=>setImageIndex(0)} className='pr w5 czi' style={{ height: '220px' }}><img className='pa ofcvr br2' src={cipXobi2} alt='' /></div>
-                        <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][0]}</div>
-                        <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][1]}</div>
+                        <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][0]}</div>
+                        <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][1]}</div>
                     </div>
                     <div className='dfcjcas gap2'>
-                        <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][2]}</div>
+                        <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][2]}</div>
                         <ul ref={ref1} className='pl3 dfcjcas gap1'>
                             {languageData['sectors']['civil and industrial project texts'][3].map((element, index) => (
                                 <li key={index} className={`${languageData['font-family'][1]} colorBlue tdu o0 to1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{element}</li>
@@ -64,11 +64,11 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage,v
                         {images.map((element, index) => (
                             <div key={index} className='dfcjlas gap2' style={{ width: '300px' }}>
                                 <div onClick={a=>setImageIndex(index+1)} className='pr w5 czi' style={{ height: '200px' }}><img className='pa ofcvr' src={element} alt='' /></div>
-                                <div className='dfjcac gap1'>
+                                <div className='theme dfjcac gap1'>
                                     <TfiLocationPin />
-                                    <div className={languageData['font-family'][1]}>{languageData['sectors']['civil and industrial project texts'][4][index]}</div>
+                                    <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][4][index]}</div>
                                 </div>
-                                <div className={languageData['font-family'][1]}>{languageData['sectors']['civil and industrial project texts'][5][index]}</div>
+                                <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][5][index]}</div>
                             </div>
                         ))}
 

@@ -21,7 +21,7 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
     return (
         <div className='dfcjcac gap3'>
             <ExpandSingleImage image={img} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />
-            <div className={`${font0}`}>{title}</div>
+            <div className={`theme ${font0}`}>{title}</div>
             <div className={`${styles.grid} gap4`}>
             {page === 'project' ? (
                 <div onClick={() => setShowDarkbg(!showDarkbg)} className='pr czi' style={{ height: '300px' }}>
@@ -36,7 +36,7 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
                     {dottexts.map((element, index) => (
                         <div key={index} className='dfcjcas gap1'>
                             <li className={`${font1} colorBlue`}>{element}</li>
-                            <div  className={`${font1} o0 tr1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{underDottexts[index]}</div>
+                            <div  className={`theme ${font1} o0 tr1 ${visibleItems1.includes(index) ? 'o1' : ''}`}>{underDottexts[index]}</div>
                             <hr className='w5' />
                         </div>
                     ))}
@@ -45,7 +45,7 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
             </div>
             <div className='dfcjcas gap2'>
                 {maintext.map((element, index) => (
-                    <p key={index} className={`${font1}`}>{element}</p>
+                    <p key={index} className={`theme ${font1}`}>{element}</p>
                 ))}
             </div>
         </div>

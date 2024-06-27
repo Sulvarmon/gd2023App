@@ -8,7 +8,7 @@ export default function SmallNavigation({ pages, font, links }) {
         <div>
             <div className='dfjlac gap1 container mt3'>
                 {pages.map((element, index) => (
-                    <NavLink key={index} to={links[index]} className={`${font} fs2 dfjcac gap1 menuHover`}>{element}{index !== (pages.length - 1) && <MdKeyboardDoubleArrowRight />} </NavLink>
+                    <NavLink key={index} to={links[index]} className={`theme ${font} fs2 dfjcac gap1 menuHover`}>{element}{index !== (pages.length - 1) && <MdKeyboardDoubleArrowRight />} </NavLink>
                 ))}
             </div>
         </div>

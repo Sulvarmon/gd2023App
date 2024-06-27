@@ -106,7 +106,7 @@ export default function Contacts({ languageData, changeLanguage,visits }) {
     return (
         <>
             <div className={`${!displayBlack && 'dn'}`}>
-                <div className={`${styles.balckBackground} dfjcac cw`}>Wait For Responce</div>
+                <div className={`${styles.balckBackground} ${languageData['font-family'][0]} dfjcac cw`}>{languageData['contacts page'][10]}</div>
             </div>
             <Header languageData={languageData} changeLanguage={changeLanguage} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
@@ -119,9 +119,9 @@ export default function Contacts({ languageData, changeLanguage,visits }) {
                         <form className='dfjlac fww gap3 ' onSubmit={handleSubmit}>
                             <div className='dfcjcac gap3'>
                                 <div className='dfcjcac gap3'>
-                                    <div className={`${font1}`}>{languageData['contacts page'][4]}</div>
+                                    <div className={`theme ${font1}`}>{languageData['contacts page'][4]}</div>
                                     <input
-                                        className='p2 border br4'
+                                        className={`${font1} p2 border br4`}
                                         type="text"
                                         name="name"
                                         value={formData.name}
@@ -129,9 +129,9 @@ export default function Contacts({ languageData, changeLanguage,visits }) {
                                     />
                                 </div>
                                 <div className='dfcjcac gap3'>
-                                    <div className={`${font1}`}>{languageData['contacts page'][5]}</div>
+                                    <div className={`theme ${font1}`}>{languageData['contacts page'][5]}</div>
                                     <input
-                                        className='p2 border br4'
+                                        className={`${font1} p2 border br4`}
                                         type="email"
                                         name="email"
                                         value={formData.email}

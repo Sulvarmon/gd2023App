@@ -27,6 +27,7 @@
   --blue: #1E90FF;
   --red: #DC143C;
   --menuColor: #B69B41;
+  --textTheme: #000;
   /* ფონტის ზომა */
   --titleOfSectionsFontSize: 25px;
   --titleOfSubSectionsFontSize: 20px;
@@ -585,7 +586,7 @@ button {
 }
 
 .cw {
-  color: #fff !important;
+  color: #fff;
 }
 
 .cb {
@@ -790,5 +791,9 @@ button {
 }
 
 .active {
-  color: var(--menuColor);
+  color: var(--menuColor)!important;
+}
+
+.theme{
+  color: var(--textTheme);
 }

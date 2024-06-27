@@ -20,7 +20,7 @@ const CarouselOpacity = ({text,font}) => {
 
   return (
     <div className={`${styles.carousel} pr`}>
-      <div className='container'><div className={`${styles.text} ${font} `}>{text}</div></div>
+      <div className={`container `}><div className={`${styles.text} ${font}`}>{text}</div></div>
       {carouselImages.map((element, index) => (
         <CarouselItem key={index} src={element} opacity={index === currentItem ? 'o1' : 'o0'} />
       ))}
