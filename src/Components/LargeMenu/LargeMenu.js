@@ -7,6 +7,7 @@ import { GoGear } from "react-icons/go";
 import { SlArrowDown } from "react-icons/sl";
 import Language from './Language'
 import Theme from './Theme';
+import SetCookies from './SetCookies';
 
 export default function LargeMenu({ languageData, changeLanguage, showSearch,setShowSearch }) {  
   const [showCompany, setShowCompany] = useState(false);
@@ -63,6 +64,7 @@ export default function LargeMenu({ languageData, changeLanguage, showSearch,set
             <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
               <Language changeLanguage={changeLanguage} languageData={languageData} />
               <Theme languageData={languageData} />
+              <SetCookies languageData={languageData}/>
             </div>
           </div>
 

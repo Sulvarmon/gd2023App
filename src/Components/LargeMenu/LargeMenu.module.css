@@ -27,7 +27,7 @@
     position: absolute;
     right: 0;
     top: 20px;
-    width: 200px;
+    width: 400px;
     background-color: var(--headerBg);
     transition: all .3s;
     .item {

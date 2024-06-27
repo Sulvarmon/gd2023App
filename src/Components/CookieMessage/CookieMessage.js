@@ -14,14 +14,17 @@ export default function CookieMessage({ font0, font1, cookies }) {
                 aboutCookies={aboutCookies}
                 setAboutCookies={setAboutCookies}
             />
-            <div className={`${styles.cookiesContainer} dfcjcac gap2 wfc p3 br2`}>
-                <div className={`${font1} cw`}>{cookies[0]} <FaCookieBite /> {cookies[1]}</div>
-                <div className={`dfjcac gap2 fww`}>
-                    <div className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[2]}</div>
-                    <div className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[3]}</div>
-                    <div onClick={a => setAboutCookies(!aboutCookies)} className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[4]}</div>
+            <div>
+                <div className={`${styles.cookiesContainer} dfcjcac gap2 wfc p3 br2`}>
+                    <div className={`${font1} cw`}>{cookies[0]} <FaCookieBite /> {cookies[1]}</div>
+                    <div className={`dfjcac gap2 fww`}>
+                        <div className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[2]}</div>
+                        <div className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[3]}</div>
+                        <div onClick={a => setAboutCookies(!aboutCookies)} className={`${font1} menuHover cp wfc p2 cw border br2`}>{cookies[4]}</div>
+                    </div>
                 </div>
             </div>
+
         </>
 
     )
