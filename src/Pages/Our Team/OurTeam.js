@@ -10,12 +10,13 @@ import StaffMember from './StaffMember'
 import Footer from '../../Components/Footer/Footer'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation'
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setTo } from '../../Slices/ExpandMultipleImage'
 import { pageVisit } from '../../Slices/Visits'
 
 
-export default function OurTeam({ languageData, changeLanguage }) {
+export default function OurTeam() {
+    const languageData = useSelector(state => state.languageData.value)
     const pages = [languageData['page titles']['home'], languageData['page titles']['team']]
     const links = ['/', '/Our-Team'];
     const images = [deputy, partner, independent]
@@ -30,7 +31,7 @@ export default function OurTeam({ languageData, changeLanguage }) {
     return (
         <>
             <ExpandMultipleImages images={imagesForExpand} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['our team']} />

@@ -10,10 +10,11 @@ import projImages6 from '../../Images/proj0.jpg'
 import Title from '../../Components/Title/Title';
 import Grid from '../../Components/Grid/Grid';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function Projects({ languageData }) {
+export default function Projects() {
+    const languageData = useSelector(state => state.languageData.value)
     const pages = [languageData['page titles']['home'],languageData['page titles']['projects']]
     const links = ['/','/Projects'];
     const images = [projImages1, projImages2, projImages3, projImages4, projImages5, projImages6]
@@ -25,7 +26,7 @@ export default function Projects({ languageData }) {
     }, [languageData,dispatch])
     return (
         <>
-            <Header languageData={languageData} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['projects']} />

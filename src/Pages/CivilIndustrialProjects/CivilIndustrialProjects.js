@@ -10,12 +10,13 @@ import { TfiLocationPin } from "react-icons/tfi";
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
 import { useInView } from 'react-intersection-observer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTo } from '../../Slices/ExpandMultipleImage';
 import { pageVisit } from '../../Slices/Visits';
 
 
-export default function CivilIndustrialProjects({ languageData, changeLanguage }) {
+export default function CivilIndustrialProjects() {
+    const languageData = useSelector(state => state.languageData.value)
     const pages = [languageData['page titles']['home'], languageData['page titles']['civil-industrial-projects']]
     const links = ['/', '/Civil-Industrial-Projects']
     const imagesForExpand = [cipXobi2,cipTbilisi0, cipXobi0, cipXobi1]
@@ -44,7 +45,7 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage }
     return (
         <>
             <ExpandMultipleImages images={imagesForExpand} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header/>
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['civil-industrial-projects']} />

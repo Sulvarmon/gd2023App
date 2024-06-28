@@ -71,9 +71,8 @@ export default function SmallMenu() {
           </div>
           <NavLink to={'/Contacts'} className={`theme usn ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
           <Language />
-          <Theme
-            languageData={languageData}/>
-          {/* <SetCookies languageData={languageData}/> */}
+          <Theme />
+          {/* <SetCookies /> */}
         </div>
       </div>
     </div>

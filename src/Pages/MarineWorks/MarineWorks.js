@@ -8,11 +8,12 @@ import mr2 from '../../Images/mr2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
 import { useInView } from 'react-intersection-observer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTo } from '../../Slices/ExpandMultipleImage';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function MarineWorks({ languageData, changeLanguage }) {
+export default function MarineWorks() {
+    const languageData = useSelector(state => state.languageData.value)
     const images = [mr0,mr1,mr2]
     const pages = [languageData['page titles']['home'],languageData['page titles']['marine-works']]
     const links = ['/','/Marine-Works'];
@@ -38,7 +39,7 @@ export default function MarineWorks({ languageData, changeLanguage }) {
     return (
         <>
         <ExpandMultipleImages images={images} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['marine-works']} />

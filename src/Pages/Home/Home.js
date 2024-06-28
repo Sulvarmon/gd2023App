@@ -36,9 +36,7 @@ export default function Home() {
     return (
         <>
             <ExpandSingleImage image={about} />
-            <Header
-                languageData={languageData}
-            />
+            <Header/>
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['news']} />

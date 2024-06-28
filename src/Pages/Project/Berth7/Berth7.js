@@ -6,10 +6,11 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj from '../../../Images/proj1.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../../Slices/Visits';
 
-export default function Berth7({ languageData, changeLanguage }) {   
+export default function Berth7() {   
+    const languageData = useSelector(state => state.languageData.value)
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['berth-7'],
@@ -23,7 +24,7 @@ export default function Berth7({ languageData, changeLanguage }) {
     }, [languageData,dispatch])
     return (
         <>
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['projects']} />

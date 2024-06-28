@@ -8,11 +8,12 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import styles from './Contacts.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
 
-export default function Contacts({ languageData }) {
+export default function Contacts() {
+    const languageData = useSelector(state => state.languageData.value)
     const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -111,7 +112,7 @@ export default function Contacts({ languageData }) {
             <div className={`${!displayBlack && 'dn'}`}>
                 <div className={`${styles.balckBackground} ${languageData['font-family'][0]} dfjcac cw`}>{languageData['contacts page'][10]}</div>
             </div>
-            <Header languageData={languageData} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={font0} text={languageData['page titles']['contact']} />

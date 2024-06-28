@@ -8,10 +8,11 @@ import news1 from '../../Images/news1.jpg'
 import news2 from '../../Images/news2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function News({ languageData }) {
+export default function News() {
+    const languageData = useSelector(state => state.languageData.value)
     const pages = [languageData['page titles']['home'], languageData['page titles']['news']]
     const links = ['/', '/News'];
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ export default function News({ languageData }) {
     return (
         <>
             <ExpandMultipleImages images={images} />
-            <Header languageData={languageData} />
+            <Header />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['news']} />

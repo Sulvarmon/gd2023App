@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { SlArrowDown } from "react-icons/sl";
 import styles from './LargeMenu.module.css'
+import { useSelector } from 'react-redux';
 // import Cookies from 'js-cookie';
 
-export default function SetCookies({ languageData, checkedLg, setCheckedLg }) {
+export default function SetCookies() {
+  const languageData = useSelector(state => state.languageData.value)
   const [showTheme, setShowTheme] = useState(false);
-  const [checkedTh, setCheckedLgTh] = useState(false);
+  const [checkedTh, setCheckedTh] = useState(false);
+  const [checkedLg, setCheckedLg] = useState(false);
 
 
   return (
@@ -21,7 +24,7 @@ export default function SetCookies({ languageData, checkedLg, setCheckedLg }) {
         </div>
         <div className={`dfjbac gap1 p2`}>
           <div className={`theme ${languageData['font-family'][0]}`}>{languageData['cookie']['types'][2]}</div>
-          <div onClick={a=>setCheckedLgTh(!checkedTh)} className={`${styles.checkbox} dfjcac cp`}>
+          <div onClick={a=>setCheckedTh(!checkedTh)} className={`${styles.checkbox} dfjcac cp`}>
             <div className={`${styles.checkboxEye} ${!checkedTh && 'dn'}`}></div>
           </div>
         </div>

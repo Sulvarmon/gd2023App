@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import styles from './LargeMenu.module.css'
 import { SlArrowDown } from "react-icons/sl";
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
-export default function Theme({ languageData }) {
+export default function Theme() {
+  const languageData = useSelector(state => state.languageData.value)
   const [showTheme, setShowTheme] = useState(false);
   const getInitialCookie = () => {
     return Cookies.get('theme') || 'white';

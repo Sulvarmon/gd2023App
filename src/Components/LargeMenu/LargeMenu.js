@@ -67,10 +67,8 @@ export default function LargeMenu() {
           <div onClick={(e) => { e.stopPropagation(); setShowMenu(!showMenu) }} className={`usn pr`}><GoGear className={`theme ${showMenu ? styles.tr0 : styles.tr90} fontSizeIcon cp`} />
             <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
               <Language />
-              <Theme
-                languageData={languageData} />
-
-              {/* <SetCookies languageData={languageData} /> */}
+              <Theme />
+              {/* <SetCookies /> */}
             </div>
           </div>
 
