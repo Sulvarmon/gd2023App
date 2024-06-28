@@ -4,8 +4,10 @@ import { FaFacebookF } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { TfiLocationPin } from "react-icons/tfi";
 import styles from './SideContacts.module.css'
+import { useSelector } from 'react-redux';
 
-export default function SideContacts({languageData}) {
+export default function SideContacts() {
+  const languageData = useSelector(state => state.languageData.value)
   return (
     <div className={`dfcjcas gap2 p2 ${styles.sideContacts}`}>
         <a  href='https://www.facebook.com/' target='__blank' className={`cw wfc dfjcac gap2 menuHover`}><FaFacebookF /><span className={languageData['font-family'][0]}>{languageData['fb']}</span></a>

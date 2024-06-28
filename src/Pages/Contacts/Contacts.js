@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
 
-export default function Contacts({ languageData, changeLanguage }) {
+export default function Contacts({ languageData }) {
     const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -111,7 +111,7 @@ export default function Contacts({ languageData, changeLanguage }) {
             <div className={`${!displayBlack && 'dn'}`}>
                 <div className={`${styles.balckBackground} ${languageData['font-family'][0]} dfjcac cw`}>{languageData['contacts page'][10]}</div>
             </div>
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header languageData={languageData} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={font0} text={languageData['page titles']['contact']} />

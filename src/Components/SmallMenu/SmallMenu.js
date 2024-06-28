@@ -11,10 +11,11 @@ import { SlArrowDown } from "react-icons/sl";
 import Language from '../LargeMenu/Language';
 import Theme from '../LargeMenu/Theme';
 // import SetCookies from '../LargeMenu/SetCookies';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToOposite } from '../../Slices/Search';
 
-export default function SmallMenu({ languageData, changeLanguage}) {
+export default function SmallMenu() {
+  const languageData = useSelector(state => state.languageData.value)
   const [showSmallMenu, setShowSmallMenu] = useState(false);
   const [showCompany, setShowCompany] = useState(false);
   const [showSectors, setShowSectors] = useState(false);
@@ -69,7 +70,7 @@ export default function SmallMenu({ languageData, changeLanguage}) {
             />
           </div>
           <NavLink to={'/Contacts'} className={`theme usn ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
-          <Language changeLanguage={changeLanguage} languageData={languageData} />
+          <Language />
           <Theme
             languageData={languageData}/>
           {/* <SetCookies languageData={languageData}/> */}

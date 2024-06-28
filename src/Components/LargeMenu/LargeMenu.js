@@ -7,11 +7,12 @@ import { GoGear } from "react-icons/go";
 import { SlArrowDown } from "react-icons/sl";
 import Language from './Language'
 import Theme from './Theme';
-import SetCookies from './SetCookies';
-import { useDispatch } from 'react-redux';
+// import SetCookies from './SetCookies';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToOposite } from '../../Slices/Search';
 
-export default function LargeMenu({ languageData, changeLanguage }) {
+export default function LargeMenu() {
+  const languageData = useSelector(state => state.languageData.value)
   const [showCompany, setShowCompany] = useState(false);
   const [showSectors, setShowSectors] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -65,7 +66,7 @@ export default function LargeMenu({ languageData, changeLanguage }) {
           <div onClick={() => { dispatch(setToOposite()) }} ><CiSearch className="theme fontSizeIcon cp" /></div>
           <div onClick={(e) => { e.stopPropagation(); setShowMenu(!showMenu) }} className={`usn pr`}><GoGear className={`theme ${showMenu ? styles.tr0 : styles.tr90} fontSizeIcon cp`} />
             <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
-              <Language changeLanguage={changeLanguage} languageData={languageData} />
+              <Language />
               <Theme
                 languageData={languageData} />
 

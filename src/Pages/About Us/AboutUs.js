@@ -6,12 +6,13 @@ import Footer from '../../Components/Footer/Footer';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 import { useInView } from 'react-intersection-observer';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setToOposite } from '../../Slices/ExpandSingleImage'
 import { pageVisit } from '../../Slices/Visits';
 
-export default function AboutUs({ languageData, changeLanguage }) {
+export default function AboutUs() {
     const dispatch = useDispatch()
+    const languageData = useSelector(state => state.languageData.value)
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['about']
@@ -54,8 +55,8 @@ export default function AboutUs({ languageData, changeLanguage }) {
     return (
         <>
             <ExpandSingleImage image={about} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
-            <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
+            <Header/>
+            <SmallNavigation pages={pages} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['about us']} />
                 <div onClick={() => dispatch(setToOposite())} className='pr czi w3 ma' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={about} alt='' /></div>

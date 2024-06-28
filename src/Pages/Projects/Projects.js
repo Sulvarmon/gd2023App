@@ -13,7 +13,7 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import { useDispatch } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function Projects({ languageData, changeLanguage }) {
+export default function Projects({ languageData }) {
     const pages = [languageData['page titles']['home'],languageData['page titles']['projects']]
     const links = ['/','/Projects'];
     const images = [projImages1, projImages2, projImages3, projImages4, projImages5, projImages6]
@@ -25,7 +25,7 @@ export default function Projects({ languageData, changeLanguage }) {
     }, [languageData,dispatch])
     return (
         <>
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header languageData={languageData} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['projects']} />

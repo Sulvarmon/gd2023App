@@ -17,12 +17,13 @@ import CarouselThumbnail from '../../Components/CarouselThumbnail/CarouselThumbn
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToOposite } from '../../Slices/ExpandSingleImage';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function Home({ languageData, changeLanguage}) {
+export default function Home() {
     const dispatch = useDispatch()
+    const languageData = useSelector(state => state.languageData.value)
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['home']
@@ -37,7 +38,6 @@ export default function Home({ languageData, changeLanguage}) {
             <ExpandSingleImage image={about} />
             <Header
                 languageData={languageData}
-                changeLanguage={changeLanguage}
             />
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>

@@ -4,6 +4,7 @@ import expandMultipleImage from './Slices/ExpandMultipleImage'
 import language from './Slices/Language'
 import search from './Slices/Search'
 import visits from './Slices/Visits'
+import languageData from './Slices/LanguageData'
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     expandMultipleImage: expandMultipleImage,
     search: search,
     language: language,
-    visits: visits
+    visits: visits,
+    languageData: languageData
   }
 })

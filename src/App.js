@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import Contacts from './Pages/Contacts/Contacts';
 import News from './Pages/News/News';
 import Home from './Pages/Home/Home';
@@ -19,25 +18,14 @@ import ContainerTerminal from './Pages/Project/ContainerTerminal/ContainerTermin
 import Rehabilitation from './Pages/Project/Rehabilitation/Rehabilitation';
 import PayTerminal from './Pages/Project/PayTerminal/PayTerminal';
 import { useDispatch, useSelector } from 'react-redux';
-import { change } from './Slices/Language';
+import { data } from './Slices/LanguageData';
 
 function App() {
+  const language = useSelector((state) => state.language.value);
+  const visits = useSelector((state) => state.visits.value);
+  const dispatch = useDispatch();
 
-  const [languageData, setLanguageData] = useState(null);
-  const language = useSelector(state => state.language.value)
-  const visits = useSelector(state => state.visits.value)
-  const dispatch = useDispatch()
-
-  const changeLanguage = (language) => {
-    dispatch(change(language));
-    Cookies.set('languageReact', language, {
-      expires: 3650,
-      path: '/',
-      sameSite: 'None',
-      secure: true
-    });
-  };
-
+  const [loading, setLoading] = useState(true);
 
   if (sessionStorage.getItem('pageVisits') === null) {
     sessionStorage.setItem('pageVisits', JSON.stringify([]));
@@ -68,8 +56,8 @@ function App() {
         console.log(error.response ? error.response.data : error.message);
       }
     };
-    visitsUpdate()
-  }, [visits])
+    visitsUpdate();
+  }, [visits]);
 
   if (sessionStorage.getItem('ipVisits') === null) {
     sessionStorage.setItem('ipVisits', 'true');
@@ -77,7 +65,6 @@ function App() {
 
   useEffect(() => {
     if (sessionStorage.getItem('ipVisits') === 'true') {
-      console.log("dkahsdgkas")
       const ipVisits = async () => {
         try {
           await axios({
@@ -95,10 +82,9 @@ function App() {
           console.log(error.response ? error.response.data : error.message);
         }
         sessionStorage.setItem('ipVisits', 'false');
-      }
-      ipVisits()
+      };
+      ipVisits();
     }
-
   }, []);
 
   useEffect(() => {
@@ -114,44 +100,43 @@ function App() {
             language: language,
           }),
         });
-        setLanguageData(response.data);
+        dispatch(data(response.data));
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
         console.log(error.response ? error.response.data : error.message);
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [language]);
+  }, [dispatch, language]);
 
   return (
     <>
-      {languageData ? (
+      {loading ? (
+        'Loading...'
+      ) : (
         <Router>
           <Routes>
-            <Route exact={true} path="/" element={<Home
-              languageData={languageData}
-              changeLanguage={changeLanguage}
-            />} />
-            <Route exact={true} path="/Projects" element={<Projects languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/News" element={<News languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Contacts" element={<Contacts languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/About-Us" element={<AboutUs languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Our-Team" element={<OurTeam languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Marine-Works" element={<MarineWorks languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Building-Materials" element={<BuildingMaterials languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Civil-Industrial-Projects" element={<CivilIndustrialProjects languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Berth-7" element={<Berth7 languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Berth-15" element={<Berth15 languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Container-Terminal" element={<ContainerTerminal languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Rehabilitation" element={<Rehabilitation languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Pay-Terminal" element={<PayTerminal languageData={languageData} changeLanguage={changeLanguage} />} />
-            <Route exact={true} path="/Poti-Apartment" element={<Apartment languageData={languageData} changeLanguage={changeLanguage} />} />
+            <Route exact={true} path="/" element={<Home />} />
+            <Route exact={true} path="/Projects" element={<Projects />} />
+            <Route exact={true} path="/News" element={<News />} />
+            <Route exact={true} path="/Contacts" element={<Contacts />} />
+            <Route exact={true} path="/About-Us" element={<AboutUs />} />
+            <Route exact={true} path="/Our-Team" element={<OurTeam />} />
+            <Route exact={true} path="/Marine-Works" element={<MarineWorks />} />
+            <Route exact={true} path="/Building-Materials" element={<BuildingMaterials />} />
+            <Route exact={true} path="/Civil-Industrial-Projects" element={<CivilIndustrialProjects />} />
+            <Route exact={true} path="/Berth-7" element={<Berth7 />} />
+            <Route exact={true} path="/Berth-15" element={<Berth15 />} />
+            <Route exact={true} path="/Container-Terminal" element={<ContainerTerminal />} />
+            <Route exact={true} path="/Rehabilitation" element={<Rehabilitation />} />
+            <Route exact={true} path="/Pay-Terminal" element={<PayTerminal />} />
+            <Route exact={true} path="/Poti-Apartment" element={<Apartment />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
-      ) : (
-        'Loading...'
       )}
     </>
   );

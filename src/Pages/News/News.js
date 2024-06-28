@@ -11,7 +11,7 @@ import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMu
 import { useDispatch } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function News({ languageData, changeLanguage }) {
+export default function News({ languageData }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['news']]
     const links = ['/', '/News'];
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ export default function News({ languageData, changeLanguage }) {
     return (
         <>
             <ExpandMultipleImages images={images} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} />
+            <Header languageData={languageData} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['news']} />

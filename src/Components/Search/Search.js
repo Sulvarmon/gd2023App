@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToFalse } from '../../Slices/Search';
 
-export default function Search({ languageData }) {
+export default function Search() {
+    const languageData = useSelector(state => state.languageData.value)
     const [foundArr, setFoundArr] = useState([])
     const [foundHrefs, setFoundHrefs] = useState([])
     const [searchIsEmpty, setSearchIsEmpty] = useState(true)

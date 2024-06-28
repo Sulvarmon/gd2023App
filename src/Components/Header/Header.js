@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import { React } from 'react'
 import styles from './Header.module.css'
 import LargeMenu from '../LargeMenu/LargeMenu';
 import SmallMenu from '../SmallMenu/SmallMenu';
@@ -9,21 +9,15 @@ import SidePhone from '../SidePhone/SidePhone';
 
 
 
-export default function Header({ languageData, changeLanguage}) {
+export default function Header() {
   return (
     <>
       <div className={`${styles.header} p2`}>
-        <SideContacts languageData={languageData} />
-        <SidePhone font={languageData['font-family'][0]} />
-        {languageData && <Search languageData={languageData} />}
-        <SmallMenu
-          languageData={languageData}
-          changeLanguage={changeLanguage}
-        />
-        <LargeMenu
-          languageData={languageData}
-          changeLanguage={changeLanguage}
-        />
+        <SideContacts />
+        <SidePhone />
+        <Search />
+        <SmallMenu />
+        <LargeMenu />
       </div>
       {/* <CookieMessage
         font0={languageData['font-family'][0]}
