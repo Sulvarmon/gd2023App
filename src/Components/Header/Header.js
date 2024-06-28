@@ -9,12 +9,7 @@ import SidePhone from '../SidePhone/SidePhone';
 
 
 
-export default function Header({ languageData, changeLanguage, ipVisits,}) {
-  useEffect(() => {
-    if (typeof ipVisits === 'function') {
-      ipVisits();
-    }
-  }, [ipVisits]);
+export default function Header({ languageData, changeLanguage}) {
   return (
     <>
       <div className={`${styles.header} p2`}>

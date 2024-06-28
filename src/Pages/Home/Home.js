@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 import { setToOposite } from '../../Slices/ExpandSingleImage';
 import { pageVisit } from '../../Slices/Visits';
 
-export default function Home({ languageData, changeLanguage, ipVisits}) {
+export default function Home({ languageData, changeLanguage}) {
     const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,7 +38,6 @@ export default function Home({ languageData, changeLanguage, ipVisits}) {
             <Header
                 languageData={languageData}
                 changeLanguage={changeLanguage}
-                ipVisits={ipVisits}
             />
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>

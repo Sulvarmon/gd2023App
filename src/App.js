@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { change } from './Slices/Language';
 
 function App() {
-  
+
   const [languageData, setLanguageData] = useState(null);
   const language = useSelector(state => state.language.value)
   const visits = useSelector(state => state.visits.value)
@@ -30,12 +30,12 @@ function App() {
 
   const changeLanguage = (language) => {
     dispatch(change(language));
-      Cookies.set('languageReact', language, {
-        expires: 3650,
-        path: '/',
-        sameSite: 'None',
-        secure: true
-      });
+    Cookies.set('languageReact', language, {
+      expires: 3650,
+      path: '/',
+      sameSite: 'None',
+      secure: true
+    });
   };
 
 
@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     const visitsUpdate = async () => {
       let pageVisits = JSON.parse(sessionStorage.getItem('pageVisits'));
-  
+
       if (pageVisits !== null && pageVisits.includes(visits)) {
         return 0;
       }
@@ -70,36 +70,36 @@ function App() {
     };
     visitsUpdate()
   }, [visits])
-  
-
-  
-
 
   if (sessionStorage.getItem('ipVisits') === null) {
     sessionStorage.setItem('ipVisits', 'true');
   }
 
-  const ipVisits = async () => {
+  useEffect(() => {
     if (sessionStorage.getItem('ipVisits') === 'true') {
-      try {
-        await axios({
-          method: 'post',
-          url: 'http://localhost/gd2023-react-backend/ipVisits.php',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          data: new URLSearchParams({
-            ipVisits: 'ipVisits',
-          }),
-        });
-      } catch (error) {
-        console.error('Error:', error);
-        console.log(error.response ? error.response.data : error.message);
+      console.log("dkahsdgkas")
+      const ipVisits = async () => {
+        try {
+          await axios({
+            method: 'post',
+            url: 'http://localhost/gd2023-react-backend/ipVisits.php',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            data: new URLSearchParams({
+              ipVisits: 'ipVisits',
+            }),
+          });
+        } catch (error) {
+          console.error('Error:', error);
+          console.log(error.response ? error.response.data : error.message);
+        }
+        sessionStorage.setItem('ipVisits', 'false');
       }
-      sessionStorage.setItem('ipVisits', 'false');
+      ipVisits()
     }
-  };
 
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -132,7 +132,6 @@ function App() {
             <Route exact={true} path="/" element={<Home
               languageData={languageData}
               changeLanguage={changeLanguage}
-              ipVisits={ipVisits}
             />} />
             <Route exact={true} path="/Projects" element={<Projects languageData={languageData} changeLanguage={changeLanguage} />} />
             <Route exact={true} path="/News" element={<News languageData={languageData} changeLanguage={changeLanguage} />} />
