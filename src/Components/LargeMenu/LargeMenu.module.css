@@ -94,3 +94,17 @@
     border-radius: 50%;
     background-color: #fff;
 }
+
+.checkbox{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.checkboxEye{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #000;
+}

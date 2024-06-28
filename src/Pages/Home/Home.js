@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Home.module.css';
 import Header from '../../Components/Header/Header';
 import CarouselOpacity from '../../Components/CarouselOpacity/CarouselOpacity';
@@ -17,21 +17,29 @@ import CarouselThumbnail from '../../Components/CarouselThumbnail/CarouselThumbn
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
+import { useDispatch } from 'react-redux';
+import { setToOposite } from '../../Slices/ExpandSingleImage';
+import { pageVisit } from '../../Slices/Visits';
 
-export default function Home({ languageData, changeLanguage, visits, ipVisits }) {
+export default function Home({ languageData, changeLanguage, ipVisits}) {
+    const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['home']
-        visits('home');
-    }, [languageData, visits]);
+        dispatch(pageVisit('home'))
+    }, [languageData, dispatch]);
+    
     const images = [grdiImage1, grdiImage2, grdiImage3]
     const projImages = [projImages1, projImages2, projImages3, projImages4, projImages5]
-    const [showDarkbg, setShowDarkbg] = useState(false)
 
     return (
         <>
-            <ExpandSingleImage image={about} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />
-            <Header languageData={languageData} changeLanguage={changeLanguage} ipVisits={ipVisits} />
+            <ExpandSingleImage image={about} />
+            <Header
+                languageData={languageData}
+                changeLanguage={changeLanguage}
+                ipVisits={ipVisits}
+            />
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['news']} />
@@ -60,7 +68,7 @@ export default function Home({ languageData, changeLanguage, visits, ipVisits })
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
-                    <div onClick={() => { setShowDarkbg(!showDarkbg) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}>
+                    <div onClick={() => { dispatch(setToOposite()) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}>
                         <img className='pa ofcvr' src={about} alt='' />
                     </div>
                     <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about company text']}</p>

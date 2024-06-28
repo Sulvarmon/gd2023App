@@ -6,18 +6,21 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj0 from '../../../Images/proj5.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../../Slices/Visits';
 
-export default function PayTerminal({ languageData, changeLanguage,visits }) {
+export default function PayTerminal({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['pay-terminal'],
     ]
+    const dispatch = useDispatch()
     const links = ['/', '/Projects', '/Pay-Terminal']; 
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-        visits('pay-terminal')
-    }, [languageData,visits])
+        dispatch(pageVisit('pay-terminal'))
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

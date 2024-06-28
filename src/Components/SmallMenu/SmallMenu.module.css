@@ -14,7 +14,7 @@
 }
 .menu {
     position: absolute;
-    width: 50%;
+    width: 100%;
     overflow-x: auto;
     top: 95px;   
     background-color: var(--headerBg);

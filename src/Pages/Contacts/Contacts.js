@@ -8,14 +8,17 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import styles from './Contacts.module.css'
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../Slices/Visits';
 
 
-export default function Contacts({ languageData, changeLanguage,visits }) {
+export default function Contacts({ languageData, changeLanguage }) {
+    const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['contact'];
-        visits('contact')
-    }, [languageData,visits]);
+        dispatch(pageVisit('contact'))  
+    }, [languageData,dispatch]);
 
     const pages = [languageData['page titles']['home'], languageData['page titles']['contact']]
     const links = ['/', '/Contacts'];

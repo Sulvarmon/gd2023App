@@ -6,18 +6,21 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj from '../../../Images/proj1.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../../Slices/Visits';
 
-export default function Berth7({ languageData, changeLanguage,visits }) {   
+export default function Berth7({ languageData, changeLanguage }) {   
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['berth-7'],
     ]
+    const dispatch = useDispatch()
     const links = ['/', '/Projects', '/Berth-7']; 
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-        visits('berth-7')
-    }, [languageData,visits])
+        dispatch(pageVisit('berth-7'))
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

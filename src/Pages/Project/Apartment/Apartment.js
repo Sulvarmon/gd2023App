@@ -6,18 +6,21 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj from '../../../Images/proj0.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../../Slices/Visits';
 
-export default function Apartment({ languageData, changeLanguage,visits }) {
+export default function Apartment({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['poti-apartment'],
     ]
+    const dispatch = useDispatch()
     const links = ['/', '/Projects', '/Poti-Apartment'];
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-        visits('poti-apartment')
-    }, [languageData,visits])
+        dispatch(pageVisit('poti-apartment'))        
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

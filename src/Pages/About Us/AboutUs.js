@@ -6,16 +6,19 @@ import Footer from '../../Components/Footer/Footer';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux'
+import { setToOposite } from '../../Slices/ExpandSingleImage'
+import { pageVisit } from '../../Slices/Visits';
 
-export default function AboutUs({ languageData, changeLanguage, visits }) {
+export default function AboutUs({ languageData, changeLanguage }) {
+    const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['about']
-        visits('about');
-    }, [languageData, visits]);
+        dispatch(pageVisit('about'))
+    }, [languageData, dispatch]);
     const pages = [languageData['page titles']['home'], languageData['page titles']['about']];
     const links = ['/', '/About-Us'];
-    const [showDarkbg, setShowDarkbg] = useState(false);
 
     const { ref: ref1, inView: inView1 } = useInView({
         threshold: 0.5,
@@ -50,12 +53,12 @@ export default function AboutUs({ languageData, changeLanguage, visits }) {
 
     return (
         <>
-            <ExpandSingleImage image={about} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />
+            <ExpandSingleImage image={about} />
             <Header languageData={languageData} changeLanguage={changeLanguage} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['about us']} />
-                <div onClick={() => setShowDarkbg(!showDarkbg)} className='pr czi w3 ma' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={about} alt='' /></div>
+                <div onClick={() => dispatch(setToOposite())} className='pr czi w3 ma' style={{ paddingBottom: '45%' }}><img className='pa ofcvr' src={about} alt='' /></div>
                 <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][0]}</p>
                 <ul ref={ref1} className='pl3 dfcjcas gap1'>
                     {languageData['about us texts'][1].map((element, index) => (

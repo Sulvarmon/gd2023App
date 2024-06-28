@@ -10,13 +10,16 @@ import { SlArrowDown } from "react-icons/sl";
 
 import Language from '../LargeMenu/Language';
 import Theme from '../LargeMenu/Theme';
+// import SetCookies from '../LargeMenu/SetCookies';
+import { useDispatch } from 'react-redux';
+import { setToOposite } from '../../Slices/Search';
 
-export default function SmallMenu({ languageData, changeLanguage, showSearch, setShowSearch }) {
+export default function SmallMenu({ languageData, changeLanguage}) {
   const [showSmallMenu, setShowSmallMenu] = useState(false);
   const [showCompany, setShowCompany] = useState(false);
   const [showSectors, setShowSectors] = useState(false);
   const [openedMenu, setOpenedMenu] = useState(false)
-
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // Add event listener for clicks outside the component
@@ -29,11 +32,10 @@ export default function SmallMenu({ languageData, changeLanguage, showSearch, se
   }, []);
 
   return (
-    <div className={`${styles.navigation}`}>
-      {/* <Search showSearch={showSearch} setShowSearch={setShowSearch} /> */}
+    <div className={`${styles.navigation}`}>      
       <div className={`container dfjbac `}>
         <NavLink to={'/'} className={`usn ${styles.logo}`}></NavLink>
-        <div onClick={() => { setShowSearch(!showSearch) }}><CiSearch className={`theme fontSizeIcon cp`} /></div>
+        <div onClick={() => { dispatch(setToOposite()) }}><CiSearch className={`theme fontSizeIcon cp`} /></div>
         <div onClick={(e) => { e.stopPropagation(); setShowSmallMenu(!showSmallMenu) }}>
           <RiMenu3Fill onClick={() => { setOpenedMenu(!openedMenu) }} className={`theme fontSizeIcon cp ${openedMenu ? 'dn' : ''}`} />
           <IoCloseOutline onClick={() => { setOpenedMenu(!openedMenu) }} className={`theme fontSizeIcon cp ${openedMenu ? '' : 'dn'}`} />
@@ -68,7 +70,9 @@ export default function SmallMenu({ languageData, changeLanguage, showSearch, se
           </div>
           <NavLink to={'/Contacts'} className={`theme usn ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
           <Language changeLanguage={changeLanguage} languageData={languageData} />
-          <Theme languageData={languageData} />
+          <Theme
+            languageData={languageData}/>
+          {/* <SetCookies languageData={languageData}/> */}
         </div>
       </div>
     </div>

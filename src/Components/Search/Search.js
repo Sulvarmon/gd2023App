@@ -2,17 +2,21 @@ import { React, useState } from 'react';
 import styles from './Search.module.css';
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setToFalse } from '../../Slices/Search';
 
-export default function Search({ showSearch, setShowSearch, languageData }) {
+export default function Search({ languageData }) {
     const [foundArr, setFoundArr] = useState([])
     const [foundHrefs, setFoundHrefs] = useState([])
     const [searchIsEmpty, setSearchIsEmpty] = useState(true)
+    const showSearch = useSelector(state => state.search.value)
+    const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
         const value = e.target.value.toLowerCase().replace(/[-,.!:'"/\s]/g, "");
         const newFoundArr = [];
         const newFoundHrefs = [];
-
+        
         languageData['project page']['titles'].forEach((element, index) => {
             const normalizedElement = element.replace(/[\s]/g, "").toLowerCase();
             if (normalizedElement.indexOf(value) !== -1 && value !== '') {
@@ -30,7 +34,7 @@ export default function Search({ showSearch, setShowSearch, languageData }) {
     return (
         <div>
             <div className={`${!showSearch ? 'dn' : styles.darkBg}`}>
-                <div onClick={() => { setShowSearch(false) }} className={`${styles.close} cw cp iconView iconHover`}><IoCloseSharp /></div>
+                <div onClick={() => { dispatch(setToFalse()) }} className={`${styles.close} cw cp iconView iconHover`}><IoCloseSharp /></div>
                 <div className={`container dfcjcac gap5 ${styles.search}`}>
                     <b className={`colorBlue ${languageData['font-family'][0]} ${styles.title}`}>{languageData['search']['title']}</b>
                     <div className={`dfcjcac gap4`}>                        
@@ -45,9 +49,9 @@ export default function Search({ showSearch, setShowSearch, languageData }) {
                     </div>
 
                     {foundArr.length > 0 && !searchIsEmpty && (
-                        <ul className='pl3 dfcjcas gap2'>
+                        <ul  className='pl3 dfcjcas gap2'>
                             {foundArr.map((element, index) => (
-                                <li className='colorRed' key={index} ><Link className={`${languageData['font-family'][0]} cw menuHover`} to={foundHrefs[index]} >{element}</Link></li>
+                                <li onClick={() => { dispatch(setToFalse()) }} className='colorRed' key={index} ><Link className={`${languageData['font-family'][0]} cw menuHover`} to={foundHrefs[index]} >{element}</Link></li>
                             ))}
                         </ul>
                     )}

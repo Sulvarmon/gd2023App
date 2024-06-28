@@ -6,10 +6,11 @@ import Cookies from 'js-cookie';
 export default function Theme({ languageData }) {
   const [showTheme, setShowTheme] = useState(false);
   const getInitialCookie = () => {
-    return Cookies.get('ballEye') || 'white';
+    return Cookies.get('theme') || 'white';
   };
 
-  const [ballEye, setBallEye] = useState(getInitialCookie);
+  const [theme, setTheme] = useState(getInitialCookie);
+  
   useEffect(() => {
     window.addEventListener('click', () => {
       setShowTheme(false)
@@ -18,17 +19,27 @@ export default function Theme({ languageData }) {
 
   const whiteTheme = function () {
     const updatedTheme = 'white';
-    setBallEye(updatedTheme);
-    Cookies.set('ballEye', updatedTheme, { expires: 3650, path: '/' });
+    setTheme(updatedTheme);
+    Cookies.set('theme', updatedTheme, {
+      expires: 3650,
+      path: '/',
+      sameSite: 'None',
+      secure: true // Secure is required if SameSite=None
+    });
   }
 
   const darkTheme = function () {
     const updatedTheme = 'dark';
-    setBallEye(updatedTheme);
-    Cookies.set('ballEye', updatedTheme, { expires: 3650, path: '/' });
+    setTheme(updatedTheme);
+    Cookies.set('theme', updatedTheme, {
+      expires: 3650,
+      path: '/',
+      sameSite: 'None',
+      secure: true // Secure is required if SameSite=None
+    });
   }
 
-  switch (ballEye) {
+  switch (theme) {
     case 'white':
       document.documentElement.style.setProperty('--bgColor', '#DCDCDC');
       document.documentElement.style.setProperty('--bg1', '#E5E4E2');
@@ -53,11 +64,11 @@ export default function Theme({ languageData }) {
       <div onClick={() => { setShowTheme(!showTheme) }} className={`${styles.lang} usn dfjcac gap1 cp`}><span className={`theme ${languageData['font-family'][0]}`}>{languageData['theme'][2]}</span><SlArrowDown className={`theme ${showTheme ? styles.tr0 : styles.tr90}`} /></div>
       <div className={`${showTheme ? '' : 'dn'} w5`}>
         <hr className='w5' />
-        <div onClick={() => { }} className={` dfcjcac gap2 mt2 mb2`}>
+        <div onClick={() => { }} className={` dfcjcas gap2 mt2 mb2`}>
           <span className={`theme ${languageData['font-family'][0]}`}>{languageData['theme'][1]}</span>
           <div className={`dfjcac gap1 p2`}>
-            <div onClick={whiteTheme} className={`${styles.ball1} dfjcac cp`}><div className={`${styles.ball1Eye} ${ballEye !== 'white' && 'dn'}`}></div></div>
-            <div onClick={darkTheme} className={`${styles.ball2} dfjcac cp`}><div className={`${styles.ball2Eye} ${ballEye !== 'dark' && 'dn'}`}></div></div>
+            <div onClick={whiteTheme} className={`${styles.ball1} dfjcac cp`}><div className={`${styles.ball1Eye} ${theme !== 'white' && 'dn'}`}></div></div>
+            <div onClick={darkTheme} className={`${styles.ball2} dfjcac cp`}><div className={`${styles.ball2Eye} ${theme !== 'dark' && 'dn'}`}></div></div>
           </div>
           <span className={`theme ${languageData['font-family'][0]}`}>{languageData['theme'][2]}</span>
         </div>

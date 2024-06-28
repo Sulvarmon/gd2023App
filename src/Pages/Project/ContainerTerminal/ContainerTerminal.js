@@ -6,18 +6,21 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj0 from '../../../Images/proj3.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../../Slices/Visits';
 
-export default function ContainerTerminal({ languageData, changeLanguage,visits }) {
+export default function ContainerTerminal({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['container-terminal'],
     ]
+    const dispatch = useDispatch()
     const links = ['/', '/Projects', '/Container-Terminal']; 
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-        visits('container-terminal')
-    }, [languageData,visits])
+        dispatch(pageVisit('container-terminal')) 
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

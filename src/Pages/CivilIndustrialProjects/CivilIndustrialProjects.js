@@ -10,14 +10,17 @@ import { TfiLocationPin } from "react-icons/tfi";
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setTo } from '../../Slices/ExpandMultipleImage';
+import { pageVisit } from '../../Slices/Visits';
 
 
-export default function CivilIndustrialProjects({ languageData, changeLanguage,visits }) {
+export default function CivilIndustrialProjects({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['civil-industrial-projects']]
     const links = ['/', '/Civil-Industrial-Projects']
     const imagesForExpand = [cipXobi2,cipTbilisi0, cipXobi0, cipXobi1]
     const images = [cipTbilisi0, cipXobi0, cipXobi1]
-    const [imageIndex, setImageIndex] = useState(-1)
+    const dispatch  = useDispatch()
     const { ref: ref1, inView: inView1 } = useInView({
         threshold: 0.5,
     });
@@ -34,20 +37,20 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage,v
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['civil-industrial-projects']
-        visits('civil-industrial-projects')
-    }, [languageData,visits])
+        dispatch(pageVisit('civil-industrial-projects')) 
+    }, [languageData,dispatch])
 
     
     return (
         <>
-            <ExpandMultipleImages images={imagesForExpand} imageIndex={imageIndex} setImageIndex={setImageIndex} />
+            <ExpandMultipleImages images={imagesForExpand} />
             <Header languageData={languageData} changeLanguage={changeLanguage} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['civil-industrial-projects']} />
                 <div className='dfcjcac gap5'>
                     <div className='w5'>
-                        <div onClick={a=>setImageIndex(0)} className='pr w5 czi' style={{ height: '220px' }}><img className='pa ofcvr br2' src={cipXobi2} alt='' /></div>
+                        <div onClick={a=>dispatch(setTo(0))} className='pr w5 czi' style={{ height: '220px' }}><img className='pa ofcvr br2' src={cipXobi2} alt='' /></div>
                         <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][0]}</div>
                         <div className={`theme ${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][1]}</div>
                     </div>
@@ -63,7 +66,7 @@ export default function CivilIndustrialProjects({ languageData, changeLanguage,v
                     <div className='dfjbas gap5 fww'>
                         {images.map((element, index) => (
                             <div key={index} className='dfcjlas gap2' style={{ width: '300px' }}>
-                                <div onClick={a=>setImageIndex(index+1)} className='pr w5 czi' style={{ height: '200px' }}><img className='pa ofcvr' src={element} alt='' /></div>
+                                <div onClick={a=>dispatch(setTo(index+1))} className='pr w5 czi' style={{ height: '200px' }}><img className='pa ofcvr' src={element} alt='' /></div>
                                 <div className='theme dfjcac gap1'>
                                     <TfiLocationPin />
                                     <div className={`${languageData['font-family'][1]}`}>{languageData['sectors']['civil and industrial project texts'][4][index]}</div>

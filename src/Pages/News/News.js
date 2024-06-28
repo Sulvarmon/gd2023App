@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect } from 'react'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer';
 import Title from '../../Components/Title/Title';
@@ -7,21 +7,23 @@ import news0 from '../../Images/news0.jpg'
 import news1 from '../../Images/news1.jpg'
 import news2 from '../../Images/news2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
-import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
+import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages'
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../Slices/Visits';
 
-export default function News({ languageData, changeLanguage,visits }) {
+export default function News({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'], languageData['page titles']['news']]
     const links = ['/', '/News'];
+    const dispatch = useDispatch()
     const images = [news0, news1, news2]
-    const [imageIndex, setImageIndex] = useState(-1)
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['news']
-        visits('news')
-    }, [languageData,visits])
+        dispatch(pageVisit('news'))  
+    }, [languageData,dispatch])
     return (
         <>
-            <ExpandMultipleImages images={images} imageIndex={imageIndex} setImageIndex={setImageIndex} />
+            <ExpandMultipleImages images={images} />
             <Header languageData={languageData} changeLanguage={changeLanguage} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
@@ -37,7 +39,6 @@ export default function News({ languageData, changeLanguage,visits }) {
                             dottexts={languageData['news page']['dot texts']}
                             underDottexts={languageData['news page']['under dot texts'][index]}
                             maintext={languageData['news page']['main texts'][index]}
-                            setImageIndex={setImageIndex}
                         />
                         {index !== images.length - 1 && <hr className='mt5 mb5' />}
                     </div>

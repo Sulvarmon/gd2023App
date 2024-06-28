@@ -6,18 +6,21 @@ import OneProject from '../../../Components/OneProject/OneProject';
 import proj0 from '../../../Images/proj4.jpg'
 import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThumbnail';
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../../Slices/Visits';
 
-export default function Rehabilitation({ languageData, changeLanguage,visits }) {
+export default function Rehabilitation({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'],
     languageData['page titles']['projects'],
     languageData['page titles']['Rehabilitation'],
     ]
+    const dispatch = useDispatch()
     const links = ['/', '/Projects', '/Rehabilitation']; 
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['news']
-        visits('rehabilitation')
-    }, [languageData,visits])
+        dispatch(pageVisit('rehabilitation')) 
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

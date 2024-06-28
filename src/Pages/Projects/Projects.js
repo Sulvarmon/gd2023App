@@ -10,16 +10,19 @@ import projImages6 from '../../Images/proj0.jpg'
 import Title from '../../Components/Title/Title';
 import Grid from '../../Components/Grid/Grid';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
+import { useDispatch } from 'react-redux';
+import { pageVisit } from '../../Slices/Visits';
 
-export default function Projects({ languageData, changeLanguage,visits }) {
+export default function Projects({ languageData, changeLanguage }) {
     const pages = [languageData['page titles']['home'],languageData['page titles']['projects']]
     const links = ['/','/Projects'];
     const images = [projImages1, projImages2, projImages3, projImages4, projImages5, projImages6]
+    const dispatch = useDispatch()
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['projects']
-        visits('projectsPg')
-    }, [languageData,visits])
+        dispatch(pageVisit('projectsPg'))  
+    }, [languageData,dispatch])
     return (
         <>
             <Header languageData={languageData} changeLanguage={changeLanguage} />

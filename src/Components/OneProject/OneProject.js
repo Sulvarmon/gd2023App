@@ -2,12 +2,15 @@ import {React, useState, useEffect} from 'react'
 import styles from './OneProject.module.css'
 import ExpandSingleImage from '../ExpandSingleImage/ExpandSingleImage'
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setToOposite } from '../../Slices/ExpandSingleImage';
+import { setTo } from '../../Slices/ExpandMultipleImage';
 
-export default function OneProject({ font0, font1, img, title, dottexts, underDottexts, maintext, page,setImageIndex, index }) {
-    const [showDarkbg, setShowDarkbg] = useState(false)
+export default function OneProject({ font0, font1, img, title, dottexts, underDottexts, maintext, page, index }) {
     const { ref: ref1, inView: inView1 } = useInView({
         threshold: 0.5,
     });
+    const dispatch = useDispatch()
     const [visibleItems1, setVisibleItems1] = useState([]);
     useEffect(() => {
         if (inView1) {
@@ -20,15 +23,15 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
     }, [inView1, dottexts]);
     return (
         <div className='dfcjcac gap3'>
-            <ExpandSingleImage image={img} showDarkbg={showDarkbg} setShowDarkbg={setShowDarkbg} />
+            <ExpandSingleImage image={img} />
             <div className={`theme ${font0}`}>{title}</div>
             <div className={`${styles.grid} gap4`}>
             {page === 'project' ? (
-                <div onClick={() => setShowDarkbg(!showDarkbg)} className='pr czi' style={{ height: '300px' }}>
+                <div onClick={() => dispatch(setToOposite())} className='pr czi' style={{ height: '300px' }}>
                     <img className='pa ofcnt' src={img} alt='' />
                 </div>
             ) : (
-                <div onClick={a=>setImageIndex(index)} className='pr czi' style={{ height: '300px' }}>
+                <div onClick={a=>dispatch(setTo(index))} className='pr czi' style={{ height: '300px' }}>
                     <img className='pa ofcnt' src={img} alt='' />
                 </div>
             )}

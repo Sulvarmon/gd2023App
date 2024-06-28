@@ -8,12 +8,15 @@ import mr2 from '../../Images/mr2.jpg'
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages';
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setTo } from '../../Slices/ExpandMultipleImage';
+import { pageVisit } from '../../Slices/Visits';
 
-export default function MarineWorks({ languageData, changeLanguage,visits }) {
+export default function MarineWorks({ languageData, changeLanguage }) {
     const images = [mr0,mr1,mr2]
     const pages = [languageData['page titles']['home'],languageData['page titles']['marine-works']]
     const links = ['/','/Marine-Works'];
-    const [imageIndex, setImageIndex] = useState(-1)
+    const dispatch = useDispatch()
     const { ref: ref1, inView: inView1 } = useInView({
         threshold: 0.5,
     });
@@ -30,20 +33,20 @@ export default function MarineWorks({ languageData, changeLanguage,visits }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['marine-works']
-        visits('marine-works')
-    }, [languageData,visits])
+        dispatch(pageVisit('marine-works'))  
+    }, [languageData,dispatch])
     return (
         <>
-        <ExpandMultipleImages images={images} imageIndex={imageIndex} setImageIndex={setImageIndex} />
+        <ExpandMultipleImages images={images} />
             <Header languageData={languageData} changeLanguage={changeLanguage} />
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['marine-works']} />
                 <div className='dfcjcac gap2'>
-                    <div onClick={a=>setImageIndex(0)} className='pr w5 pb50 czi'><img className='pa ofcnt' src={mr0} alt='' /></div>
+                    <div onClick={a=>dispatch(setTo(0))} className='pr w5 pb50 czi'><img className='pa ofcnt' src={mr0} alt='' /></div>
                     <div className='dfjcac w5 gap2'>
-                        <div onClick={a=>setImageIndex(1)} className='pr w2 pb50 czi'><img className='pa ofcnt' src={mr1} alt='' /></div>
-                        <div onClick={a=>setImageIndex(2)} className='pr w2 pb50 czi'><img className='pa ofcnt' src={mr2} alt='' /></div>
+                        <div onClick={a=>dispatch(setTo(1))} className='pr w2 pb50 czi'><img className='pa ofcnt' src={mr1} alt='' /></div>
+                        <div onClick={a=>dispatch(setTo(2))} className='pr w2 pb50 czi'><img className='pa ofcnt' src={mr2} alt='' /></div>
                     </div>
                 </div>
                 <hr className='mt5 mb5'/>
