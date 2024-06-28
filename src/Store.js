@@ -6,6 +6,7 @@ import search from './Slices/Search'
 import visits from './Slices/Visits'
 import languageData from './Slices/LanguageData'
 import themeCookie from './Slices/ThemeCookie'
+import languageCookie from './Slices/LanguageCookie'
 
 export default configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export default configureStore({
     language: language,
     visits: visits,
     languageData: languageData,
-    themeCookie: themeCookie
+    themeCookie: themeCookie,
+    languageCookie: languageCookie
   }
 })

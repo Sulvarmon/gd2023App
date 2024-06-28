@@ -22,22 +22,22 @@ export default function Theme() {
   const whiteTheme = function () {
     const updatedTheme = 'white';
     setTheme(updatedTheme);
-    Cookies.set('theme', updatedTheme, {
+    Cookies.set('themeCookie', updatedTheme, {
       expires: 3650,
       path: '/',
       sameSite: 'None',
-      secure: true // Secure is required if SameSite=None
+      secure: true 
     });
   }
 
   const darkTheme = function () {
     const updatedTheme = 'dark';
     setTheme(updatedTheme);
-    Cookies.set('theme', updatedTheme, {
+    Cookies.set('themeCookie', updatedTheme, {
       expires: 3650,
       path: '/',
       sameSite: 'None',
-      secure: true // Secure is required if SameSite=None
+      secure: true 
     });
   }
 

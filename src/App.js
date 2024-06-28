@@ -19,6 +19,7 @@ import Rehabilitation from './Pages/Project/Rehabilitation/Rehabilitation';
 import PayTerminal from './Pages/Project/PayTerminal/PayTerminal';
 import { useDispatch, useSelector } from 'react-redux';
 import { data } from './Slices/LanguageData';
+import Cookies from 'js-cookie';
 
 function App() {
   const language = useSelector((state) => state.language.value);
@@ -30,6 +31,8 @@ function App() {
   if (sessionStorage.getItem('pageVisits') === null) {
     sessionStorage.setItem('pageVisits', JSON.stringify([]));
   }
+
+  console.log(Cookies.get('languageReact'))
 
   useEffect(() => {
     const visitsUpdate = async () => {

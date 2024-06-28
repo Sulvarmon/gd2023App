@@ -7,7 +7,7 @@ import { GoGear } from "react-icons/go";
 import { SlArrowDown } from "react-icons/sl";
 import Language from './Language'
 import Theme from './Theme';
-// import SetCookies from './SetCookies';
+import SetCookies from './SetCookies';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToOposite } from '../../Slices/Search';
 
@@ -68,7 +68,7 @@ export default function LargeMenu() {
             <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
               <Language />
               <Theme />
-              {/* <SetCookies /> */}
+              <SetCookies />
             </div>
           </div>
 

@@ -10,7 +10,7 @@ import { SlArrowDown } from "react-icons/sl";
 
 import Language from '../LargeMenu/Language';
 import Theme from '../LargeMenu/Theme';
-// import SetCookies from '../LargeMenu/SetCookies';
+import SetCookies from '../LargeMenu/SetCookies';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToOposite } from '../../Slices/Search';
 
@@ -72,7 +72,7 @@ export default function SmallMenu() {
           <NavLink to={'/Contacts'} className={`theme usn ${languageData['font-family'][0]}`}>{languageData['contacts']}</NavLink>
           <Language />
           <Theme />
-          {/* <SetCookies /> */}
+          <SetCookies />
         </div>
       </div>
     </div>
