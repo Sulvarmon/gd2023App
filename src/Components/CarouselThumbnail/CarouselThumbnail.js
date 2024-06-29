@@ -17,21 +17,21 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
   const [rightArrowPosition, setrightArrowPosition] = useState(0);
   const [leftArrowPosition, setleftArrowPosition] = useState(0);
   const [rightArrowColor, setRightArrowColor] = useState('#fff');
-  const [leftArrowColor, setLeftArrowColor] = useState('#ccc');
+  const [leftArrowColor, setLeftArrowColor] = useState('#383838');
 
   useEffect(() => {
     if (type === 'without texts') {
       setTransition(false);
       setCurrentSlide(imageIndex);
       if (imageIndex !== 0 || imageIndex !== slidesNumber) {
-        setRightArrowColor('fff')
-        setLeftArrowColor('fff')
+        setRightArrowColor('#fff')
+        setLeftArrowColor('#fff')
       }
       if (imageIndex === 0) {
-        setLeftArrowColor('ccc')
+        setLeftArrowColor('#383838')
       }
       if (imageIndex === slidesNumber) {
-        setRightArrowColor('ccc')
+        setRightArrowColor('#383838')
       }
       setTimeout(() => {
         setTransition(true);
@@ -79,7 +79,7 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
       }, 100);
     }
     if (currentSlide <= 1) {
-      setLeftArrowColor('#ccc')
+      setLeftArrowColor('#383838')
     } else {
       setLeftArrowColor('#fff')
     }
@@ -95,7 +95,7 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
       }, 100);
     }
     if (currentSlide >= slidesNumber - 1) {
-      setRightArrowColor('#ccc')
+      setRightArrowColor('#383838')
     } else {
       setRightArrowColor('#fff')
     }
@@ -104,15 +104,15 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
   let thumbnailClicks = (index) => {
     setCurrentSlide(index)
     if (index !== 0 || index !== slidesNumber) {
-      setRightArrowColor('fff')
-      setLeftArrowColor('fff')
+      setRightArrowColor('#fff')
+      setLeftArrowColor('#fff')
     }
     if (index === 0) {
-      setLeftArrowColor('ccc')
+      setLeftArrowColor('#383838')
     }
 
     if (index === slidesNumber) {
-      setRightArrowColor('ccc')
+      setRightArrowColor('#383838')
     }
   }
 

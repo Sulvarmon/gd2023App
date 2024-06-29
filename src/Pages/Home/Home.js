@@ -16,10 +16,9 @@ import about from '../../Images/about.jpg'
 import CarouselThumbnail from '../../Components/CarouselThumbnail/CarouselThumbnail';
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
-import ExpandSingleImage from '../../Components/ExpandSingleImage/ExpandSingleImage';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToOposite } from '../../Slices/ExpandSingleImage';
 import { pageVisit } from '../../Slices/Visits';
+import ModalImage from 'react-modal-image';
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -29,14 +28,13 @@ export default function Home() {
         document.title = languageData['page titles']['home']
         dispatch(pageVisit('home'))
     }, [languageData, dispatch]);
-    
+
     const images = [grdiImage1, grdiImage2, grdiImage3]
     const projImages = [projImages1, projImages2, projImages3, projImages4, projImages5]
 
     return (
         <>
-            <ExpandSingleImage image={about} />
-            <Header/>
+            <Header />
             <CarouselOpacity text={languageData['gd2023']} font={languageData['font-family'][0]} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['news']} />
@@ -65,9 +63,7 @@ export default function Home() {
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
-                    <div onClick={() => { dispatch(setToOposite()) }} className='pr w3 czi' style={{ paddingBottom: '45%' }}>
-                        <img className='pa ofcvr' src={about} alt='' />
-                    </div>
+                    <div className='w2 ma'><ModalImage small={about} large={about} lt=''/></div>
                     <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
                     <Link to='/About-Us' className={`mainBtn ${languageData['font-family'][0]}`}>{languageData['fully']}</Link>
                 </div>

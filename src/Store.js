@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import expandSingleImage from './Slices/ExpandSingleImage'
 import expandMultipleImage from './Slices/ExpandMultipleImage'
 import language from './Slices/Language'
 import search from './Slices/Search'
@@ -12,7 +11,6 @@ import theme from './Slices/Theme'
 export default configureStore({
   reducer: {
     languageData: languageData,
-    expandSingleImage: expandSingleImage,
     expandMultipleImage: expandMultipleImage,
     search: search,
     visits: visits,    
