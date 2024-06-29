@@ -1,0 +1,22 @@
+.button {
+    z-index: 10;
+}
+
+.title,
+.text {
+    text-shadow: 0 0 10px #fff;
+    z-index: 10;
+    color: #fff;
+    user-select: none;
+}
+
+.carousel {
+    height: 500px;
+    overflow-x: hidden;
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        width: var(--width768);
+    }
+}

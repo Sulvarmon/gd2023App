@@ -19,7 +19,7 @@ export default function ContainerTerminal() {
     const links = ['/', '/Projects', '/Container-Terminal']; 
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = languageData['news']
+        document.title = languageData['page titles']['container-terminal']
         dispatch(pageVisit('container-terminal')) 
     }, [languageData,dispatch])
     return (

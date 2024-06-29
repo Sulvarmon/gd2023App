@@ -19,7 +19,7 @@ export default function Apartment() {
     const links = ['/', '/Projects', '/Poti-Apartment'];
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = languageData['news']
+        document.title = languageData['page titles']['poti-apartment']
         dispatch(pageVisit('poti-apartment'))        
     }, [languageData,dispatch])
     return (

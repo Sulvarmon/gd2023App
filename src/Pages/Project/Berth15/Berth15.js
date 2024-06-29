@@ -19,7 +19,7 @@ export default function Berth15() {
     const links = ['/', '/Projects', '/Berth-15']; 
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = languageData['news']
+        document.title = languageData['page titles']['berth-15']
         dispatch(pageVisit('berth-15'))
     }, [languageData,dispatch])
     return (

@@ -19,7 +19,7 @@ export default function Rehabilitation() {
     const links = ['/', '/Projects', '/Rehabilitation']; 
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = languageData['news']
+        document.title = languageData['page titles']['Rehabilitation']
         dispatch(pageVisit('rehabilitation')) 
     }, [languageData,dispatch])
     return (

@@ -19,7 +19,7 @@ export default function PayTerminal() {
     const links = ['/', '/Projects', '/Pay-Terminal']; 
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = languageData['news']
+        document.title = languageData['page titles']['pay-terminal']
         dispatch(pageVisit('pay-terminal'))
     }, [languageData,dispatch])
     return (
