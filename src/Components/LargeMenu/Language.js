@@ -18,6 +18,7 @@ export default function Language() {
       setShowLanguage(false)
     });
   }, []);
+
   let langFlag = (flag) => {
     let returnFlag
     switch (languageData[flag]) {
@@ -30,7 +31,6 @@ export default function Language() {
       case 'rus-flag':
         returnFlag = flag3
         break;
-
       default:
         returnFlag = flag1
         break;
@@ -44,7 +44,6 @@ export default function Language() {
       case 'анг':
         dispatch(change('eng'))
         if(languageCookie){
-          console.log(1)
           Cookies.set('languageReact', 'eng', {
             expires: 3650,
             path: '/',
@@ -52,7 +51,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(2)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',
@@ -64,7 +62,6 @@ export default function Language() {
       case 'гру':
         dispatch(change('geo'))
         if(languageCookie){
-          console.log(3)
           Cookies.set('languageReact', 'geo', {
             expires: 3650,
             path: '/',
@@ -72,7 +69,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(4)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',
@@ -84,7 +80,6 @@ export default function Language() {
       case 'რუს':
         dispatch(change('rus'))
         if(languageCookie){
-          console.log(5)
           Cookies.set('languageReact', 'rus', {
             expires: 3650,
             path: '/',
@@ -92,7 +87,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(6)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',
@@ -111,7 +105,6 @@ export default function Language() {
       case 'анг':
         dispatch(change('eng'))
         if(languageCookie){
-          console.log(7)
           Cookies.set('languageReact', 'eng', {
             expires: 3650,
             path: '/',
@@ -119,7 +112,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(8)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',
@@ -131,7 +123,6 @@ export default function Language() {
       case 'гру':
         dispatch(change('geo'))
         if(languageCookie){
-          console.log(9)
           Cookies.set('languageReact', 'geo', {
             expires: 3650,
             path: '/',
@@ -139,7 +130,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(10)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',
@@ -151,7 +141,6 @@ export default function Language() {
       case 'რუს':
         dispatch(change('rus'))
         if(languageCookie){
-          console.log(11)
           Cookies.set('languageReact', 'rus', {
             expires: 3650,
             path: '/',
@@ -159,7 +148,6 @@ export default function Language() {
             secure: true
           });
         } else{
-          console.log(12)
           Cookies.remove('languageReact', {
             path: '/',
             sameSite: 'None',

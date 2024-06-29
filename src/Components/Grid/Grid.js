@@ -5,9 +5,7 @@ import { useInView } from 'react-intersection-observer';
 
 export default function Grid({ fontC, fontN, images, title, date, text, btnText, link }) {
 
-    const { ref: ref1, inView: inView1 } = useInView({
-        threshold: 0.3,
-    });
+    const { ref: ref1, inView: inView1 } = useInView({});
     const [visibleItems1, setVisibleItems1] = useState([]);
     useEffect(() => {
         if (inView1) {

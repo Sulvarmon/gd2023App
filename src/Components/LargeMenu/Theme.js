@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import styles from './LargeMenu.module.css'
 import { SlArrowDown } from "react-icons/sl";
 import Cookies from 'js-cookie';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { change } from '../../Slices/Theme';
 
 export default function Theme() {
   const languageData = useSelector(state => state.languageData.value)
   const [showTheme, setShowTheme] = useState(false);
-  const getInitialCookie = () => {
-    return Cookies.get('theme') || 'white';
-  };
-
-  const [theme, setTheme] = useState(getInitialCookie);
+  const themeCookie= useSelector(state => state.themeCookie.value)
+  const theme= useSelector(state => state.theme.value)
+  const dispatch = useDispatch()
   
   useEffect(() => {
     window.addEventListener('click', () => {
@@ -20,25 +19,40 @@ export default function Theme() {
   }, []);
 
   const whiteTheme = function () {
-    const updatedTheme = 'white';
-    setTheme(updatedTheme);
-    Cookies.set('themeCookie', updatedTheme, {
-      expires: 3650,
-      path: '/',
-      sameSite: 'None',
-      secure: true 
-    });
+    dispatch(change('white'))
+    if (themeCookie) {
+      Cookies.set('themeCookie', 'white', {
+        expires: 3650,
+        path: '/',
+        sameSite: 'None',
+        secure: true 
+      });
+    }else{
+      Cookies.remove('themeCookie', {
+        path: '/',
+        sameSite: 'None',
+        secure: true
+      });
+    }
+    
   }
 
   const darkTheme = function () {
-    const updatedTheme = 'dark';
-    setTheme(updatedTheme);
-    Cookies.set('themeCookie', updatedTheme, {
-      expires: 3650,
-      path: '/',
-      sameSite: 'None',
-      secure: true 
-    });
+    dispatch(change('dark'))
+    if (themeCookie) {
+      Cookies.set('themeCookie', 'dark', {
+        expires: 3650,
+        path: '/',
+        sameSite: 'None',
+        secure: true 
+      });
+    }else{
+      Cookies.remove('themeCookie', {
+        path: '/',
+        sameSite: 'None',
+        secure: true
+      });
+    }
   }
 
   switch (theme) {

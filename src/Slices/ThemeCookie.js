@@ -4,19 +4,19 @@ import Cookies from 'js-cookie';
 export const ThemeCookie = createSlice({
     name: 'themeCookie',
     initialState: {
-        value: Cookies.get('themeCookie') || false
+        value: !!Cookies.get('themeReact')
     },
     reducers: {
-        setToFalse: state => {
+        setToFalseT: state => {
             state.value = false
         },
-        setToOposite: state => {
+        setToOpositeT: state => {
             state.value = !state.value
         },
         
     }
 })
 
-export const {  setToFalse, setToOposite } = ThemeCookie.actions
+export const {  setToFalseT, setToOpositeT } = ThemeCookie.actions
 
 export default ThemeCookie.reducer

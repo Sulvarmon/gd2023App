@@ -7,16 +7,18 @@ import visits from './Slices/Visits'
 import languageData from './Slices/LanguageData'
 import themeCookie from './Slices/ThemeCookie'
 import languageCookie from './Slices/LanguageCookie'
+import theme from './Slices/Theme'
 
 export default configureStore({
   reducer: {
+    languageData: languageData,
     expandSingleImage: expandSingleImage,
     expandMultipleImage: expandMultipleImage,
     search: search,
+    visits: visits,    
     language: language,
-    visits: visits,
-    languageData: languageData,
+    languageCookie: languageCookie,
+    theme: theme,
     themeCookie: themeCookie,
-    languageCookie: languageCookie
   }
 })

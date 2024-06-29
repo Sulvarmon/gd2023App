@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { SlArrowDown } from "react-icons/sl";
 import styles from './LargeMenu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToOposite } from '../../Slices/ThemeCookie';
+import { setToOpositeT } from '../../Slices/ThemeCookie';
 import Cookies from 'js-cookie';
 import { setToOpositeL } from '../../Slices/LanguageCookie';
 
 export default function SetCookies() {
   const languageData = useSelector(state => state.languageData.value);
+  const theme = useSelector(state => state.theme.value);
   const themeCookie = useSelector(state => state.themeCookie.value);
   const language = useSelector(state => state.language.value);
   const languageCookie = useSelector(state => state.languageCookie.value);
@@ -26,7 +27,7 @@ export default function SetCookies() {
   }, [languageCookie]);
 
   const changeThemeCookie = () => {
-    dispatch(setToOposite());
+    dispatch(setToOpositeT());
   };
 
   const changeLanguageCookie = () => {
@@ -35,20 +36,20 @@ export default function SetCookies() {
 
   useEffect(() => {
     if (localThemeCookie) {
-      Cookies.set('themeCookie', true, {
+      Cookies.set('themeReact', theme, {
         expires: 3650,
         path: '/',
         sameSite: 'None',
         secure: true
       });
     } else {
-      Cookies.remove('themeCookie', {
+      Cookies.remove('themeReact', {
         path: '/',
         sameSite: 'None',
         secure: true
       });
     }
-  }, [localThemeCookie]);
+  }, [localThemeCookie,theme]);
 
   useEffect(() => {
     if (localLanguageCookie) {

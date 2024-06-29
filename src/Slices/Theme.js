@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie';
 
-export const Language = createSlice({
-    name: 'language',
+export const Theme = createSlice({
+    name: 'theme',
     initialState: {
-        value: Cookies.get('languageReact') || 'geo'
+        value: Cookies.get('themeReact') || 'white'
     },
     reducers: {
         change: (state, action) => {
@@ -13,6 +13,6 @@ export const Language = createSlice({
     }
 })
 
-export const {  change } = Language.actions
+export const {  change } = Theme.actions
 
-export default Language.reducer
+export default Theme.reducer

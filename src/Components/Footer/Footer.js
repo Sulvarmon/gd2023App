@@ -15,10 +15,10 @@ export default function Footer({rights,font}) {
     <div className={`dfcjcac gap3 p2 ${styles.footer}`} >
         <div className='dfjcac gap2'><FaPhoneVolume className='colorRed' /><span className='theme capitalizeText'>595 00 86 85</span></div>
         <div className='dfjcac gap1'>
-          <a href='https://www.facebook.com/' target='__blank' className='theme iconView iconHover p2'><FaFacebookF /></a>
-          <Link to='/Contacts' className='theme iconView iconHover p2'><IoIosMail /></Link>
+          <a href='https://www.facebook.com/' target='__blank' className='theme iconView iconHover'><FaFacebookF size={20} /></a>
+          <Link to='/Contacts' className='theme iconView iconHover'><IoIosMail size={20} /></Link>
           </div>
-        <div className={`theme ${font} fs1`}><LiaCopyrightSolid /> {rights}</div>
+        <div className={`theme tac ${font} fs1`}><LiaCopyrightSolid /> {rights}</div>
     </div>
   )
 }
