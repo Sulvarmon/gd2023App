@@ -3,12 +3,17 @@ import styles from './CarouselThumbnail.module.css';
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 
 
-export default function CarouselThumbnail({ type, images, titles, texts, btnText, fontC, fontN, links, imageIndex }) {
+export default function CarouselThumbnail({ type, images, titles, texts, links, imageIndex }) {
+  const languageData = useSelector(state => state.languageData.value);
+  const fontC = languageData['font-family'][0]
+  const btnText = languageData['fully']
+  const fontN = languageData['font-family'][1]
   const [transition, setTransition] = useState(false);
   const elementRef = useRef(null);
   const slidesNumber = images.length - 1
@@ -16,22 +21,22 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
   const [currentSlide, setCurrentSlide] = useState(0);
   const [rightArrowPosition, setrightArrowPosition] = useState(0);
   const [leftArrowPosition, setleftArrowPosition] = useState(0);
-  const [rightArrowColor, setRightArrowColor] = useState('#fff');
-  const [leftArrowColor, setLeftArrowColor] = useState('#383838');
+  const [rightArrowColor, setRightArrowColor] = useState('rgba(255,255,255,.8)');
+  const [leftArrowColor, setLeftArrowColor] = useState('rgba(56,56,56,.5)');
 
   useEffect(() => {
     if (type === 'without texts') {
       setTransition(false);
       setCurrentSlide(imageIndex);
       if (imageIndex !== 0 || imageIndex !== slidesNumber) {
-        setRightArrowColor('#fff')
-        setLeftArrowColor('#fff')
+        setRightArrowColor('rgba(255,255,255,.8)')
+        setLeftArrowColor('rgba(255,255,255,.8)')
       }
       if (imageIndex === 0) {
-        setLeftArrowColor('#383838')
+        setLeftArrowColor('rgba(56,56,56,.5)')
       }
       if (imageIndex === slidesNumber) {
-        setRightArrowColor('#383838')
+        setRightArrowColor('rgba(56,56,56,.5)')
       }
       setTimeout(() => {
         setTransition(true);
@@ -70,7 +75,7 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
   }, []);
 
   let slideLeft = () => {
-    setRightArrowColor('#fff')
+    setRightArrowColor('rgba(255,255,255,.8)')
     if (currentSlide !== 0) {
       setCurrentSlide(currentSlide - 1)
       setleftArrowPosition(10)
@@ -79,14 +84,14 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
       }, 100);
     }
     if (currentSlide <= 1) {
-      setLeftArrowColor('#383838')
+      setLeftArrowColor('rgba(56,56,56,.5)')
     } else {
-      setLeftArrowColor('#fff')
+      setLeftArrowColor('rgba(255,255,255,.8)')
     }
   }
 
   let slideRight = () => {
-    setLeftArrowColor('#fff')
+    setLeftArrowColor('rgba(255,255,255,.8)')
     if (currentSlide !== slidesNumber) {
       setCurrentSlide(currentSlide + 1)
       setrightArrowPosition(10)
@@ -95,24 +100,24 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
       }, 100);
     }
     if (currentSlide >= slidesNumber - 1) {
-      setRightArrowColor('#383838')
+      setRightArrowColor('rgba(56,56,56,.5)')
     } else {
-      setRightArrowColor('#fff')
+      setRightArrowColor('rgba(255,255,255,.8)')
     }
   }
 
   let thumbnailClicks = (index) => {
     setCurrentSlide(index)
     if (index !== 0 || index !== slidesNumber) {
-      setRightArrowColor('#fff')
-      setLeftArrowColor('#fff')
+      setRightArrowColor('rgba(255,255,255,.8)')
+      setLeftArrowColor('rgba(255,255,255,.8)')
     }
     if (index === 0) {
-      setLeftArrowColor('#383838')
+      setLeftArrowColor('rgba(56,56,56,.5)')
     }
 
     if (index === slidesNumber) {
-      setRightArrowColor('#383838')
+      setRightArrowColor('rgba(56,56,56,.5)')
     }
   }
 
@@ -133,8 +138,8 @@ export default function CarouselThumbnail({ type, images, titles, texts, btnText
           {type === 'with texts' ? (
             <>
               <div className='w3 dfcjcac gap2 mt5'>
-                <div className={`${fontC} ${styles.title}`}>{titles[index]}</div>
-                <div className={`${fontN} ${styles.text}`}>{texts[index]}</div>
+                <div className={`${fontC} ${styles.title} p2`}>{titles[index]}</div>
+                <div className={`${fontN} ${styles.text} p2`}>{texts[index]}</div>
               </div>
               <Link to={links[index]} className={`mainBtn ${fontC} ${styles.button} mb2`}>{btnText}</Link>
             </>

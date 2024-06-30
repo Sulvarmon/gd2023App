@@ -11,84 +11,29 @@ import projImages2 from '../../Images/proj1.jpg';
 import projImages3 from '../../Images/proj2.jpg';
 import projImages4 from '../../Images/proj3.jpg';
 import projImages5 from '../../Images/proj4.jpg';
+import projImages6 from '../../Images/proj5.jpg';
 import about from '../../Images/about.jpg';
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 import ModalImage from 'react-modal-image';
-import "react-image-gallery/styles/css/image-gallery.css";
-import ImageGallery from "react-image-gallery";
+import CarouselThumbnail from '../../Components/CarouselThumbnail/CarouselThumbnail';
+// import styles from './Home.module.css';
 
 export default function Home() {
     const languageData = useSelector(state => state.languageData.value);
-    const imagess = [
-        {
-            original: projImages1,
-            thumbnail: projImages1,
-            originalHeight: '300px',
-            thumbnailHeight: '50px',
-            thumbnailLabel: languageData['carousel']['home page titles'][0],            
-            description: languageData['carousel']['home page texts'][0], 
-            link: '/Poti-Apartment'           
-        },
-        {
-            original: projImages2,
-            thumbnail: projImages2,
-            originalHeight: '300px',
-            thumbnailHeight: '50px',
-            thumbnailLabel: languageData['carousel']['home page titles'][1],
-            description: languageData['carousel']['home page texts'][1], 
-            link: '/Berth-7' 
-        },
-        {
-            original: projImages3,
-            thumbnail: projImages3,
-            originalHeight: '300px',
-            thumbnailHeight: '50px',
-            thumbnailLabel: languageData['carousel']['home page titles'][2],
-            description: languageData['carousel']['home page texts'][2], 
-            link: '/Berth-15' 
-        },
-        {
-            original: projImages4,
-            thumbnail: projImages4,
-            originalHeight: '300px',
-            thumbnailHeight: '50px',
-            thumbnailLabel: languageData['carousel']['home page titles'][3],
-            description: languageData['carousel']['home page texts'][3], 
-            link: '/Container-Terminal' 
-        },
-        {
-            original: projImages5,
-            thumbnail: projImages5,
-            originalHeight: '300px',
-            thumbnailHeight: '50px',
-            thumbnailLabel: languageData['carousel']['home page titles'][4],
-            description: languageData['carousel']['home page texts'][4], 
-            link: '/Rehabilitation' 
-        },
-    ];
 
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         document.title = languageData['page titles']['home'];
         dispatch(pageVisit('home'));
     }, [languageData, dispatch]);
 
     const images = [grdiImage1, grdiImage2, grdiImage3];
-    const projImages = [projImages1, projImages2, projImages3, projImages4, projImages5];
-
-    const renderGalleryItem = (item) => (
-        <Link to={item.link}>
-            <img src={item.original} alt={item.description} style={{height: item.originalHeight}} />
-            <div className="image-gallery-description">
-                <span>{item.description}</span>
-            </div>
-        </Link>
-    );
+    const projImages = [projImages2, projImages3, projImages4, projImages5, projImages6, projImages1,];
 
     return (
         <>
@@ -108,22 +53,13 @@ export default function Home() {
                 />
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['important projects']} />
-                <ImageGallery 
-                    items={imagess} 
-                    showPlayButton={false}  
-                    showBullets={true}
-                    renderItem={renderGalleryItem}
-                />
-                 {/* <CarouselThumbnail
+                <CarouselThumbnail
                     type={'with texts'}
                     images={projImages}
-                    titles={languageData['carousel']['home page titles']}
-                    texts={languageData['carousel']['home page texts']}
-                    btnText={languageData['fully']}
-                    fontC={languageData['font-family'][0]}
-                    fontN={languageData['font-family'][1]}
-                    links={['/Pay-Terminal', '/Berth-7', '/Berth-15', '/Container-Terminal', '/Rehabilitation']}
-                /> */}
+                    titles={languageData['projects titles']}
+                    texts={languageData['projects texts']}
+                    links={languageData['links']}
+                />
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>

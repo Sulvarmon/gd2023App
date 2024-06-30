@@ -44,10 +44,11 @@
     text-shadow: 0 0 10px #fff;
     z-index: 10;
     color: #fff;
+    background-color: rgba(0, 0, 0, .5);
     user-select: none;
 }
 
-.hiddenRightArrow{
+.hiddenRightArrow {
     position: absolute;
     right: 0;
     top: 0;
@@ -57,7 +58,7 @@
     background-color: transparent;
 }
 
-.hiddenLeftArrow{
+.hiddenLeftArrow {
     position: absolute;
     left: 0;
     top: 0;
@@ -67,12 +68,12 @@
     background-color: transparent;
 }
 
-.addTransition{
+.addTransition {
     transition: all .3s;
 }
 
 
-.thumbnails{
+.thumbnails {
     position: absolute;
     bottom: 100px;
     left: 0;
@@ -81,14 +82,22 @@
     z-index: 20;
 }
 
-.thumbnail{
-    width: 30px;
-    height: 30px;
+.thumbnail {
+    width: 20px;
+    height: 20px;
     background-color: #fff;
     border-radius: 50%;
 }
 
-.thumbnailYey{
+@media (min-width: 1024px) {
+    .thumbnail {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+.thumbnailYey {
     width: 10px;
     height: 10px;
     border-radius: 50%;
