@@ -616,23 +616,23 @@ button {
 }
 
 .cp {
-  cursor: pointer;
+  cursor: pointer!important;
 }
 
 .ca{
-  cursor: auto;
+  cursor: auto!important;
 }
 
 .cd {
-  cursor: default;
+  cursor: default!important;
 }
 
 .czi{
-  cursor: zoom-in;
+  cursor: zoom-in!important;
 }
 
 .czo{
-  cursor: zoom-out;
+  cursor: zoom-out!important;
 }
 
 .tac {

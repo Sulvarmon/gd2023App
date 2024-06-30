@@ -88,7 +88,8 @@ export default function Contacts() {
                     text: formData.message,
                     gRecaptchaResponse: recaptchaValue,
                     mailBtn: true
-                })
+                }),
+                timeout: 10000,
             });
             if (response.status === 200) {
                 setFormData({

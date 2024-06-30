@@ -42,6 +42,7 @@ function App() {
       sessionStorage.setItem('pageVisits', JSON.stringify(pageVisits));
       try {
         await axios({
+          
           method: 'post',
           url: 'http://localhost/gd2023-react-backend/pageVisits.php',
           headers: {
@@ -50,6 +51,7 @@ function App() {
           data: new URLSearchParams({
             page: visits,
           }),
+          timeout: 10000,
         });
       } catch (error) {
         console.error('Error:', error);
@@ -76,6 +78,7 @@ function App() {
             data: new URLSearchParams({
               ipVisits: 'ipVisits',
             }),
+            timeout: 10000,
           });
         } catch (error) {
           console.error('Error:', error);

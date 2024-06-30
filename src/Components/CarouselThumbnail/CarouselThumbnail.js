@@ -4,6 +4,7 @@ import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ModalImage from 'react-modal-image';
 
 
 
@@ -130,14 +131,15 @@ export default function CarouselThumbnail({ type, images, titles, texts, links, 
           style={{ left: `${(index - currentSlide) * width}px` }}
           className={`pa dfcjbac ${transition && styles.addTransition}`}
         >
-          <img           
-            className="pa ofcvr"
-            src={element}
+          <ModalImage 
+            small={element}
+            large={element}
             alt=''
+            className='pa ofcvr czi'
           />
           {type === 'with texts' ? (
             <>
-              <div className='w3 dfcjcac gap2 mt5'>
+              <div className={`w3 dfcjcac gap2 ${styles.textWrapper}`}>
                 <div className={`${fontC} ${styles.title} p2`}>{titles[index]}</div>
                 <div className={`${fontN} ${styles.text} p2`}>{texts[index]}</div>
               </div>
