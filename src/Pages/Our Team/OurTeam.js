@@ -36,7 +36,7 @@ export default function OurTeam() {
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['our team']} />
-                <div className='w3 ma'><ModalImage small={team} large={team} alt=""/></div>
+                <div className='w3 ma'><ModalImage className='czi' small={team} large={team} alt=""/></div>
                 {languageData['team texts'].map((element, index) => (
                     <p key={index} className={`theme ${languageData['font-family'][1]}`}>{languageData['team texts'][index]}</p>
                 ))}

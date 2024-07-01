@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setToOpositeT } from '../../Slices/ThemeCookie';
 import Cookies from 'js-cookie';
 import { setToOpositeL } from '../../Slices/LanguageCookie';
+import {setToFalseC, setToTrueC } from '../../Slices/ShowCookieContainer';
 
 export default function SetCookies() {
   const languageData = useSelector(state => state.languageData.value);
@@ -26,12 +27,27 @@ export default function SetCookies() {
     setLocalLanguageCookie(languageCookie);
   }, [languageCookie]);
 
+  useEffect(() => {
+    if (!localThemeCookie && !localLanguageCookie) {
+      dispatch(setToTrueC())
+      sessionStorage.setItem('showCookieContainer', 'show')
+    } else {
+      dispatch(setToFalseC())
+      sessionStorage.setItem('showCookieContainer', 'hide')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const changeThemeCookie = () => {
     dispatch(setToOpositeT());
+    dispatch(setToFalseC())
+    sessionStorage.setItem('showCookieContainer', 'hide')
   };
 
   const changeLanguageCookie = () => {
     dispatch(setToOpositeL());
+    dispatch(setToFalseC())
+    sessionStorage.setItem('showCookieContainer', 'hide')
   };
 
   useEffect(() => {
@@ -49,7 +65,7 @@ export default function SetCookies() {
         secure: true
       });
     }
-  }, [localThemeCookie,theme]);
+  }, [localThemeCookie, theme,]);
 
   useEffect(() => {
     if (localLanguageCookie) {

@@ -53,11 +53,12 @@ export default function AboutUs() {
 
     return (
         <>
+        
             <Header />
             <SmallNavigation pages={pages} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['about us']} />
-                <div className='w2 ma'><ModalImage small={about} large={about} alt=''/></div>
+                <div className='w2 ma'><ModalImage className='czi' small={about} large={about} alt=''/></div>
                 <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][0]}</p>
                 <ul ref={ref1} className='pl3 dfcjcas gap1'>
                     {languageData['about us texts'][1].map((element, index) => (

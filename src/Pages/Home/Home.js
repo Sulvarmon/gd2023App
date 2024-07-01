@@ -63,7 +63,7 @@ export default function Home() {
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
-                    <div className='w2 ma'><ModalImage small={about} large={about} lt='' /></div>
+                    <div className='w2 ma'><ModalImage className='czi' small={about} large={about} lt='' /></div>
                     <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
                     <Link to='/About-Us' className={`mainBtn ${languageData['font-family'][0]}`}>{languageData['fully']}</Link>
                 </div>

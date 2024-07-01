@@ -2,9 +2,13 @@ import { React } from 'react'
 import styles from './CookieMessage.module.css'
 import { IoCloseSharp } from "react-icons/io5";
 import { FaCookieBite } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
-export default function AboutCookies({ font0, font1, cookies, aboutCookies, setAboutCookies }) {
-
+export default function AboutCookies({aboutCookies, setAboutCookies }) {
+    const languageData = useSelector(state=> state.languageData.value)
+    const font0 = languageData['font-family'][0]
+    const font1 = languageData['font-family'][1]
+    const cookies = languageData['cookie']
     return (
         <div onClick={() => { setAboutCookies(false) }} className={`${styles.aboutCookies} ${!aboutCookies && 'dn'}`}>
             <div className={`dfjcac pa`}>

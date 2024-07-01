@@ -7,6 +7,7 @@ import languageData from './Slices/LanguageData'
 import themeCookie from './Slices/ThemeCookie'
 import languageCookie from './Slices/LanguageCookie'
 import theme from './Slices/Theme'
+import showCookieContainer from './Slices/ShowCookieContainer'
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     languageCookie: languageCookie,
     theme: theme,
     themeCookie: themeCookie,
+    showCookieContainer: showCookieContainer
   }
 })

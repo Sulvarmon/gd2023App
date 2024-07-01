@@ -18,12 +18,11 @@ export default function Contacts() {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = languageData['page titles']['contact'];
-        dispatch(pageVisit('contact'))  
-    }, [languageData,dispatch]);
+        dispatch(pageVisit('contact'))
+    }, [languageData, dispatch]);
 
     const pages = [languageData['page titles']['home'], languageData['page titles']['contact']]
     const links = ['/', '/Contacts'];
-    const iframeUrl = "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2934.157417028751!2d41.689499184256206!3d42.16609798746906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDLCsDA5JzU4LjAiTiA0McKwNDEnMjguMyJF!5e1!3m2!1sen!2sge!4v1716137383137!5m2!1sen!2sge";
     const font0 = languageData['font-family'][0];
     const font1 = languageData['font-family'][1];
     const [displayBlack, setDisplayBlack] = useState(false);
@@ -117,7 +116,7 @@ export default function Contacts() {
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5'>
                 <Title font={font0} text={languageData['page titles']['contact']} />
-                <div className='dfjcac gap5 fww'>
+                <div className='dfjcac gap5 fww mb5'>
                     <ContactInfo font0={font0} font1={font1} contactsPage={languageData['contacts page']} />
                     <div className='dfcjcac gap1 '>
                         <div className={`${font0} colorBlue mb3`}>{languageData['contacts page'][6]}</div>
@@ -164,7 +163,11 @@ export default function Contacts() {
                         </form>
                     </div>
                 </div>
-                <Map iframeUrl={iframeUrl} />
+                <Title font={font0} text={languageData['map']} />
+                <div style={{height:'500px'}}>
+                    <Map />
+                </div>
+
             </div>
             <Footer font={font0} rights={languageData['rights']} />
         </>

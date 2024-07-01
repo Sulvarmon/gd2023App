@@ -1,4 +1,4 @@
-.sideContacts{
+.sideContacts {
     display: none;
     position: fixed;
     top: 600px;
@@ -27,4 +27,16 @@
     to {
         left: 0px;
     }
+}
+
+.dark {
+    position: absolute;
+    left: 0;
+    bottom: 100px;
+    width: 100vw;
+    height: 500px;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }

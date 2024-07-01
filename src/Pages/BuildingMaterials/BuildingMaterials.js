@@ -25,7 +25,7 @@ export default function BuildingMaterials() {
             <div className='container background1 p2 br2 mt5'>
                 <Title font={languageData['font-family'][0]} text={languageData['page titles']['building-materials']} />
                 <div className='dfcjcac gap4'>
-                    <div className='w3'><ModalImage small={wm0} large={wm0} alt=''/></div>
+                    <div className='w3'><ModalImage className='czi' small={wm0} large={wm0} alt=''/></div>
                     {languageData['sectors']['building material texts'].map((element, index) => (
                         <p key={index} className={`theme ${languageData['font-family'][1]}`}>{element}</p>
                     ))}

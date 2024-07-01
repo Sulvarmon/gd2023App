@@ -15,7 +15,7 @@ export default function GridItem({ fontC, fontN, img, title, date, text, btnText
         <div className={`theme ${fontC}`}>{title}</div>
         <div className={`theme ${fontC} dfjcac gap1`}><FcCalendar/>{date}</div>
       </div>
-      <div className={`theme ${fontN} pl2`}>{text}</div>
+      <div className={`theme ${styles.text} ${fontN} pl2`}>{text}</div>
       <Link to={link} className={`${fontC} mainBtn ${styles.gridButton}`}>{btnText}</Link>
     </div>
   )

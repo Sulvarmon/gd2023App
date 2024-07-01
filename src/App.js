@@ -24,7 +24,6 @@ function App() {
   const language = useSelector((state) => state.language.value);
   const visits = useSelector((state) => state.visits.value);
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(true);
 
   if (sessionStorage.getItem('pageVisits') === null) {
@@ -42,7 +41,7 @@ function App() {
       sessionStorage.setItem('pageVisits', JSON.stringify(pageVisits));
       try {
         await axios({
-          
+
           method: 'post',
           url: 'http://localhost/gd2023-react-backend/pageVisits.php',
           headers: {
@@ -61,12 +60,16 @@ function App() {
     visitsUpdate();
   }, [visits]);
 
-  if (sessionStorage.getItem('ipVisits') === null) {
-    sessionStorage.setItem('ipVisits', 'true');
-  }
+  useEffect(() => {
+    if (!sessionStorage.getItem('ipVisits')) {
+      sessionStorage.setItem('ipVisits', 'a');
+    }
+  }, [])
 
   useEffect(() => {
-    if (sessionStorage.getItem('ipVisits') === 'true') {
+    console.log(sessionStorage.getItem('ipVisits'))
+    if (sessionStorage.getItem('ipVisits') === 'a') {
+      sessionStorage.setItem('ipVisits', 'b');
       const ipVisits = async () => {
         try {
           await axios({
@@ -84,7 +87,6 @@ function App() {
           console.error('Error:', error);
           console.log(error.response ? error.response.data : error.message);
         }
-        sessionStorage.setItem('ipVisits', 'false');
       };
       ipVisits();
     }

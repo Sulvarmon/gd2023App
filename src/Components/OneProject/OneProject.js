@@ -25,7 +25,7 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
             <div className={`theme ${font0}`}>{title}</div>
             <div className={`${styles.grid} gap4`}>
                 {page === 'project' ? (
-                    <div style={{ height: '300px' }}><ModalImage small={img} large={img} alt=''/></div>
+                    <div style={{ height: '300px' }}><ModalImage className='czi' small={img} large={img} alt=''/></div>
                 ) : (
                     <div onClick={a => dispatch(setTo(index))} className='pr czi' style={{ height: '300px' }}>
                         <img className='pa ofcnt' src={img} alt='' />
