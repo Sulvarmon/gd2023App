@@ -61,36 +61,43 @@ function App() {
   }, [visits]);
 
   useEffect(() => {
-    if (!sessionStorage.getItem('ipVisits')) {
-      sessionStorage.setItem('ipVisits', 'a');
-    }
-  }, [])
-
-  useEffect(() => {
+  if (!sessionStorage.getItem('ipVisits')) {
+    sessionStorage.setItem('ipVisits', 'a');
+  }
     console.log(sessionStorage.getItem('ipVisits'))
     if (sessionStorage.getItem('ipVisits') === 'a') {
       sessionStorage.setItem('ipVisits', 'b');
-      const ipVisits = async () => {
-        try {
-          await axios({
-            method: 'post',
-            url: 'http://localhost/gd2023-react-backend/ipVisits.php',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            data: new URLSearchParams({
-              ipVisits: 'ipVisits',
-            }),
-            timeout: 10000,
-          });
-        } catch (error) {
-          console.error('Error:', error);
-          console.log(error.response ? error.response.data : error.message);
-        }
-      };
-      ipVisits();
     }
   }, []);
+  
+  // useEffect(() => {
+  //   if (!sessionStorage.getItem('ipVisits')) {
+  //     sessionStorage.setItem('ipVisits', 'a');
+  //   }
+  //   console.log(sessionStorage.getItem('ipVisits'))
+  //   if (sessionStorage.getItem('ipVisits') === 'a') {
+  //     sessionStorage.setItem('ipVisits', 'b');
+  //     const ipVisits = async () => {
+  //       try {
+  //         await axios({
+  //           method: 'post',
+  //           url: 'http://localhost/gd2023-react-backend/ipVisits.php',
+  //           headers: {
+  //             'Content-Type': 'application/x-www-form-urlencoded',
+  //           },
+  //           data: new URLSearchParams({
+  //             ipVisits: 'ipVisits',
+  //           }),
+  //           timeout: 10000,
+  //         });
+  //       } catch (error) {
+  //         console.error('Error:', error);
+  //         console.log(error.response ? error.response.data : error.message);
+  //       }
+  //     };
+  //     ipVisits();
+  //   }
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {

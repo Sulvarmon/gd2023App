@@ -11,6 +11,7 @@ import { useInView } from 'react-intersection-observer';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTo } from '../../Slices/ExpandMultipleImage';
 import { pageVisit } from '../../Slices/Visits';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function MarineWorks() {
     const languageData = useSelector(state => state.languageData.value)
@@ -61,6 +62,7 @@ export default function MarineWorks() {
             </div>
 
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     )
 }

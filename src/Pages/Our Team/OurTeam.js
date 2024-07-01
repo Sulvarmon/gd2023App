@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setTo } from '../../Slices/ExpandMultipleImage'
 import { pageVisit } from '../../Slices/Visits'
 import ModalImage from "react-modal-image";
+import ScrollUp from '../../Components/ScrollUp/ScrollUp'
 
 
 export default function OurTeam() {
@@ -69,6 +70,7 @@ export default function OurTeam() {
                 </div>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     )
 }

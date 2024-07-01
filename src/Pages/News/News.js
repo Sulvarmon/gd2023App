@@ -10,6 +10,7 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import ExpandMultipleImages from '../../Components/ExpandMultipleImages/ExpandMultipleImages'
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function News() {
     const languageData = useSelector(state => state.languageData.value)
@@ -46,6 +47,7 @@ export default function News() {
                 ))}
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     )
 }

@@ -8,6 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import { useDispatch, useSelector } from 'react-redux'
 import { pageVisit } from '../../Slices/Visits';
 import ModalImage from 'react-modal-image';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function AboutUs() {
     const dispatch = useDispatch()
@@ -74,6 +75,7 @@ export default function AboutUs() {
                 <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][4]}</p>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp />
         </>
     );
 }

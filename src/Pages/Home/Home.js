@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 import ModalImage from 'react-modal-image';
 import CarouselThumbnail from '../../Components/CarouselThumbnail/CarouselThumbnail';
-// import styles from './Home.module.css';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function Home() {
     const languageData = useSelector(state => state.languageData.value);
@@ -27,7 +27,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
         document.title = languageData['page titles']['home'];
         dispatch(pageVisit('home'));
     }, [languageData, dispatch]);
@@ -69,6 +69,7 @@ export default function Home() {
                 </div>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp />
         </>
     );
 }

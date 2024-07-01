@@ -12,6 +12,7 @@ import Grid from '../../Components/Grid/Grid';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function Projects() {
     const languageData = useSelector(state => state.languageData.value)
@@ -42,6 +43,7 @@ export default function Projects() {
                 />
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     )
 }

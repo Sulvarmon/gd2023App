@@ -1,0 +1,34 @@
+.scrollUp{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    box-shadow: 0 0 10px 2px #fff;
+    z-index: 100;
+}
+
+.arrow{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    animation: scrollTopArrow 4s infinite;
+}
+
+@keyframes scrollTopArrow {
+    0% {
+        bottom: 0;
+    }
+
+    70% {
+        bottom: 18px;
+    }
+
+    100% {
+        bottom: 0px;
+    }
+}

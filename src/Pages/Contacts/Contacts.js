@@ -10,6 +10,7 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import styles from './Contacts.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 
 export default function Contacts() {
@@ -170,6 +171,7 @@ export default function Contacts() {
 
             </div>
             <Footer font={font0} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     );
 }

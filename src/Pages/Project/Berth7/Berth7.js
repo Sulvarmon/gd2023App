@@ -8,6 +8,7 @@ import ProjectsThumbnail from '../../../Components/ProjectsThumbnail/ProjectsThu
 import SmallNavigation from '../../../Components/SmallNavigation/SmallNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../../Slices/Visits';
+import ScrollUp from '../../../Components/ScrollUp/ScrollUp';
 
 export default function Berth7() {   
     const languageData = useSelector(state => state.languageData.value)
@@ -42,6 +43,7 @@ export default function Berth7() {
                 <div className='mt5'><ProjectsThumbnail links={languageData['links']} /></div>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp/>
         </>
     )
 }

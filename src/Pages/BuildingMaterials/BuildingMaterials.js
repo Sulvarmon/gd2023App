@@ -7,6 +7,7 @@ import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 import ModalImage from 'react-modal-image';
+import ScrollUp from '../../Components/ScrollUp/ScrollUp';
 
 export default function BuildingMaterials() {
     const languageData = useSelector(state => state.languageData.value)
@@ -33,6 +34,7 @@ export default function BuildingMaterials() {
                 </div>
             </div>
             <Footer font={languageData['font-family'][0]} rights={languageData['rights']} />
+            <ScrollUp />
         </>
     )
 }
