@@ -37,9 +37,9 @@ export default function Search() {
             <div className={`${!showSearch ? 'dn' : styles.darkBg}`}>
                 <div onClick={() => { dispatch(setToFalse()) }} className={`${styles.close} cw cp iconView iconHover`}><IoCloseSharp /></div>
                 <div className={`container dfcjcac gap5 ${styles.search}`}>
-                    <b className={`cw ${languageData['font-family'][0]} ${styles.title}`}>{languageData['search']['title']}</b>
+                    <b className={`cw fs5 ${languageData['font-family'][0]} ${styles.title}`}>{languageData['search']['title']}</b>
                     <div className={`dfcjcac gap4`}>  
-                    <b className={`fs1 w2 tac tdu cw ${languageData['font-family'][1]}`}>{languageData['search']['worning']}</b>                      
+                    <b className={`tac fs2 tdu cw ${languageData['font-family'][1]}`}>{languageData['search']['worning']}</b>                      
                         <input
                             className={`${languageData['font-family'][0]} p2 border br4`}
                             type="text"

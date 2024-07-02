@@ -19,6 +19,7 @@ import Rehabilitation from './Pages/Project/Rehabilitation/Rehabilitation';
 import PayTerminal from './Pages/Project/PayTerminal/PayTerminal';
 import { useDispatch, useSelector } from 'react-redux';
 import { data } from './Slices/LanguageData';
+import Loading from './Loading';
 
 function App() {
   const language = useSelector((state) => state.language.value);
@@ -113,7 +114,7 @@ function App() {
   return (
     <>
       {loading ? (
-        'Loading...'
+        <Loading/>
       ) : (
         <Router>
           <Routes>

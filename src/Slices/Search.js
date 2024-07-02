@@ -16,7 +16,6 @@ export const Search = createSlice({
     }
 })
 
-// Action creators are generated for each case reducer function
 export const {  setToFalse, setToOposite } = Search.actions
 
 export default Search.reducer

@@ -1,14 +1,6 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
-
-@font-face {
-  font-family: 'text-capitalize';
-  src: url('text-capitalize.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'text-normal';
-  src: url('text-normal.ttf') format('truetype');
-}
+@import url("//cdn.web-fonts.ge/fonts/bpg-le-studio-02-caps/css/bpg-le-studio-02-caps.min.css");
+@import url("//cdn.web-fonts.ge/fonts/bpg-le-studio-02/css/bpg-le-studio-02.min.css");
 
 @font-face {
   font-family: 'english-russian';
@@ -39,8 +31,6 @@
   --fontSize4: 18px;
   --fontSize5: 20px;
   /* ფონტის ოჯახი */
-  --textCapitalize: 'text-capitalize';
-  --textNormal: 'text-normal';
   --englishRussian: 'english-russian';
   /* პიქსელები */
   --px5: 5px;
@@ -714,11 +704,13 @@ button {
 }
 
 .capitalizeText {
-  font-family: var(--textCapitalize);  
+  font-family: "BPG LE Studio 02 Caps", sans-serif;
 }
 
 .normalText {
-  font-family: var(--textNormal);
+  font-size: 14px;
+  line-height: 18px;
+  font-family: "BPG LE Studio 02", sans-serif;
 }
 
 .englishRussianCapitalized {
