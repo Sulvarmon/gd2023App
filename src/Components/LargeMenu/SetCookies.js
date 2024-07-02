@@ -111,7 +111,7 @@ export default function SetCookies() {
               <div className={`${styles.checkboxEye} ${!themeCookie && 'dn'}`}></div>
             </div>
           </div>
-          <div onClick={() => setAboutCookies(!aboutCookies)} className={`${languageData['font-family'][0]} cp wfc p2 ${styles.item}`}>{languageData['cookie'][4]}</div>
+          <div onClick={() => setAboutCookies(!aboutCookies)} className={`${languageData['font-family'][0]} cp wfc p2 ${styles.item} theme`}>{languageData['cookie'][4]}</div>
           <hr className='w5' />
         </div>
       </div>
