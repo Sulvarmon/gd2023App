@@ -14,7 +14,11 @@ export default function Header() {
   const showCookieContainer = useSelector(state => state.showCookieContainer.value)
   const [localShowContainer, setLocalShowContainer] = useState(true)
   useEffect(() => {
-    if (showCookieContainer && sessionStorage.getItem('showCookieContainer')==='show') {
+    if (
+      showCookieContainer
+      && sessionStorage.getItem('showCookieContainer') === 'show'
+      && localStorage.getItem('showCookieContainer') === null
+    ) {
       setLocalShowContainer(true)
     } else {
       setLocalShowContainer(false)

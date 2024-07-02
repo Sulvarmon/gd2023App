@@ -1,0 +1,26 @@
+.aboutCookies {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: fit-content;
+    height: fit-content;
+}
+
+.cookiesTexts{
+    height: 500px;
+    overflow-y: auto;
+    box-shadow: 0px 0px 10px 5px var(--blue);
+    white-space: wrap;
+}

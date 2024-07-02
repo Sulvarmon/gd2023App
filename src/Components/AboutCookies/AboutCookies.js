@@ -1,5 +1,5 @@
 import { React } from 'react'
-import styles from './CookieMessage.module.css'
+import styles from './AboutCookies.module.css'
 import { IoCloseSharp } from "react-icons/io5";
 import { FaCookieBite } from "react-icons/fa";
 import { useSelector } from 'react-redux';

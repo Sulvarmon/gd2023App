@@ -10,13 +10,16 @@ export const ThemeCookie = createSlice({
         setToFalseT: state => {
             state.value = false
         },
+        setToTrueT: state => {
+            state.value = true
+        },
         setToOpositeT: state => {
             state.value = !state.value
         },
-        
+
     }
 })
 
-export const {  setToFalseT, setToOpositeT } = ThemeCookie.actions
+export const { setToFalseT, setToOpositeT, setToTrueT } = ThemeCookie.actions
 
 export default ThemeCookie.reducer

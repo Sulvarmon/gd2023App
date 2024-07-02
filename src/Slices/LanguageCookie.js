@@ -10,13 +10,16 @@ export const LanguageCookie = createSlice({
         setToFalseL: state => {
             state.value = false
         },
+        setToTrueL: state => {
+            state.value = true
+        },
         setToOpositeL: state => {
             state.value = !state.value
         },
-        
+
     }
 })
 
-export const {  setToFalseL, setToOpositeL } = LanguageCookie.actions
+export const { setToFalseL, setToOpositeL, setToTrueL } = LanguageCookie.actions
 
 export default LanguageCookie.reducer

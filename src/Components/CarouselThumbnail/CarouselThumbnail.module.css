@@ -49,13 +49,13 @@
 }
 
 .text {
-    height: 66px; /* Set the maximum height */
-    overflow: hidden; /* Hide overflow content */
-    text-overflow: ellipsis; /* Show ellipsis for overflow text */
-    white-space: normal; /* Allow text to wrap */
-    display: -webkit-box; /* Use the flexible box model */
-    -webkit-line-clamp: 3; /* Limit number of lines */
-    -webkit-box-orient: vertical; /* Vertical layout */
+    height: 3.5lh;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 
@@ -116,6 +116,6 @@
     background-color: #000;
 }
 
-.textWrapper{
+.textWrapper {
     transform: translateY(-150px);
 }

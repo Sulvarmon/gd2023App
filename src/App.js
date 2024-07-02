@@ -34,7 +34,7 @@ function App() {
     const visitsUpdate = async () => {
       let pageVisits = JSON.parse(sessionStorage.getItem('pageVisits'));
 
-      if (pageVisits !== null && pageVisits.includes(visits)) {
+      if (pageVisits.includes(visits)) {
         return 0;
       }
       pageVisits.push(visits);
@@ -61,43 +61,29 @@ function App() {
   }, [visits]);
 
   useEffect(() => {
-  if (!sessionStorage.getItem('ipVisits')) {
-    sessionStorage.setItem('ipVisits', 'a');
-  }
-    console.log(sessionStorage.getItem('ipVisits'))
-    if (sessionStorage.getItem('ipVisits') === 'a') {
-      sessionStorage.setItem('ipVisits', 'b');
+    if (sessionStorage.getItem('ipVisits') === null) {
+      sessionStorage.setItem('ipVisits', 'true');
+      const ipVisits = async () => {
+        try {
+          await axios({
+            method: 'post',
+            url: 'http://localhost/gd2023-react-backend/ipVisits.php',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            data: new URLSearchParams({
+              ipVisits: 'ipVisits',
+            }),
+            timeout: 10000,
+          });
+        } catch (error) {
+          console.error('Error:', error);
+          console.log(error.response ? error.response.data : error.message);
+        }
+      };
+      ipVisits();
     }
   }, []);
-  
-  // useEffect(() => {
-  //   if (!sessionStorage.getItem('ipVisits')) {
-  //     sessionStorage.setItem('ipVisits', 'a');
-  //   }
-  //   console.log(sessionStorage.getItem('ipVisits'))
-  //   if (sessionStorage.getItem('ipVisits') === 'a') {
-  //     sessionStorage.setItem('ipVisits', 'b');
-  //     const ipVisits = async () => {
-  //       try {
-  //         await axios({
-  //           method: 'post',
-  //           url: 'http://localhost/gd2023-react-backend/ipVisits.php',
-  //           headers: {
-  //             'Content-Type': 'application/x-www-form-urlencoded',
-  //           },
-  //           data: new URLSearchParams({
-  //             ipVisits: 'ipVisits',
-  //           }),
-  //           timeout: 10000,
-  //         });
-  //       } catch (error) {
-  //         console.error('Error:', error);
-  //         console.log(error.response ? error.response.data : error.message);
-  //       }
-  //     };
-  //     ipVisits();
-  //   }
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
