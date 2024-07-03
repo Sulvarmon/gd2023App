@@ -791,3 +791,13 @@ button {
 .theme{
   color: var(--textTheme);
 }
+
+.yarl__slide_title{
+  margin-top: 50px;
+  max-width: 100%!important;
+  text-align: center;
+}
+
+.yarl__slide_description{
+  text-align: center!important;
+}

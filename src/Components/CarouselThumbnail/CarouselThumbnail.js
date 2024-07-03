@@ -4,11 +4,6 @@ import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ModalImage from 'react-modal-image';
-
-
-
-
 
 export default function CarouselThumbnail({ type, images, titles, texts, links, imageIndex }) {
   const languageData = useSelector(state => state.languageData.value);
@@ -43,9 +38,9 @@ export default function CarouselThumbnail({ type, images, titles, texts, links, 
         setTransition(true);
       }, 10);
     }
-    
-  }, [type, imageIndex,slidesNumber]);
-  
+
+  }, [type, imageIndex, slidesNumber]);
+
 
   useEffect(() => {
     const updateWidth = () => {
@@ -54,17 +49,17 @@ export default function CarouselThumbnail({ type, images, titles, texts, links, 
         setTransition(true);
       }, 300);
       if (elementRef.current) {
-          setWidth(elementRef.current.getBoundingClientRect().width);
+        setWidth(elementRef.current.getBoundingClientRect().width);
       }
     };
 
     updateWidth();
 
-    
+
     setTimeout(() => {
       setTransition(true);
     }, 300);
-    
+
     window.addEventListener('resize', updateWidth);
 
     return () => {
@@ -123,75 +118,72 @@ export default function CarouselThumbnail({ type, images, titles, texts, links, 
   }
 
   return (
-    <div className={`${styles.carousel} w3 ma pr`} style={{ position: 'relative' }}>
-      {images.map((element, index) => (
-        <div
-          key={index}
-          ref={elementRef}
-          style={{ left: `${(index - currentSlide) * width}px` }}
-          className={`pa dfcjbac ${transition && styles.addTransition}`}
-        >
-          <ModalImage 
-            small={element}
-            large={element}
-            alt=''
-            className='pa ofcvr czi'
-          />
-          {type === 'with texts' ? (
-            <>
-              <div className={`w3 dfcjcac gap2 ${styles.textWrapper}`}>
-                <div className={`${fontC} ${styles.title} p2`}>{titles[index]}</div>
-                <div className={`${fontN} ${styles.text} p2`}>{texts[index]}</div>
-              </div>
-              <Link to={links[index]} className={`mainBtn ${fontC} ${styles.button} mb2`}>{btnText}</Link>
-            </>
-          ) : null}
-
-        </div>
-      ))}
-
-      <div
-        onClick={slideRight}
-        className={`${styles.hiddenRightArrow}`}
-      >
-      </div>
-      <div
-        onClick={slideLeft}
-        className={`${styles.hiddenLeftArrow}`}
-      >
-      </div>
-
-      <IoMdArrowDroprightCircle
-        onClick={slideRight}
-        className={`${styles.rightArrow} cp`}
-        style={{
-          transform: `translateY(${rightArrowPosition}px)`,
-          color: rightArrowColor
-        }}
-      />
-      <IoMdArrowDropleftCircle
-        onClick={slideLeft}
-        className={`${styles.leftArrow} cp`}
-        style={{
-          transform: `translateY(${leftArrowPosition}px)`,
-          color: leftArrowColor
-        }}
-      />
-
-      <div className={`${styles.thumbnails} dfjcac gap3`}>
+    <>
+      <div className={`${styles.carousel} w3 ma pr`} style={{ position: 'relative' }}>
         {images.map((element, index) => (
           <div
             key={index}
-            className={`${styles.thumbnail} dfjcac cp`}
-            onClick={() => thumbnailClicks(index)}
+            ref={elementRef}
+            style={{ left: `${(index - currentSlide) * width}px` }}
+            className={`pa dfcjbac ${transition && styles.addTransition}`}
           >
-            <div
-              className={`${styles.thumbnailYey} ${index === currentSlide ? '' : 'dn'}`}
-            ></div>
+            <img className={`pa ofcvr`} src={element} alt=''/>
+            {type === 'with texts' ? (
+              <>
+                <div className={`w3 dfcjcac gap2 mt2 ${styles.textWrapper}`}>
+                  <div className={`${fontC} ${styles.title} p2`}>{titles[index]}</div>
+                  <div className={`${fontN} ${styles.text} p2`}>{texts[index]}</div>
+                </div>
+                <Link to={links[index]} className={`mainBtn ${fontC} ${styles.button} mb2`}>{btnText}</Link>
+              </>
+            ) : null}
+
           </div>
         ))}
-      </div>
 
-    </div>
+        <div
+          onClick={slideRight}
+          className={`${styles.hiddenRightArrow}`}
+        >
+        </div>
+        <div
+          onClick={slideLeft}
+          className={`${styles.hiddenLeftArrow}`}
+        >
+        </div>
+
+        <IoMdArrowDroprightCircle
+          onClick={slideRight}
+          className={`${styles.rightArrow} cp`}
+          style={{
+            transform: `translateY(${rightArrowPosition}px)`,
+            color: rightArrowColor
+          }}
+        />
+        <IoMdArrowDropleftCircle
+          onClick={slideLeft}
+          className={`${styles.leftArrow} cp`}
+          style={{
+            transform: `translateY(${leftArrowPosition}px)`,
+            color: leftArrowColor
+          }}
+        />
+
+        <div className={`${styles.thumbnails} dfjcac gap3`}>
+          {images.map((element, index) => (
+            <div
+              key={index}
+              className={`${styles.thumbnail} dfjcac cp`}
+              onClick={() => thumbnailClicks(index)}
+            >
+              <div
+                className={`${styles.thumbnailYey} ${index === currentSlide ? '' : 'dn'}`}
+              ></div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </>
   );
 }

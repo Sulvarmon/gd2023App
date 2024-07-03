@@ -4,9 +4,11 @@ import { IoCloseSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToFalse } from '../../Slices/Search';
+import { changeInputValue } from '../../Slices/SearchInputValue';
 
 export default function Search() {
     const languageData = useSelector(state => state.languageData.value)
+    const searchInputValue = useSelector(state => state.searchInputValue.value)
     const [foundArr, setFoundArr] = useState([])
     const [foundHrefs, setFoundHrefs] = useState([])
     const [searchIsEmpty, setSearchIsEmpty] = useState(true)
@@ -14,6 +16,7 @@ export default function Search() {
     const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
+        dispatch(changeInputValue(e.target.value))
         const value = e.target.value.toLowerCase().replace(/[-,.!:'"/\s]/g, "");
         const newFoundArr = [];
         const newFoundHrefs = [];
@@ -44,6 +47,7 @@ export default function Search() {
                             className={`${languageData['font-family'][0]} p2 border br4`}
                             type="text"
                             name="name"
+                            value={searchInputValue}
                             placeholder={languageData['search']['placeholder']}
                             onChange={handleInputChange}
                         />

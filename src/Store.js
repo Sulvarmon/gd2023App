@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import expandMultipleImage from './Slices/ExpandMultipleImage'
 import language from './Slices/Language'
 import search from './Slices/Search'
 import visits from './Slices/Visits'
@@ -8,17 +7,18 @@ import themeCookie from './Slices/ThemeCookie'
 import languageCookie from './Slices/LanguageCookie'
 import theme from './Slices/Theme'
 import showCookieContainer from './Slices/ShowCookieContainer'
+import searchInputValue from './Slices/SearchInputValue'
 
 export default configureStore({
   reducer: {
     languageData: languageData,
-    expandMultipleImage: expandMultipleImage,
     search: search,
-    visits: visits,    
+    visits: visits,
     language: language,
     languageCookie: languageCookie,
     theme: theme,
     themeCookie: themeCookie,
-    showCookieContainer: showCookieContainer
+    showCookieContainer: showCookieContainer,
+    searchInputValue: searchInputValue,
   }
 })

@@ -7,6 +7,7 @@ import flag3 from '../../Images/ru.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { change } from '../../Slices/Language';
 import Cookies from 'js-cookie';
+import { changeInputValue } from '../../Slices/SearchInputValue';
 
 export default function Language() {
   const languageData = useSelector(state => state.languageData.value)
@@ -39,6 +40,7 @@ export default function Language() {
   }
 
   let changeLanguage1 = () => {
+    dispatch(changeInputValue(''))
     switch (languageData['language1']) {
       case 'ინგ':
       case 'анг':
@@ -100,6 +102,7 @@ export default function Language() {
   }
 
   let changeLanguage2 = () => {
+    dispatch(changeInputValue(''))
     switch (languageData['language2']) {
       case 'ინგ':
       case 'анг':
