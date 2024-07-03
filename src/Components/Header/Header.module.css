@@ -8,3 +8,14 @@
     z-index: 50;
 }
 
+
+.unfinishedWebsite{
+    position: fixed;
+    top: 200px;
+    left: 0;
+    z-index: 300;
+    color: grey;
+    width: 18%;
+    font-size: 12px;
+    text-shadow: 1px 1px 5px grey;
+}

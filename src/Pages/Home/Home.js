@@ -36,23 +36,6 @@ export default function Home() {
 
     const images = [grdiImage1, grdiImage2, grdiImage3];
     const [open, setOpen] = useState(false);
-    switch (languageData['language']) {
-        case 'lan':
-            document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
-            document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
-          break;
-        case 'ენა':
-            document.documentElement.style.setProperty('--lightboxFFC', '"BPG LE Studio 02 Caps", sans-serif');
-            document.documentElement.style.setProperty('--lightboxFFN', '"BPG LE Studio 02", sans-serif');
-          break;
-        case 'язык':
-            document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
-            document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
-          break;
-        default:
-            document.documentElement.style.setProperty('--lightboxFont', '#DCDCDC');
-          break;
-      }
     return (
         <>
             <Header />
@@ -71,16 +54,19 @@ export default function Home() {
                 />
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['important projects']} />
-                <div className='w5 ma'>
-                    <Lightbox
-                        plugins={[Captions, Fullscreen, Thumbnails, Zoom, Inline]}
-                        inline={{
-                            style: { width: "100%", height: '500px', aspectRatio: "3 / 2" },
-                        }}
-                        open={open}
-                        close={() => setOpen(false)}
-                        slides={slidesData}
-                    />
+                <div className='w5 ma '>
+                    <div className={`mb5`}>
+                        <Lightbox
+                            plugins={[Captions, Fullscreen, Thumbnails, Zoom, Inline]}
+                            inline={{
+                                style: { width: "100%", height: '500px', aspectRatio: "3 / 2" },
+                            }}
+                            open={open}
+                            close={() => setOpen(false)}
+                            slides={slidesData}
+                        />
+                    </div>
+                    <Link to='/Berth-7' className={`mainBtn ma ${languageData['font-family'][0]}`}>{languageData['all projects']}</Link>            
                 </div>
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />

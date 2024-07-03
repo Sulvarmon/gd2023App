@@ -23,12 +23,31 @@ import Loading from './Loading';
 
 function App() {
   const language = useSelector((state) => state.language.value);
+  const languageData = useSelector(state => state.languageData.value);
   const visits = useSelector((state) => state.visits.value);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
   if (sessionStorage.getItem('pageVisits') === null) {
     sessionStorage.setItem('pageVisits', JSON.stringify([]));
+  }
+
+  switch (languageData['language']) {
+    case 'lan':
+        document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
+        document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
+      break;
+    case 'ენა':
+        document.documentElement.style.setProperty('--lightboxFFC', '"BPG LE Studio 02 Caps", sans-serif');
+        document.documentElement.style.setProperty('--lightboxFFN', '"BPG LE Studio 02", sans-serif');
+      break;
+    case 'язык':
+        document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
+        document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
+      break;
+    default:
+        document.documentElement.style.setProperty('--lightboxFont', '#DCDCDC');
+      break;
   }
 
   useEffect(() => {

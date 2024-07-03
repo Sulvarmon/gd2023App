@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
   const showCookieContainer = useSelector(state => state.showCookieContainer.value)
+  const languageData = useSelector(state => state.languageData.value);
   const [localShowContainer, setLocalShowContainer] = useState(true)
   useEffect(() => {
     if (
@@ -27,6 +28,7 @@ export default function Header() {
 
   return (
     <>
+      <div className={`pen ${styles.unfinishedWebsite} ${languageData['font-family'][0]}`}>{languageData['unfinished website']}</div>
       <div className={`${styles.header} p2`}>
         <SideContacts />
         <SidePhone />

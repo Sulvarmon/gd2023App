@@ -13,6 +13,8 @@ textarea {
 .balckBackground{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     top: 0;
     left: 0;
     width: 100vw;
