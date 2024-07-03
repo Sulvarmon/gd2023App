@@ -36,6 +36,23 @@ export default function Home() {
 
     const images = [grdiImage1, grdiImage2, grdiImage3];
     const [open, setOpen] = useState(false);
+    switch (languageData['language']) {
+        case 'lan':
+            document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
+            document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
+          break;
+        case 'ენა':
+            document.documentElement.style.setProperty('--lightboxFFC', '"BPG LE Studio 02 Caps", sans-serif');
+            document.documentElement.style.setProperty('--lightboxFFN', '"BPG LE Studio 02", sans-serif');
+          break;
+        case 'язык':
+            document.documentElement.style.setProperty('--lightboxFFC', 'english-russian');
+            document.documentElement.style.setProperty('--lightboxFFN', 'english-russian');
+          break;
+        default:
+            document.documentElement.style.setProperty('--lightboxFont', '#DCDCDC');
+          break;
+      }
     return (
         <>
             <Header />

@@ -25,6 +25,8 @@
   /* ფონტის ზომა */
   --titleOfSectionsFontSize: 25px;
   --titleOfSubSectionsFontSize: 20px;
+  --lightboxFFC: "BPG LE Studio 02 Caps", sans-serif;
+  --lightboxFFN: "BPG LE Studio 02", sans-serif;
   --fontSize1: 12px;
   --fontSize2: 14px;
   --fontSize3: 16px;
@@ -58,7 +60,7 @@ body *:focus {
   outline: none !important;
 }
 
-body{
+body {
   overflow-x: hidden;
   padding-top: 95px;
   background-color: var(--bgColor);
@@ -105,19 +107,19 @@ button {
 
 @media (min-width: 768px) {
   .container {
-      width: var(--width768);
+    width: var(--width768);
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-      width: var(--width1024);
+    width: var(--width1024);
   }
 }
 
 @media (min-width: 1250px) {
   .container {
-      width: var(--width1250);
+    width: var(--width1250);
   }
 }
 
@@ -209,7 +211,7 @@ button {
   align-items: center;
 }
 
-.dfjbas{
+.dfjbas {
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -429,7 +431,7 @@ button {
   padding-bottom: var(--px50);
 }
 
-.pb50{
+.pb50 {
   padding-bottom: 50%;
 }
 
@@ -606,23 +608,23 @@ button {
 }
 
 .cp {
-  cursor: pointer!important;
+  cursor: pointer !important;
 }
 
-.ca{
-  cursor: auto!important;
+.ca {
+  cursor: auto !important;
 }
 
 .cd {
-  cursor: default!important;
+  cursor: default !important;
 }
 
-.czi{
-  cursor: zoom-in!important;
+.czi {
+  cursor: zoom-in !important;
 }
 
-.czo{
-  cursor: zoom-out!important;
+.czo {
+  cursor: zoom-out !important;
 }
 
 .tac {
@@ -637,7 +639,7 @@ button {
   text-align: right;
 }
 
-.wbba{
+.wbba {
   word-break: break-all;
 }
 
@@ -767,37 +769,40 @@ button {
 
 @media(min-width: 1024px) {
   .icon-view {
-      width: 40px;
-      height: 40px;
+    width: 40px;
+    height: 40px;
   }
 }
 
-.colorBlue{
+.colorBlue {
   color: var(--blue);
 }
 
-.colorRed{
+.colorRed {
   color: var(--red);
 }
 
-.fontSizeIcon{
+.fontSizeIcon {
   font-size: 30px;
 }
 
 .active {
-  color: var(--menuColor)!important;
+  color: var(--menuColor) !important;
 }
 
-.theme{
+.theme {
   color: var(--textTheme);
 }
 
-.yarl__slide_title{
+.yarl__slide_title {
+  font-family: var(--lightboxFFC);
   margin-top: 50px;
-  max-width: 100%!important;
+  max-width: 100% !important;
   text-align: center;
+  text-transform: uppercase;
 }
 
-.yarl__slide_description{
-  text-align: center!important;
+.yarl__slide_description {
+  font-family: var(--lightboxFFN);
+  text-align: center !important;
 }
