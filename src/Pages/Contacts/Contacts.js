@@ -78,7 +78,7 @@ export default function Contacts() {
         try {
             const response = await axios({
                 method: 'post',
-                url: 'http://localhost/gd2023-react-backend/mail.php',
+                url: process.env.REACT_APP_MAIL,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
@@ -154,7 +154,7 @@ export default function Contacts() {
                                     style={{ height: '100px', resize: 'vertical' }}
                                 ></textarea>
                                 <ReCAPTCHA
-                                    sitekey="6Lc5DP8pAAAAAKgy73LeVVSWtipUjD4V9ckuu3dO"
+                                    sitekey={process.env.REACT_APP_RECAPTCHA}
                                     onChange={handleRecaptchaChange}
                                 />
                                 <button type="submit" className={`cp mainBtn ${font1}`}>

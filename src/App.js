@@ -63,7 +63,7 @@ function App() {
         await axios({
 
           method: 'post',
-          url: 'http://localhost/gd2023-react-backend/pageVisits.php',
+          url: process.env.REACT_APP_PAGE_VISITS,
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
@@ -87,7 +87,7 @@ function App() {
         try {
           await axios({
             method: 'post',
-            url: 'http://localhost/gd2023-react-backend/ipVisits.php',
+            url: process.env.REACT_APP_IP_VISITS,
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -110,7 +110,7 @@ function App() {
       try {
         const response = await axios({
           method: 'post',
-          url: 'http://localhost/gd2023-react-backend/language.php',
+          url: process.env.REACT_APP_LANGUAGE,
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },

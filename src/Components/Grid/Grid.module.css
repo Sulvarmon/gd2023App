@@ -24,7 +24,7 @@
   transition: all 1s;
 }
 
-.animate{
+.animate {
   transform: translateY(0);
   opacity: 1;
 }
@@ -61,9 +61,11 @@
 .text {
   height: 3lh;
   line-height: 1.5;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  display: -webkit-box; 
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }

@@ -10,7 +10,9 @@ export default function SmallNavigation({ pages, links }) {
         <div>
             <div className='dfjlac gap1 container mt3'>
                 {pages.map((element, index) => (
-                    <NavLink key={index} to={links[index]} className={`theme ${languageData['font-family'][0]} fs2 dfjcac gap1 menuHover`}>{element}{index !== (pages.length - 1) && <MdKeyboardDoubleArrowRight />} </NavLink>
+                    <div key={index} style={{wordBreak: 'break-word'}}>
+                        <NavLink  to={links[index]} className={`theme ${languageData['font-family'][0]} fs2 dfjcac gap1 menuHover`}>{element}{index !== (pages.length - 1) && <MdKeyboardDoubleArrowRight />} </NavLink>
+                    </div>
                 ))}
             </div>
         </div>

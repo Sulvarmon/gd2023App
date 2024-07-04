@@ -23,7 +23,6 @@ export default function SmallMenu() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // Add event listener for clicks outside the component
     window.addEventListener('click', () => {
       setShowSmallMenu(false)
       setShowCompany(false)

@@ -1,12 +1,10 @@
 import React from 'react'
 
-
 export default function Map() {
     const latitude = 42.166158;
     const longitude = 41.691353;
-    const apiKey = 'AIzaSyCGpWnwjE3KpdolnPkTt8bT7HG12E0LBdU'
+    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
-    // Constructing the iframe URL with the latitude and longitude
     const iframeUrl = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${latitude},${longitude}&zoom=16&maptype=satellite`;
     return (
         <div className='w5 h5'>
