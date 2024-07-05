@@ -48,9 +48,11 @@
     right: 0;
     opacity: 1;
     top: 55px;
+    visibility: visible;
 }
 
 .dropDownHideMenu{
+    visibility: hidden;
     opacity: 0;
     right: 0;
     top: 15px;
