@@ -17,6 +17,8 @@ export default function LargeMenu() {
   const [showSectors, setShowSectors] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch()
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [smallLogo, setsmallLogo] = useState(false)
 
   useEffect(() => {
     window.addEventListener('click', () => {
@@ -26,11 +28,31 @@ export default function LargeMenu() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      if (scrollTop > lastScrollTop) {
+        setsmallLogo(true)
+      } else {
+        setsmallLogo(false)
+      }
+
+      setLastScrollTop(scrollTop);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
     <div className={`${styles.navigation} dn`}>
 
       <div className={`container dfjbac`}>
-        <NavLink to={'/'} className={`usn ${styles.logo}`}></NavLink>
+        <NavLink to={'/'} className={`usn ${styles.logo} ${smallLogo && styles.smallLogo}`}></NavLink>
         <div className={`dfjcac gap4`}>
           <div onClick={(e) => { e.stopPropagation(); setShowCompany(!showCompany) }} className={`usn theme ${languageData['font-family'][0]} ${styles.company} dfjcac gap1 cp pr`}>{languageData['company']}<SlArrowDown className={`theme ${showCompany ? styles.tr0 : styles.tr90}`} />
             <Dropdown
@@ -65,7 +87,7 @@ export default function LargeMenu() {
         <div className={`dfjcac gap4`}>
           <div onClick={() => { dispatch(setToOposite()) }} ><CiSearch className="theme fontSizeIcon cp" /></div>
           <div onClick={(e) => { e.stopPropagation(); setShowMenu(!showMenu) }} className={`usn pr`}><GoGear className={`theme ${showMenu ? styles.tr0 : styles.tr90} fontSizeIcon cp`} />
-            <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} p5 dfcjcas gap2 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
+            <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menuDropdown} dfcjcas gap4 wwn wfc hfc ${showMenu ? styles.dropDownShowMenu : styles.dropDownHideMenu}`}>
               <Language />
               <Theme />
               <SetCookies />

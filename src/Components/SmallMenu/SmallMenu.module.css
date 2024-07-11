@@ -5,6 +5,12 @@
     height: 75px;
     background-image: url('../../Images/logo.png');
     background-size: 100% 100%;
+    transition: width .3s,height .3s;
+}
+
+.smallLogo{
+    width: 40px !important;
+    height: 40px !important; 
 }
 
 .navigation {
@@ -16,9 +22,11 @@
     position: absolute;
     width: 100%;
     overflow-x: auto;
-    top: 95px;   
+    top: 100%;   
     background-color: var(--headerBg);
+    padding: 50px;
     transition: all .3s;
+    z-index: -1;
 }
 
 .menuShow{

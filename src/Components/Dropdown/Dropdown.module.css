@@ -1,7 +1,6 @@
 .dropDown {
     position: absolute;
     right: 0;
-    top: 20px;
     background-color: var(--headerBg);
     transition: all .3s;
     a {
@@ -13,16 +12,15 @@
 }
 
 .dropDownShow{
+    padding: 50px;
     right: 0;
     opacity: 1;
-    top: 55px;
-   
+    top: 100%;
 }
 
 .dropDownHide{
     opacity: 0;
     right: 0;
     top: 15px;
-    z-index: -30;
     visibility: hidden;
 }

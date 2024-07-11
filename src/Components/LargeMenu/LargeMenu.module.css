@@ -5,6 +5,12 @@
     height: 75px;
     background-image: url('../../Images/logo.png');
     background-size: 100% 100%;
+    transition: width .3s,height .3s;
+}
+
+.smallLogo{
+    width: 40px !important;
+    height: 40px !important; 
 }
 
 .navigation {
@@ -26,11 +32,10 @@
 .menuDropdown {
     position: absolute;
     right: 0;
-    top: 20px;
-    width: 400px;
     background-color: var(--headerBg);
     transition: all .3s;
     .item {
+        color: var(--blue);
         &:hover {
             color: #fff;
             background-color: var(--menuColor);
@@ -45,9 +50,10 @@
 
 
 .dropDownShowMenu{
+    padding: 50px;
     right: 0;
     opacity: 1;
-    top: 55px;
+    top: 100%;
     visibility: visible;
 }
 
@@ -55,8 +61,7 @@
     visibility: hidden;
     opacity: 0;
     right: 0;
-    top: 15px;
-    z-index: -10;
+    top: 100%;
 }
 
 .tr0{

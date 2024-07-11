@@ -6,6 +6,6 @@ export default function NotFound() {
     document.title = 'NotFound'
 },[])
   return (
-    <div>NotFound</div>
+    <div className='dfjcac colorBlue' style={{fontSize:'40px'}}>NotFound</div>
   )
 }

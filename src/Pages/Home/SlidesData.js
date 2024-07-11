@@ -1,4 +1,3 @@
-// slidesData.js
 import projImages1 from '../../Images/proj0.jpg';
 import projImages2 from '../../Images/proj1.jpg';
 import projImages3 from '../../Images/proj2.jpg';

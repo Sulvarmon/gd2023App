@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { data } from './Slices/LanguageData';
 import Loading from './Loading';
 
+
 function App() {
   const language = useSelector((state) => state.language.value);
   const languageData = useSelector(state => state.languageData.value);

@@ -21,6 +21,8 @@ export default function SmallMenu() {
   const [showSectors, setShowSectors] = useState(false);
   const [openedMenu, setOpenedMenu] = useState(false)
   const dispatch = useDispatch()
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [smallLogo, setsmallLogo] = useState(false)
 
   useEffect(() => {
     window.addEventListener('click', () => {
@@ -31,16 +33,36 @@ export default function SmallMenu() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      if (scrollTop > lastScrollTop) {
+        setsmallLogo(true)
+      } else {
+        setsmallLogo(false)
+      }
+
+      setLastScrollTop(scrollTop);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
     <div className={`${styles.navigation}`}>      
       <div className={`container dfjbac `}>
-        <NavLink to={'/'} className={`usn ${styles.logo}`}></NavLink>
+        <NavLink to={'/'} className={`usn ${styles.logo} ${smallLogo && styles.smallLogo}`}></NavLink>
         <div onClick={() => { dispatch(setToOposite()) }}><CiSearch className={`theme fontSizeIcon cp`} /></div>
         <div onClick={(e) => { e.stopPropagation(); setShowSmallMenu(!showSmallMenu) }}>
           <RiMenu3Fill onClick={() => { setOpenedMenu(!openedMenu) }} className={`theme fontSizeIcon cp ${openedMenu ? 'dn' : ''}`} />
           <IoCloseOutline onClick={() => { setOpenedMenu(!openedMenu) }} className={`theme fontSizeIcon cp ${openedMenu ? '' : 'dn'}`} />
         </div>
-        <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menu} dfcjlas gap3 p3 wwn wfc hfc ${showSmallMenu ? styles.menuShow : styles.menuHide}`}>
+        <div onClick={(e) => { e.stopPropagation() }} className={`${styles.menu} dfcjlas gap3 wwn wfc hfc ${showSmallMenu ? styles.menuShow : styles.menuHide}`}>
           <div className={`dfcjcas gap1 w5`}>
             <div onClick={() => { setShowCompany(!showCompany) }} className={`usn dfjcac gap1 cp`}><span className={`theme ${languageData['font-family'][0]}`}>{languageData['company']}</span><SlArrowDown className={`theme ${showCompany ? styles.tr0 : styles.tr90}`} /></div>
             <Dropdown
