@@ -20,7 +20,10 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import { SideBySideMagnifier } from "react-image-magnifiers";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { BsPlusLg } from "react-icons/bs";
+import { HiMinus } from "react-icons/hi2";
+import { RxReset } from "react-icons/rx";
 
 
 export default function OurTeam() {
@@ -68,12 +71,22 @@ export default function OurTeam() {
             <SmallNavigation pages={pages} font={languageData['font-family'][0]} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['our team']} />
-                <div className='container pr'>
-                    <SideBySideMagnifier
-                        alwaysInPlace={true}
-                        imageSrc={team}
-                        imageAlt=""
-                    /></div>
+                <div className="ma w3" style={{ paddingBottom: '1%' }}>
+                        <TransformWrapper wheel={{ disabled: true }}>
+                            {({ zoomIn, zoomOut, resetTransform }) => (
+                                <>
+                                    <div className="dfjcac gap2 mb2">
+                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                    </div>
+                                    <TransformComponent>
+                                        <img src={team} alt="test" className="w5 zoom-image" />
+                                    </TransformComponent>
+                                </>
+                            )}
+                        </TransformWrapper>
+                    </div> 
                 {languageData['team texts'].map((element, index) => (
                     <p key={index} className={`theme ${languageData['font-family'][1]}`}>{languageData['team texts'][index]}</p>
                 ))}

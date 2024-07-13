@@ -22,7 +22,12 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import getSlidesData from './SlidesData';
-import { SideBySideMagnifier } from "react-image-magnifiers";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { BsPlusLg } from "react-icons/bs";
+import { HiMinus } from "react-icons/hi2";
+import { RxReset } from "react-icons/rx";
+
+
 
 export default function Home() {
     const languageData = useSelector(state => state.languageData.value);
@@ -66,18 +71,27 @@ export default function Home() {
                             slides={slidesData}
                         />
                     </div>
-                    <Link to='/Berth-7' className={`mainBtn ma ${languageData['font-family'][0]}`}>{languageData['all projects']}</Link>            
+                    <Link to='/Berth-7' className={`mainBtn ma ${languageData['font-family'][0]}`}>{languageData['all projects']}</Link>
                 </div>
                 <hr className='mt5 mb5' />
                 <Title font={languageData['font-family'][0]} text={languageData['about company']} />
                 <div className='dfcjcac gap4'>
-                    <div className='w3 ma pr'>
-                        <SideBySideMagnifier
-                            alwaysInPlace={true}
-                            imageSrc={about}
-                            imageAlt=""
-                        />
-                    </div>
+                    <div className="ma w3" style={{ paddingBottom: '1%' }}>
+                        <TransformWrapper wheel={{ disabled: true }}>
+                            {({ zoomIn, zoomOut, resetTransform }) => (
+                                <>
+                                    <div className="dfjcac gap2 mb2">
+                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                    </div>
+                                    <TransformComponent>
+                                        <img src={about} alt="test" className="w5 zoom-image" />
+                                    </TransformComponent>
+                                </>
+                            )}
+                        </TransformWrapper>
+                    </div>                    
                     <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about company text']}</p>
                     <Link to='/About-Us' className={`mainBtn ${languageData['font-family'][0]}`}>{languageData['fully']}</Link>
                 </div>

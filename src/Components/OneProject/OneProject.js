@@ -1,7 +1,10 @@
 import { React, useState, useEffect } from 'react'
 import styles from './OneProject.module.css'
 import { useInView } from 'react-intersection-observer';
-import { SideBySideMagnifier } from "react-image-magnifiers";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { BsPlusLg } from "react-icons/bs";
+import { HiMinus } from "react-icons/hi2";
+import { RxReset } from "react-icons/rx";
 
 
 export default function OneProject({ font0, font1, img, title, dottexts, underDottexts, maintext, page, index }) {
@@ -24,13 +27,22 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
                 <div className={`theme ${font0}`}>{title}</div>
                 <div className={`${styles.grid} gap4 w5`}>
                     {page === 'project' ? (
-                        <div className={`pr`} style={{ height: '300px' }}>
-                            <SideBySideMagnifier
-                                alwaysInPlace={true}
-                                imageSrc={img}
-                                imageAlt=""
-                            />
-                        </div>
+                        <div style={{ height: '300px' }}>
+                        <TransformWrapper wheel={{ disabled: true }}>
+                            {({ zoomIn, zoomOut, resetTransform }) => (
+                                <>
+                                    <div className="dfjcac gap2 mb2">
+                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                    </div>
+                                    <TransformComponent>
+                                        <img src={img} alt="test" className="w5 zoom-image" />
+                                    </TransformComponent>
+                                </>
+                            )}
+                        </TransformWrapper>
+                    </div> 
                     ) : (
                         <div className='pr cp' style={{ height: '300px' }}>
                             <img className='pa ofcnt' src={img} alt='' />

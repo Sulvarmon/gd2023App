@@ -8,7 +8,10 @@ import { useInView } from 'react-intersection-observer';
 import { useDispatch, useSelector } from 'react-redux'
 import { pageVisit } from '../../Slices/Visits';
 import ScrollUp from '../../Components/ScrollUp/ScrollUp';
-import { SideBySideMagnifier } from "react-image-magnifiers";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { BsPlusLg } from "react-icons/bs";
+import { HiMinus } from "react-icons/hi2";
+import { RxReset } from "react-icons/rx";
 
 export default function AboutUs() {
     const dispatch = useDispatch()
@@ -58,12 +61,22 @@ export default function AboutUs() {
             <SmallNavigation pages={pages} links={links} />
             <div className='container background1 p2 br2 mt5 dfcjcas gap4'>
                 <Title font={languageData['font-family'][0]} text={languageData['about us']} />
-                <div className='w3 ma pr'>
-                    <SideBySideMagnifier
-                        alwaysInPlace={true}
-                        imageSrc={about}
-                        imageAlt="" />
-                </div>
+                <div className="ma w3" style={{ paddingBottom: '1%' }}>
+                        <TransformWrapper wheel={{ disabled: true }}>
+                            {({ zoomIn, zoomOut, resetTransform }) => (
+                                <>
+                                    <div className="dfjcac gap2 mb2">
+                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                    </div>
+                                    <TransformComponent>
+                                        <img src={about} alt="test" className="w5 zoom-image" />
+                                    </TransformComponent>
+                                </>
+                            )}
+                        </TransformWrapper>
+                    </div>     
                 <p className={`theme ${languageData['font-family'][1]}`}>{languageData['about us texts'][0]}</p>
                 <ul ref={ref1} className='pl3 dfcjcas gap1'>
                     {languageData['about us texts'][1].map((element, index) => (
