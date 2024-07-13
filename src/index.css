@@ -805,3 +805,17 @@ button {
   font-family: var(--lightboxFFN);
   text-align: center !important;
 }
+
+.custom-marker {
+  text-align: center;
+}
+
+.marker-text {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+  box-shadow: 0 1px 5px var(--blue);
+  position: relative; 
+  z-index: 1;
+}

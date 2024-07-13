@@ -5,13 +5,12 @@ import Title from '../../Components/Title/Title';
 import Map from './Map';
 import ContactInfo from './ContactInfo';
 import axios from 'axios';
-import ReCAPTCHA from 'react-google-recaptcha';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import SmallNavigation from '../../Components/SmallNavigation/SmallNavigation';
 import styles from './Contacts.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { pageVisit } from '../../Slices/Visits';
 import ScrollUp from '../../Components/ScrollUp/ScrollUp';
-
 
 export default function Contacts() {
     const languageData = useSelector(state => state.languageData.value)
@@ -33,13 +32,12 @@ export default function Contacts() {
         email: '',
         message: ''
     });
-    const [recaptchaValue, setRecaptchaValue] = useState(null);
-    const handleRecaptchaChange = (value) => {
-        setRecaptchaValue(value);
+    const [hcaptchaValue, setHcaptchaValue] = useState(null);
+    const handleHcaptchaChange = (token) => {
+        setHcaptchaValue(token);
     };
 
     const handleChange = (e) => {
-
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -70,8 +68,8 @@ export default function Contacts() {
             alert('Message Field Can Not Be Empty')
             return;
         }
-        if (!recaptchaValue) {
-            alert('Please complete the reCAPTCHA');
+        if (!hcaptchaValue) {
+            alert('Please complete the hCaptcha');
             return;
         }
         setDisplayBlack(true)
@@ -86,7 +84,7 @@ export default function Contacts() {
                     name: formData.name,
                     email: formData.email,
                     text: formData.message,
-                    gRecaptchaResponse: recaptchaValue,
+                    hCaptchaResponse: hcaptchaValue,
                     mailBtn: true
                 }),
                 timeout: 10000,
@@ -153,9 +151,9 @@ export default function Contacts() {
                                     placeholder={languageData['contacts page'][7]}
                                     style={{ height: '100px', resize: 'vertical' }}
                                 ></textarea>
-                                <ReCAPTCHA
-                                    sitekey={process.env.REACT_APP_RECAPTCHA}
-                                    onChange={handleRecaptchaChange}
+                                <HCaptcha
+                                    sitekey={process.env.REACT_APP_HCAPTCHA_SITE_KEY}
+                                    onVerify={handleHcaptchaChange}
                                 />
                                 <button type="submit" className={`cp mainBtn ${font1}`}>
                                     {languageData['contacts page'][8]}
@@ -165,13 +163,12 @@ export default function Contacts() {
                     </div>
                 </div>
                 <Title font={font0} text={languageData['map']} />
-                <div style={{height:'500px'}}>
+                <div style={{ height: '500px' }}>
                     <Map />
                 </div>
-
             </div>
             <Footer font={font0} rights={languageData['rights']} />
-            <ScrollUp/>
+            <ScrollUp />
         </>
     );
 }
