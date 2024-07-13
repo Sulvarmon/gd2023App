@@ -15,7 +15,7 @@ export default function SideContacts() {
   });
   return (
     <div className={`dfcjcas gap2 p2 ${styles.sideContacts}`}>
-      <div className={`${hide && 'dn'} ${styles.dark} border`}>
+      <div onClick={e=>e.stopPropagation()} className={`${hide && 'dn'} ${styles.dark} border`}>
         <Map />
       </div>
       <a href='https://www.facebook.com/' target='__blank' className={`cw wfc dfjcac gap2 menuHover`}><FaFacebookF /><span className={languageData['font-family'][0]}>{languageData['fb']}</span></a>

@@ -1,46 +1,101 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import React, { useEffect, useRef } from 'react';
+import 'ol/ol.css';
+import { Map, View } from 'ol';
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
+import { fromLonLat } from 'ol/proj';
+import { Feature } from 'ol';
+import Point from 'ol/geom/Point';
+import { Vector as VectorLayer } from 'ol/layer';
+import { Vector as VectorSource } from 'ol/source';
+import { Style, Icon, Text, Fill } from 'ol/style';
+import { Overlay } from 'ol';
+import locationIcon from '../../Images/placeholder.png'
 
-// Set up the default icon for the marker
-delete L.Icon.Default.prototype._getIconUrl;
-const markerIcon = L.icon({
-    iconUrl: require('leaflet/dist/images/marker-icon.png'),
-    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-    iconSize: [25, 41], // Default marker size
-    iconAnchor: [12, 41], // Position the icon
-});
-
-export default function Map() {
+export default function MapComponent() {
     const latitude = 42.166158;
     const longitude = 41.691353;
+    const mapContainer = useRef(null);
+    const popupContainer = useRef(null);
+    const popupOverlay = useRef(null);
 
-    // Custom icon with text
-    const customIcon = L.divIcon({
-        className: 'custom-marker',
-        html: '<div class="marker-text">Georgian Development 2023</div>',
-        iconSize: [120, 40], // Adjust size as needed
-        iconAnchor: [60, 110], // Center the text
-        // Position the text above the marker
-        popupAnchor: [0, -20], // Adjust for popup position if needed
-    });
+    useEffect(() => {
+        const map = new Map({
+            target: mapContainer.current,
+            layers: [
+                new TileLayer({
+                    source: new OSM(),
+                }),
+            ],
+            view: new View({
+                center: fromLonLat([longitude, latitude]),
+                zoom: 16,
+            }),
+        });
+
+        // Popup overlay
+        popupOverlay.current = new Overlay({
+            element: popupContainer.current,
+            autoPan: true,
+            autoPanAnimation: {
+                duration: 250,
+            },
+        });
+        map.addOverlay(popupOverlay.current);
+
+        // Create a marker
+        const marker = new Feature({
+            geometry: new Point(fromLonLat([longitude, latitude])),
+        });
+
+        const vectorSource = new VectorSource({
+            features: [marker],
+        });
+
+        const vectorLayer = new VectorLayer({
+            source: vectorSource,
+        });
+
+        map.addLayer(vectorLayer);
+
+        // Set marker style with custom icon
+        marker.setStyle(new Style({
+            image: new Icon({
+                src: locationIcon,
+                scale: .05, // Adjusted to make the marker bigger
+            }),
+            text: new Text({
+                text: 'Georgian Development 2023',
+                offsetY: -30, // Adjusted based on new marker size
+                scale: 1.2, // Adjust as needed
+                fill: new Fill({
+                    color: '#000',
+                }),
+                backgroundFill: new Fill({
+                    color: '#fff',
+                }),
+                padding: [10, 10, 10, 10],
+                textAlign: 'center',
+            }),
+        }));
+
+        // Show popup on marker click
+        map.on('click', (event) => {
+            map.forEachFeatureAtPixel(event.pixel, (feature) => {
+                if (feature === marker) {
+                    popupOverlay.current.setPosition(feature.getGeometry().getCoordinates());
+                    popupContainer.current.innerHTML = `<h3>Location</h3><p>${latitude}, ${longitude}</p>`;
+                }
+            });
+        });
+
+        return () => map.setTarget(undefined);
+    }, [latitude, longitude]);
 
     return (
-        <div className="w5 h5">
-            <MapContainer center={[latitude, longitude]} zoom={16} style={{ height: '100%', width: '100%' }} scrollWheelZoom={false}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-                />
-                <Marker position={[latitude, longitude]} icon={markerIcon}>
-                    <Popup>
-                        Location: {latitude}, {longitude}
-                    </Popup>
-                </Marker>
-                <Marker position={[latitude, longitude]} icon={customIcon} />
-            </MapContainer>
+        <div className="map-container" style={{ position: 'relative', zIndex: 5, height: '100%', width: '100%' }}>
+            <div ref={mapContainer} style={{ height: '100%', width: '100%' }} />
+            <div ref={popupContainer} className="popup" style={{ display: 'none', position: 'absolute' }} />
         </div>
     );
 }
