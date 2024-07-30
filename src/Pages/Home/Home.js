@@ -28,7 +28,6 @@ import { HiMinus } from "react-icons/hi2";
 import { RxReset } from "react-icons/rx";
 
 
-
 export default function Home() {
     const languageData = useSelector(state => state.languageData.value);
     const slidesData = getSlidesData(languageData);
@@ -81,9 +80,9 @@ export default function Home() {
                             {({ zoomIn, zoomOut, resetTransform }) => (
                                 <>
                                     <div className="dfjcac gap2 mb2">
-                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
-                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
-                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                        <button className='theme iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='theme iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='theme iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
                                     </div>
                                     <TransformComponent>
                                         <img src={about} alt="test" className="w5 zoom-image" />

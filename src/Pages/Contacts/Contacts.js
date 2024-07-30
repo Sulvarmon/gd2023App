@@ -96,6 +96,7 @@ export default function Contacts() {
                     message: ''
                 });
                 alert('Message Sent Successfully')
+                console.log(response.data)
                 setDisplayBlack(false)
                 setAllowSend(false)
             } else {

@@ -32,9 +32,9 @@ export default function OneProject({ font0, font1, img, title, dottexts, underDo
                             {({ zoomIn, zoomOut, resetTransform }) => (
                                 <>
                                     <div className="dfjcac gap2 mb2">
-                                        <button className='iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
-                                        <button className='iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
-                                        <button className='iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
+                                        <button className='theme iconView iconHover' onClick={() => zoomIn()}><BsPlusLg size={20} /></button>
+                                        <button className='theme iconView iconHover' onClick={() => zoomOut()}><HiMinus size={20}/></button>
+                                        <button className='theme iconView iconHover' onClick={() => resetTransform()}><RxReset size={30} /></button>
                                     </div>
                                     <TransformComponent>
                                         <img src={img} alt="test" className="w5 zoom-image" />

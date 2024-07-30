@@ -11,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ErrorBoundary>
     <Provider store={store}>
-      <App />
+      <div id='App' style={{display: 'none'}}>
+        <App />
+      </div>
     </Provider>
   </ErrorBoundary>
 
